@@ -1,13 +1,14 @@
 ﻿using System.Data;
-using Maticsoft.Model;
-namespace Maticsoft.BLL
+using DataSyncTool.CP.Model;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// 系统菜单管理。
 	/// </summary>
 	public class SysManage
 	{
-		Maticsoft.DAL.SysManage dal=new Maticsoft.DAL.SysManage();
+		DAL.SysManage dal=new DAL.SysManage();
 
         
 		public SysManage()

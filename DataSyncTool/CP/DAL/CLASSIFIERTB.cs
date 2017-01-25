@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:CLASSIFIERTB
@@ -19,7 +21,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.CLASSIFIERTB model)
+		public bool Add(Model.CLASSIFIERTB model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into CLASSIFIERTB(");
@@ -51,7 +53,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.CLASSIFIERTB model)
+		public bool Update(Model.CLASSIFIERTB model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update CLASSIFIERTB set ");
@@ -111,7 +113,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.CLASSIFIERTB GetModel()
+		public Model.CLASSIFIERTB GetModel()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
@@ -120,7 +122,7 @@ namespace DataSyncTool.DAL
 			OracleParameter[] parameters = {
 			};
 
-			DataSyncTool.Model.CLASSIFIERTB model=new DataSyncTool.Model.CLASSIFIERTB();
+			Model.CLASSIFIERTB model=new Model.CLASSIFIERTB();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -136,9 +138,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.CLASSIFIERTB DataRowToModel(DataRow row)
+		public Model.CLASSIFIERTB DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.CLASSIFIERTB model=new DataSyncTool.Model.CLASSIFIERTB();
+			Model.CLASSIFIERTB model=new Model.CLASSIFIERTB();
 			if (row != null)
 			{
 				if(row["ID"]!=null)

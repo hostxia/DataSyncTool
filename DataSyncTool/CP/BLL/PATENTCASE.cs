@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// PATENTCASE
 	/// </summary>
 	public partial class PATENTCASE
 	{
-		private readonly DataSyncTool.DAL.PATENTCASE dal=new DataSyncTool.DAL.PATENTCASE();
+		private readonly DAL.PATENTCASE dal=new DAL.PATENTCASE();
 		public PATENTCASE()
 		{}
 		#region  BasicMethod
@@ -18,7 +18,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.PATENTCASE model)
+		public bool Add(Model.PATENTCASE model)
 		{
 			return dal.Add(model);
 		}
@@ -26,7 +26,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.PATENTCASE model)
+		public bool Update(Model.PATENTCASE model)
 		{
 			return dal.Update(model);
 		}
@@ -43,7 +43,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.PATENTCASE GetModel()
+		public Model.PATENTCASE GetModel()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			return dal.GetModel();
@@ -52,11 +52,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.PATENTCASE GetModelByCache()
+		public Model.PATENTCASE GetModelByCache()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			string CacheKey = "PATENTCASEModel-" ;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -64,13 +64,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel();
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.PATENTCASE)objModel;
+			return (Model.PATENTCASE)objModel;
 		}
 
 		/// <summary>
@@ -83,7 +83,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.PATENTCASE> GetModelList(string strWhere)
+		public List<Model.PATENTCASE> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -91,13 +91,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.PATENTCASE> DataTableToList(DataTable dt)
+		public List<Model.PATENTCASE> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.PATENTCASE> modelList = new List<DataSyncTool.Model.PATENTCASE>();
+			List<Model.PATENTCASE> modelList = new List<Model.PATENTCASE>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.PATENTCASE model;
+				Model.PATENTCASE model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

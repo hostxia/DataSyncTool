@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:COUNTRYCODE
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.COUNTRYCODE model)
+		public bool Add(Model.COUNTRYCODE model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into COUNTRYCODE(");
@@ -65,7 +67,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.COUNTRYCODE model)
+		public bool Update(Model.COUNTRYCODE model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update COUNTRYCODE set ");
@@ -144,7 +146,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.COUNTRYCODE GetModel(string ID)
+		public Model.COUNTRYCODE GetModel(string ID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -154,7 +156,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":ID", OracleType.VarChar,2)			};
 			parameters[0].Value = ID;
 
-			DataSyncTool.Model.COUNTRYCODE model=new DataSyncTool.Model.COUNTRYCODE();
+			Model.COUNTRYCODE model=new Model.COUNTRYCODE();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -170,9 +172,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.COUNTRYCODE DataRowToModel(DataRow row)
+		public Model.COUNTRYCODE DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.COUNTRYCODE model=new DataSyncTool.Model.COUNTRYCODE();
+			Model.COUNTRYCODE model=new Model.COUNTRYCODE();
 			if (row != null)
 			{
 				if(row["ID"]!=null)

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:HEADERMAPPINGTB
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.HEADERMAPPINGTB model)
+		public bool Add(Model.HEADERMAPPINGTB model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into HEADERMAPPINGTB(");
@@ -73,7 +75,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.HEADERMAPPINGTB model)
+		public bool Update(Model.HEADERMAPPINGTB model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update HEADERMAPPINGTB set ");
@@ -164,7 +166,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.HEADERMAPPINGTB GetModel(string ID)
+		public Model.HEADERMAPPINGTB GetModel(string ID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -174,7 +176,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":ID", OracleType.VarChar,40)			};
 			parameters[0].Value = ID;
 
-			DataSyncTool.Model.HEADERMAPPINGTB model=new DataSyncTool.Model.HEADERMAPPINGTB();
+			Model.HEADERMAPPINGTB model=new Model.HEADERMAPPINGTB();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -190,9 +192,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.HEADERMAPPINGTB DataRowToModel(DataRow row)
+		public Model.HEADERMAPPINGTB DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.HEADERMAPPINGTB model=new DataSyncTool.Model.HEADERMAPPINGTB();
+			Model.HEADERMAPPINGTB model=new Model.HEADERMAPPINGTB();
 			if (row != null)
 			{
 				if(row["ID"]!=null)

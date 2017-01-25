@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// ALERTTYPEGROUP
 	/// </summary>
 	public partial class ALERTTYPEGROUP
 	{
-		private readonly DataSyncTool.DAL.ALERTTYPEGROUP dal=new DataSyncTool.DAL.ALERTTYPEGROUP();
+		private readonly DAL.ALERTTYPEGROUP dal=new DAL.ALERTTYPEGROUP();
 		public ALERTTYPEGROUP()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.ALERTTYPEGROUP model)
+		public bool Add(Model.ALERTTYPEGROUP model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.ALERTTYPEGROUP model)
+		public bool Update(Model.ALERTTYPEGROUP model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string GROUPIDlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(GROUPIDlist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(GROUPIDlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.ALERTTYPEGROUP GetModel(string GROUPID)
+		public Model.ALERTTYPEGROUP GetModel(string GROUPID)
 		{
 			
 			return dal.GetModel(GROUPID);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.ALERTTYPEGROUP GetModelByCache(string GROUPID)
+		public Model.ALERTTYPEGROUP GetModelByCache(string GROUPID)
 		{
 			
 			string CacheKey = "ALERTTYPEGROUPModel-" + GROUPID;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(GROUPID);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.ALERTTYPEGROUP)objModel;
+			return (Model.ALERTTYPEGROUP)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.ALERTTYPEGROUP> GetModelList(string strWhere)
+		public List<Model.ALERTTYPEGROUP> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.ALERTTYPEGROUP> DataTableToList(DataTable dt)
+		public List<Model.ALERTTYPEGROUP> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.ALERTTYPEGROUP> modelList = new List<DataSyncTool.Model.ALERTTYPEGROUP>();
+			List<Model.ALERTTYPEGROUP> modelList = new List<Model.ALERTTYPEGROUP>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.ALERTTYPEGROUP model;
+				Model.ALERTTYPEGROUP model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

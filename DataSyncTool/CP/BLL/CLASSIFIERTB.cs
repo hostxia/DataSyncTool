@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// CLASSIFIERTB
 	/// </summary>
 	public partial class CLASSIFIERTB
 	{
-		private readonly DataSyncTool.DAL.CLASSIFIERTB dal=new DataSyncTool.DAL.CLASSIFIERTB();
+		private readonly DAL.CLASSIFIERTB dal=new DAL.CLASSIFIERTB();
 		public CLASSIFIERTB()
 		{}
 		#region  BasicMethod
@@ -18,7 +18,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.CLASSIFIERTB model)
+		public bool Add(Model.CLASSIFIERTB model)
 		{
 			return dal.Add(model);
 		}
@@ -26,7 +26,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.CLASSIFIERTB model)
+		public bool Update(Model.CLASSIFIERTB model)
 		{
 			return dal.Update(model);
 		}
@@ -43,7 +43,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.CLASSIFIERTB GetModel()
+		public Model.CLASSIFIERTB GetModel()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			return dal.GetModel();
@@ -52,11 +52,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.CLASSIFIERTB GetModelByCache()
+		public Model.CLASSIFIERTB GetModelByCache()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			string CacheKey = "CLASSIFIERTBModel-" ;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -64,13 +64,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel();
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.CLASSIFIERTB)objModel;
+			return (Model.CLASSIFIERTB)objModel;
 		}
 
 		/// <summary>
@@ -83,7 +83,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.CLASSIFIERTB> GetModelList(string strWhere)
+		public List<Model.CLASSIFIERTB> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -91,13 +91,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.CLASSIFIERTB> DataTableToList(DataTable dt)
+		public List<Model.CLASSIFIERTB> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.CLASSIFIERTB> modelList = new List<DataSyncTool.Model.CLASSIFIERTB>();
+			List<Model.CLASSIFIERTB> modelList = new List<Model.CLASSIFIERTB>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.CLASSIFIERTB model;
+				Model.CLASSIFIERTB model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

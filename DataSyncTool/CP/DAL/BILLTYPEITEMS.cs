@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:BILLTYPEITEMS
@@ -35,7 +37,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.BILLTYPEITEMS model)
+		public bool Add(Model.BILLTYPEITEMS model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into BILLTYPEITEMS(");
@@ -61,7 +63,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.BILLTYPEITEMS model)
+		public bool Update(Model.BILLTYPEITEMS model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update BILLTYPEITEMS set ");
@@ -115,7 +117,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.BILLTYPEITEMS GetModel(string BILLTYPE,string BILLCODE)
+		public Model.BILLTYPEITEMS GetModel(string BILLTYPE,string BILLCODE)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -127,7 +129,7 @@ namespace DataSyncTool.DAL
 			parameters[0].Value = BILLTYPE;
 			parameters[1].Value = BILLCODE;
 
-			DataSyncTool.Model.BILLTYPEITEMS model=new DataSyncTool.Model.BILLTYPEITEMS();
+			Model.BILLTYPEITEMS model=new Model.BILLTYPEITEMS();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -143,9 +145,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.BILLTYPEITEMS DataRowToModel(DataRow row)
+		public Model.BILLTYPEITEMS DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.BILLTYPEITEMS model=new DataSyncTool.Model.BILLTYPEITEMS();
+			Model.BILLTYPEITEMS model=new Model.BILLTYPEITEMS();
 			if (row != null)
 			{
 				if(row["BILLTYPE"]!=null)

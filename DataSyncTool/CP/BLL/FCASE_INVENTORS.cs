@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// FCASE_INVENTORS
 	/// </summary>
 	public partial class FCASE_INVENTORS
 	{
-		private readonly DataSyncTool.DAL.FCASE_INVENTORS dal=new DataSyncTool.DAL.FCASE_INVENTORS();
+		private readonly DAL.FCASE_INVENTORS dal=new DAL.FCASE_INVENTORS();
 		public FCASE_INVENTORS()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.FCASE_INVENTORS model)
+		public bool Add(Model.FCASE_INVENTORS model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.FCASE_INVENTORS model)
+		public bool Update(Model.FCASE_INVENTORS model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string PIDlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(PIDlist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(PIDlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FCASE_INVENTORS GetModel(string PID)
+		public Model.FCASE_INVENTORS GetModel(string PID)
 		{
 			
 			return dal.GetModel(PID);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.FCASE_INVENTORS GetModelByCache(string PID)
+		public Model.FCASE_INVENTORS GetModelByCache(string PID)
 		{
 			
 			string CacheKey = "FCASE_INVENTORSModel-" + PID;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(PID);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.FCASE_INVENTORS)objModel;
+			return (Model.FCASE_INVENTORS)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.FCASE_INVENTORS> GetModelList(string strWhere)
+		public List<Model.FCASE_INVENTORS> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.FCASE_INVENTORS> DataTableToList(DataTable dt)
+		public List<Model.FCASE_INVENTORS> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.FCASE_INVENTORS> modelList = new List<DataSyncTool.Model.FCASE_INVENTORS>();
+			List<Model.FCASE_INVENTORS> modelList = new List<Model.FCASE_INVENTORS>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.FCASE_INVENTORS model;
+				Model.FCASE_INVENTORS model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

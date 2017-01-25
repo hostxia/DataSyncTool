@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// GENERAL_INSTRUCTION
 	/// </summary>
 	public partial class GENERAL_INSTRUCTION
 	{
-		private readonly DataSyncTool.DAL.GENERAL_INSTRUCTION dal=new DataSyncTool.DAL.GENERAL_INSTRUCTION();
+		private readonly DAL.GENERAL_INSTRUCTION dal=new DAL.GENERAL_INSTRUCTION();
 		public GENERAL_INSTRUCTION()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.GENERAL_INSTRUCTION model)
+		public bool Add(Model.GENERAL_INSTRUCTION model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.GENERAL_INSTRUCTION model)
+		public bool Update(Model.GENERAL_INSTRUCTION model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string PIDlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(PIDlist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(PIDlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.GENERAL_INSTRUCTION GetModel(string PID)
+		public Model.GENERAL_INSTRUCTION GetModel(string PID)
 		{
 			
 			return dal.GetModel(PID);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.GENERAL_INSTRUCTION GetModelByCache(string PID)
+		public Model.GENERAL_INSTRUCTION GetModelByCache(string PID)
 		{
 			
 			string CacheKey = "GENERAL_INSTRUCTIONModel-" + PID;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(PID);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.GENERAL_INSTRUCTION)objModel;
+			return (Model.GENERAL_INSTRUCTION)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.GENERAL_INSTRUCTION> GetModelList(string strWhere)
+		public List<Model.GENERAL_INSTRUCTION> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.GENERAL_INSTRUCTION> DataTableToList(DataTable dt)
+		public List<Model.GENERAL_INSTRUCTION> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.GENERAL_INSTRUCTION> modelList = new List<DataSyncTool.Model.GENERAL_INSTRUCTION>();
+			List<Model.GENERAL_INSTRUCTION> modelList = new List<Model.GENERAL_INSTRUCTION>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.GENERAL_INSTRUCTION model;
+				Model.GENERAL_INSTRUCTION model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

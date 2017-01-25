@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:WORD_TEMPLATES
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.WORD_TEMPLATES model)
+		public bool Add(Model.WORD_TEMPLATES model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into WORD_TEMPLATES(");
@@ -63,7 +65,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.WORD_TEMPLATES model)
+		public bool Update(Model.WORD_TEMPLATES model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update WORD_TEMPLATES set ");
@@ -139,7 +141,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.WORD_TEMPLATES GetModel(string FILE_NAME)
+		public Model.WORD_TEMPLATES GetModel(string FILE_NAME)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -149,7 +151,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":FILE_NAME", OracleType.VarChar,100)			};
 			parameters[0].Value = FILE_NAME;
 
-			DataSyncTool.Model.WORD_TEMPLATES model=new DataSyncTool.Model.WORD_TEMPLATES();
+			Model.WORD_TEMPLATES model=new Model.WORD_TEMPLATES();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -165,9 +167,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.WORD_TEMPLATES DataRowToModel(DataRow row)
+		public Model.WORD_TEMPLATES DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.WORD_TEMPLATES model=new DataSyncTool.Model.WORD_TEMPLATES();
+			Model.WORD_TEMPLATES model=new Model.WORD_TEMPLATES();
 			if (row != null)
 			{
 				if(row["FILE_NAME"]!=null)

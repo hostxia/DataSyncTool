@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:BILLCODE_V2
@@ -37,7 +39,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.BILLCODE_V2 model)
+		public bool Add(Model.BILLCODE_V2 model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into BILLCODE_V2(");
@@ -69,7 +71,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.BILLCODE_V2 model)
+		public bool Update(Model.BILLCODE_V2 model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update BILLCODE_V2 set ");
@@ -134,7 +136,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.BILLCODE_V2 GetModel(string CODE,string GROUPID,string TYPES)
+		public Model.BILLCODE_V2 GetModel(string CODE,string GROUPID,string TYPES)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -148,7 +150,7 @@ namespace DataSyncTool.DAL
 			parameters[1].Value = GROUPID;
 			parameters[2].Value = TYPES;
 
-			DataSyncTool.Model.BILLCODE_V2 model=new DataSyncTool.Model.BILLCODE_V2();
+			Model.BILLCODE_V2 model=new Model.BILLCODE_V2();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -164,9 +166,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.BILLCODE_V2 DataRowToModel(DataRow row)
+		public Model.BILLCODE_V2 DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.BILLCODE_V2 model=new DataSyncTool.Model.BILLCODE_V2();
+			Model.BILLCODE_V2 model=new Model.BILLCODE_V2();
 			if (row != null)
 			{
 				if(row["CODE"]!=null)

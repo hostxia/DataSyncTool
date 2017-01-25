@@ -1,5 +1,6 @@
 ﻿using System;
-namespace DataSyncTool.Model
+
+namespace DataSyncTool.CP.Model
 {
 	/// <summary>
 	/// CUX_FCASE_BK_20130827:实体类(属性说明自动提取数据库字段的描述信息)

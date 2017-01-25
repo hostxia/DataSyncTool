@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:FLFEETYPE
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.FLFEETYPE model)
+		public bool Add(Model.FLFEETYPE model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into FLFEETYPE(");
@@ -59,7 +61,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.FLFEETYPE model)
+		public bool Update(Model.FLFEETYPE model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update FLFEETYPE set ");
@@ -129,7 +131,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FLFEETYPE GetModel(string TYPENAME)
+		public Model.FLFEETYPE GetModel(string TYPENAME)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -139,7 +141,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":TYPENAME", OracleType.VarChar,30)			};
 			parameters[0].Value = TYPENAME;
 
-			DataSyncTool.Model.FLFEETYPE model=new DataSyncTool.Model.FLFEETYPE();
+			Model.FLFEETYPE model=new Model.FLFEETYPE();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -155,9 +157,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FLFEETYPE DataRowToModel(DataRow row)
+		public Model.FLFEETYPE DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.FLFEETYPE model=new DataSyncTool.Model.FLFEETYPE();
+			Model.FLFEETYPE model=new Model.FLFEETYPE();
 			if (row != null)
 			{
 				if(row["TYPENAME"]!=null)

@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// TEST_HKCLI
 	/// </summary>
 	public partial class TEST_HKCLI
 	{
-		private readonly DataSyncTool.DAL.TEST_HKCLI dal=new DataSyncTool.DAL.TEST_HKCLI();
+		private readonly DAL.TEST_HKCLI dal=new DAL.TEST_HKCLI();
 		public TEST_HKCLI()
 		{}
 		#region  BasicMethod
@@ -18,7 +18,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.TEST_HKCLI model)
+		public bool Add(Model.TEST_HKCLI model)
 		{
 			return dal.Add(model);
 		}
@@ -26,7 +26,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.TEST_HKCLI model)
+		public bool Update(Model.TEST_HKCLI model)
 		{
 			return dal.Update(model);
 		}
@@ -43,7 +43,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.TEST_HKCLI GetModel()
+		public Model.TEST_HKCLI GetModel()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			return dal.GetModel();
@@ -52,11 +52,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.TEST_HKCLI GetModelByCache()
+		public Model.TEST_HKCLI GetModelByCache()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			string CacheKey = "TEST_HKCLIModel-" ;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -64,13 +64,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel();
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.TEST_HKCLI)objModel;
+			return (Model.TEST_HKCLI)objModel;
 		}
 
 		/// <summary>
@@ -83,7 +83,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.TEST_HKCLI> GetModelList(string strWhere)
+		public List<Model.TEST_HKCLI> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -91,13 +91,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.TEST_HKCLI> DataTableToList(DataTable dt)
+		public List<Model.TEST_HKCLI> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.TEST_HKCLI> modelList = new List<DataSyncTool.Model.TEST_HKCLI>();
+			List<Model.TEST_HKCLI> modelList = new List<Model.TEST_HKCLI>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.TEST_HKCLI model;
+				Model.TEST_HKCLI model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

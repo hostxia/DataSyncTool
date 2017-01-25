@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// SBFEEDETAIL
 	/// </summary>
 	public partial class SBFEEDETAIL
 	{
-		private readonly DataSyncTool.DAL.SBFEEDETAIL dal=new DataSyncTool.DAL.SBFEEDETAIL();
+		private readonly DAL.SBFEEDETAIL dal=new DAL.SBFEEDETAIL();
 		public SBFEEDETAIL()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.SBFEEDETAIL model)
+		public bool Add(Model.SBFEEDETAIL model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.SBFEEDETAIL model)
+		public bool Update(Model.SBFEEDETAIL model)
 		{
 			return dal.Update(model);
 		}
@@ -50,7 +50,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.SBFEEDETAIL GetModel(string CASENO,string CLIENTNO,string VOUCHERNO,string FEETYPE,decimal AMOUNT,string PAYMETHOD,DateTime PAYDATE,string TRADEMARKNAME)
+		public Model.SBFEEDETAIL GetModel(string CASENO,string CLIENTNO,string VOUCHERNO,string FEETYPE,decimal AMOUNT,string PAYMETHOD,DateTime PAYDATE,string TRADEMARKNAME)
 		{
 			
 			return dal.GetModel(CASENO,CLIENTNO,VOUCHERNO,FEETYPE,AMOUNT,PAYMETHOD,PAYDATE,TRADEMARKNAME);
@@ -59,11 +59,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.SBFEEDETAIL GetModelByCache(string CASENO,string CLIENTNO,string VOUCHERNO,string FEETYPE,decimal AMOUNT,string PAYMETHOD,DateTime PAYDATE,string TRADEMARKNAME)
+		public Model.SBFEEDETAIL GetModelByCache(string CASENO,string CLIENTNO,string VOUCHERNO,string FEETYPE,decimal AMOUNT,string PAYMETHOD,DateTime PAYDATE,string TRADEMARKNAME)
 		{
 			
 			string CacheKey = "SBFEEDETAILModel-" + CASENO+CLIENTNO+VOUCHERNO+FEETYPE+AMOUNT+PAYMETHOD+PAYDATE+TRADEMARKNAME;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -71,13 +71,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(CASENO,CLIENTNO,VOUCHERNO,FEETYPE,AMOUNT,PAYMETHOD,PAYDATE,TRADEMARKNAME);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.SBFEEDETAIL)objModel;
+			return (Model.SBFEEDETAIL)objModel;
 		}
 
 		/// <summary>
@@ -90,7 +90,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.SBFEEDETAIL> GetModelList(string strWhere)
+		public List<Model.SBFEEDETAIL> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -98,13 +98,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.SBFEEDETAIL> DataTableToList(DataTable dt)
+		public List<Model.SBFEEDETAIL> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.SBFEEDETAIL> modelList = new List<DataSyncTool.Model.SBFEEDETAIL>();
+			List<Model.SBFEEDETAIL> modelList = new List<Model.SBFEEDETAIL>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.SBFEEDETAIL model;
+				Model.SBFEEDETAIL model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

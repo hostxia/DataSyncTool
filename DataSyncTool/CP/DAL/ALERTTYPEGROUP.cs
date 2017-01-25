@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:ALERTTYPEGROUP
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.ALERTTYPEGROUP model)
+		public bool Add(Model.ALERTTYPEGROUP model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into ALERTTYPEGROUP(");
@@ -61,7 +63,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.ALERTTYPEGROUP model)
+		public bool Update(Model.ALERTTYPEGROUP model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update ALERTTYPEGROUP set ");
@@ -134,7 +136,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.ALERTTYPEGROUP GetModel(string GROUPID)
+		public Model.ALERTTYPEGROUP GetModel(string GROUPID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -144,7 +146,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":GROUPID", OracleType.VarChar,20)			};
 			parameters[0].Value = GROUPID;
 
-			DataSyncTool.Model.ALERTTYPEGROUP model=new DataSyncTool.Model.ALERTTYPEGROUP();
+			Model.ALERTTYPEGROUP model=new Model.ALERTTYPEGROUP();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -160,9 +162,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.ALERTTYPEGROUP DataRowToModel(DataRow row)
+		public Model.ALERTTYPEGROUP DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.ALERTTYPEGROUP model=new DataSyncTool.Model.ALERTTYPEGROUP();
+			Model.ALERTTYPEGROUP model=new Model.ALERTTYPEGROUP();
 			if (row != null)
 			{
 				if(row["GROUPID"]!=null)

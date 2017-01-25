@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:SBFEEDETAIL
@@ -47,7 +49,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.SBFEEDETAIL model)
+		public bool Add(Model.SBFEEDETAIL model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into SBFEEDETAIL(");
@@ -87,7 +89,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.SBFEEDETAIL model)
+		public bool Update(Model.SBFEEDETAIL model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update SBFEEDETAIL set ");
@@ -174,7 +176,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.SBFEEDETAIL GetModel(string CASENO,string CLIENTNO,string VOUCHERNO,string FEETYPE,decimal AMOUNT,string PAYMETHOD,DateTime PAYDATE,string TRADEMARKNAME)
+		public Model.SBFEEDETAIL GetModel(string CASENO,string CLIENTNO,string VOUCHERNO,string FEETYPE,decimal AMOUNT,string PAYMETHOD,DateTime PAYDATE,string TRADEMARKNAME)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -198,7 +200,7 @@ namespace DataSyncTool.DAL
 			parameters[6].Value = PAYDATE;
 			parameters[7].Value = TRADEMARKNAME;
 
-			DataSyncTool.Model.SBFEEDETAIL model=new DataSyncTool.Model.SBFEEDETAIL();
+			Model.SBFEEDETAIL model=new Model.SBFEEDETAIL();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -214,9 +216,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.SBFEEDETAIL DataRowToModel(DataRow row)
+		public Model.SBFEEDETAIL DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.SBFEEDETAIL model=new DataSyncTool.Model.SBFEEDETAIL();
+			Model.SBFEEDETAIL model=new Model.SBFEEDETAIL();
 			if (row != null)
 			{
 				if(row["CASENO"]!=null)

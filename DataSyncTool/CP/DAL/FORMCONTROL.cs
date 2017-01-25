@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:FORMCONTROL
@@ -19,7 +21,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.FORMCONTROL model)
+		public bool Add(Model.FORMCONTROL model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into FORMCONTROL(");
@@ -49,7 +51,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.FORMCONTROL model)
+		public bool Update(Model.FORMCONTROL model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update FORMCONTROL set ");
@@ -106,7 +108,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FORMCONTROL GetModel()
+		public Model.FORMCONTROL GetModel()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
@@ -115,7 +117,7 @@ namespace DataSyncTool.DAL
 			OracleParameter[] parameters = {
 			};
 
-			DataSyncTool.Model.FORMCONTROL model=new DataSyncTool.Model.FORMCONTROL();
+			Model.FORMCONTROL model=new Model.FORMCONTROL();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -131,9 +133,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FORMCONTROL DataRowToModel(DataRow row)
+		public Model.FORMCONTROL DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.FORMCONTROL model=new DataSyncTool.Model.FORMCONTROL();
+			Model.FORMCONTROL model=new Model.FORMCONTROL();
 			if (row != null)
 			{
 				if(row["FORMNAME"]!=null)

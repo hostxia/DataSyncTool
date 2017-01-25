@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:DROPPING_HKPATENT
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.DROPPING_HKPATENT model)
+		public bool Add(Model.DROPPING_HKPATENT model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into DROPPING_HKPATENT(");
@@ -79,7 +81,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.DROPPING_HKPATENT model)
+		public bool Update(Model.DROPPING_HKPATENT model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update DROPPING_HKPATENT set ");
@@ -179,7 +181,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_HKPATENT GetModel(string HKNO)
+		public Model.DROPPING_HKPATENT GetModel(string HKNO)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -189,7 +191,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":HKNO", OracleType.VarChar,30)			};
 			parameters[0].Value = HKNO;
 
-			DataSyncTool.Model.DROPPING_HKPATENT model=new DataSyncTool.Model.DROPPING_HKPATENT();
+			Model.DROPPING_HKPATENT model=new Model.DROPPING_HKPATENT();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -205,9 +207,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_HKPATENT DataRowToModel(DataRow row)
+		public Model.DROPPING_HKPATENT DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.DROPPING_HKPATENT model=new DataSyncTool.Model.DROPPING_HKPATENT();
+			Model.DROPPING_HKPATENT model=new Model.DROPPING_HKPATENT();
 			if (row != null)
 			{
 				if(row["HKNO"]!=null)

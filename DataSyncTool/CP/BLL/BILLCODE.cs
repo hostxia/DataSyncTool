@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// BILLCODE
 	/// </summary>
 	public partial class BILLCODE
 	{
-		private readonly DataSyncTool.DAL.BILLCODE dal=new DataSyncTool.DAL.BILLCODE();
+		private readonly DAL.BILLCODE dal=new DAL.BILLCODE();
 		public BILLCODE()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.BILLCODE model)
+		public bool Add(Model.BILLCODE model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.BILLCODE model)
+		public bool Update(Model.BILLCODE model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string CODElist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(CODElist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(CODElist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.BILLCODE GetModel(string CODE)
+		public Model.BILLCODE GetModel(string CODE)
 		{
 			
 			return dal.GetModel(CODE);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.BILLCODE GetModelByCache(string CODE)
+		public Model.BILLCODE GetModelByCache(string CODE)
 		{
 			
 			string CacheKey = "BILLCODEModel-" + CODE;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(CODE);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.BILLCODE)objModel;
+			return (Model.BILLCODE)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.BILLCODE> GetModelList(string strWhere)
+		public List<Model.BILLCODE> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.BILLCODE> DataTableToList(DataTable dt)
+		public List<Model.BILLCODE> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.BILLCODE> modelList = new List<DataSyncTool.Model.BILLCODE>();
+			List<Model.BILLCODE> modelList = new List<Model.BILLCODE>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.BILLCODE model;
+				Model.BILLCODE model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

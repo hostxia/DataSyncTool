@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Specialized;
 using System.Data;
 using System.Data.OracleClient;
-using System.Configuration;
 
-namespace Maticsoft.DBUtility
+namespace DataSyncTool.DBUtility
 {
 	/// <summary>
     /// Copyright (C) Maticsoft

@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// HEADERMAPPINGTB
 	/// </summary>
 	public partial class HEADERMAPPINGTB
 	{
-		private readonly DataSyncTool.DAL.HEADERMAPPINGTB dal=new DataSyncTool.DAL.HEADERMAPPINGTB();
+		private readonly DAL.HEADERMAPPINGTB dal=new DAL.HEADERMAPPINGTB();
 		public HEADERMAPPINGTB()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.HEADERMAPPINGTB model)
+		public bool Add(Model.HEADERMAPPINGTB model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.HEADERMAPPINGTB model)
+		public bool Update(Model.HEADERMAPPINGTB model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string IDlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(IDlist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(IDlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.HEADERMAPPINGTB GetModel(string ID)
+		public Model.HEADERMAPPINGTB GetModel(string ID)
 		{
 			
 			return dal.GetModel(ID);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.HEADERMAPPINGTB GetModelByCache(string ID)
+		public Model.HEADERMAPPINGTB GetModelByCache(string ID)
 		{
 			
 			string CacheKey = "HEADERMAPPINGTBModel-" + ID;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(ID);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.HEADERMAPPINGTB)objModel;
+			return (Model.HEADERMAPPINGTB)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.HEADERMAPPINGTB> GetModelList(string strWhere)
+		public List<Model.HEADERMAPPINGTB> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.HEADERMAPPINGTB> DataTableToList(DataTable dt)
+		public List<Model.HEADERMAPPINGTB> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.HEADERMAPPINGTB> modelList = new List<DataSyncTool.Model.HEADERMAPPINGTB>();
+			List<Model.HEADERMAPPINGTB> modelList = new List<Model.HEADERMAPPINGTB>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.HEADERMAPPINGTB model;
+				Model.HEADERMAPPINGTB model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:TMCASE
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.TMCASE model)
+		public bool Add(Model.TMCASE model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into TMCASE(");
@@ -147,7 +149,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.TMCASE model)
+		public bool Update(Model.TMCASE model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update TMCASE set ");
@@ -349,7 +351,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.TMCASE GetModel(string OURNO)
+		public Model.TMCASE GetModel(string OURNO)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -359,7 +361,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":OURNO", OracleType.VarChar,18)			};
 			parameters[0].Value = OURNO;
 
-			DataSyncTool.Model.TMCASE model=new DataSyncTool.Model.TMCASE();
+			Model.TMCASE model=new Model.TMCASE();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -375,9 +377,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.TMCASE DataRowToModel(DataRow row)
+		public Model.TMCASE DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.TMCASE model=new DataSyncTool.Model.TMCASE();
+			Model.TMCASE model=new Model.TMCASE();
 			if (row != null)
 			{
 				if(row["WITHDREW"]!=null)

@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// JOBTRACKING
 	/// </summary>
 	public partial class JOBTRACKING
 	{
-		private readonly DataSyncTool.DAL.JOBTRACKING dal=new DataSyncTool.DAL.JOBTRACKING();
+		private readonly DAL.JOBTRACKING dal=new DAL.JOBTRACKING();
 		public JOBTRACKING()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.JOBTRACKING model)
+		public bool Add(Model.JOBTRACKING model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.JOBTRACKING model)
+		public bool Update(Model.JOBTRACKING model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string PIDlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(PIDlist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(PIDlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.JOBTRACKING GetModel(string PID)
+		public Model.JOBTRACKING GetModel(string PID)
 		{
 			
 			return dal.GetModel(PID);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.JOBTRACKING GetModelByCache(string PID)
+		public Model.JOBTRACKING GetModelByCache(string PID)
 		{
 			
 			string CacheKey = "JOBTRACKINGModel-" + PID;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(PID);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.JOBTRACKING)objModel;
+			return (Model.JOBTRACKING)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.JOBTRACKING> GetModelList(string strWhere)
+		public List<Model.JOBTRACKING> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.JOBTRACKING> DataTableToList(DataTable dt)
+		public List<Model.JOBTRACKING> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.JOBTRACKING> modelList = new List<DataSyncTool.Model.JOBTRACKING>();
+			List<Model.JOBTRACKING> modelList = new List<Model.JOBTRACKING>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.JOBTRACKING model;
+				Model.JOBTRACKING model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:FLFEEDETAIL
@@ -45,7 +47,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.FLFEEDETAIL model)
+		public bool Add(Model.FLFEEDETAIL model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into FLFEEDETAIL(");
@@ -83,7 +85,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.FLFEEDETAIL model)
+		public bool Update(Model.FLFEEDETAIL model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update FLFEEDETAIL set ");
@@ -165,7 +167,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FLFEEDETAIL GetModel(string CASENO,string CLIENTNO,string VOUCHERNO,string FEETYPE,decimal AMOUNT,string PAYMETHOD,DateTime PAYDATE)
+		public Model.FLFEEDETAIL GetModel(string CASENO,string CLIENTNO,string VOUCHERNO,string FEETYPE,decimal AMOUNT,string PAYMETHOD,DateTime PAYDATE)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -187,7 +189,7 @@ namespace DataSyncTool.DAL
 			parameters[5].Value = PAYMETHOD;
 			parameters[6].Value = PAYDATE;
 
-			DataSyncTool.Model.FLFEEDETAIL model=new DataSyncTool.Model.FLFEEDETAIL();
+			Model.FLFEEDETAIL model=new Model.FLFEEDETAIL();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -203,9 +205,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FLFEEDETAIL DataRowToModel(DataRow row)
+		public Model.FLFEEDETAIL DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.FLFEEDETAIL model=new DataSyncTool.Model.FLFEEDETAIL();
+			Model.FLFEEDETAIL model=new Model.FLFEEDETAIL();
 			if (row != null)
 			{
 				if(row["CASENO"]!=null)

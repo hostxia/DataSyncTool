@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// ALERTMETA
 	/// </summary>
 	public partial class ALERTMETA
 	{
-		private readonly DataSyncTool.DAL.ALERTMETA dal=new DataSyncTool.DAL.ALERTMETA();
+		private readonly DAL.ALERTMETA dal=new DAL.ALERTMETA();
 		public ALERTMETA()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.ALERTMETA model)
+		public bool Add(Model.ALERTMETA model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.ALERTMETA model)
+		public bool Update(Model.ALERTMETA model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string TYPEIDlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(TYPEIDlist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(TYPEIDlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.ALERTMETA GetModel(string TYPEID)
+		public Model.ALERTMETA GetModel(string TYPEID)
 		{
 			
 			return dal.GetModel(TYPEID);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.ALERTMETA GetModelByCache(string TYPEID)
+		public Model.ALERTMETA GetModelByCache(string TYPEID)
 		{
 			
 			string CacheKey = "ALERTMETAModel-" + TYPEID;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(TYPEID);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.ALERTMETA)objModel;
+			return (Model.ALERTMETA)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.ALERTMETA> GetModelList(string strWhere)
+		public List<Model.ALERTMETA> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.ALERTMETA> DataTableToList(DataTable dt)
+		public List<Model.ALERTMETA> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.ALERTMETA> modelList = new List<DataSyncTool.Model.ALERTMETA>();
+			List<Model.ALERTMETA> modelList = new List<Model.ALERTMETA>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.ALERTMETA model;
+				Model.ALERTMETA model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

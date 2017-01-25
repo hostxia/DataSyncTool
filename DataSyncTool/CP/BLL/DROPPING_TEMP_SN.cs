@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// DROPPING_TEMP_SN
 	/// </summary>
 	public partial class DROPPING_TEMP_SN
 	{
-		private readonly DataSyncTool.DAL.DROPPING_TEMP_SN dal=new DataSyncTool.DAL.DROPPING_TEMP_SN();
+		private readonly DAL.DROPPING_TEMP_SN dal=new DAL.DROPPING_TEMP_SN();
 		public DROPPING_TEMP_SN()
 		{}
 		#region  BasicMethod
@@ -18,7 +18,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.DROPPING_TEMP_SN model)
+		public bool Add(Model.DROPPING_TEMP_SN model)
 		{
 			return dal.Add(model);
 		}
@@ -26,7 +26,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.DROPPING_TEMP_SN model)
+		public bool Update(Model.DROPPING_TEMP_SN model)
 		{
 			return dal.Update(model);
 		}
@@ -43,7 +43,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_TEMP_SN GetModel()
+		public Model.DROPPING_TEMP_SN GetModel()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			return dal.GetModel();
@@ -52,11 +52,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_TEMP_SN GetModelByCache()
+		public Model.DROPPING_TEMP_SN GetModelByCache()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			string CacheKey = "DROPPING_TEMP_SNModel-" ;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -64,13 +64,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel();
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.DROPPING_TEMP_SN)objModel;
+			return (Model.DROPPING_TEMP_SN)objModel;
 		}
 
 		/// <summary>
@@ -83,7 +83,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.DROPPING_TEMP_SN> GetModelList(string strWhere)
+		public List<Model.DROPPING_TEMP_SN> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -91,13 +91,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.DROPPING_TEMP_SN> DataTableToList(DataTable dt)
+		public List<Model.DROPPING_TEMP_SN> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.DROPPING_TEMP_SN> modelList = new List<DataSyncTool.Model.DROPPING_TEMP_SN>();
+			List<Model.DROPPING_TEMP_SN> modelList = new List<Model.DROPPING_TEMP_SN>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.DROPPING_TEMP_SN model;
+				Model.DROPPING_TEMP_SN model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

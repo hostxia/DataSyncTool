@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:TEST8
@@ -19,7 +21,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.TEST8 model)
+		public bool Add(Model.TEST8 model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into TEST8(");
@@ -45,7 +47,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.TEST8 model)
+		public bool Update(Model.TEST8 model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update TEST8 set ");
@@ -96,7 +98,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.TEST8 GetModel()
+		public Model.TEST8 GetModel()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
@@ -105,7 +107,7 @@ namespace DataSyncTool.DAL
 			OracleParameter[] parameters = {
 			};
 
-			DataSyncTool.Model.TEST8 model=new DataSyncTool.Model.TEST8();
+			Model.TEST8 model=new Model.TEST8();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -121,9 +123,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.TEST8 DataRowToModel(DataRow row)
+		public Model.TEST8 DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.TEST8 model=new DataSyncTool.Model.TEST8();
+			Model.TEST8 model=new Model.TEST8();
 			if (row != null)
 			{
 				if(row["APPLICATION_NO"]!=null)

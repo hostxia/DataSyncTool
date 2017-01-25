@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:DROPPING_PATENTBILLITEMTYPE
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE model)
+		public bool Add(Model.DROPPING_PATENTBILLITEMTYPE model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into DROPPING_PATENTBILLITEMTYPE(");
@@ -85,7 +87,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE model)
+		public bool Update(Model.DROPPING_PATENTBILLITEMTYPE model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update DROPPING_PATENTBILLITEMTYPE set ");
@@ -194,7 +196,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE GetModel(string BILLCODE)
+		public Model.DROPPING_PATENTBILLITEMTYPE GetModel(string BILLCODE)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -204,7 +206,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":BILLCODE", OracleType.VarChar,30)			};
 			parameters[0].Value = BILLCODE;
 
-			DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE model=new DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE();
+			Model.DROPPING_PATENTBILLITEMTYPE model=new Model.DROPPING_PATENTBILLITEMTYPE();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -220,9 +222,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE DataRowToModel(DataRow row)
+		public Model.DROPPING_PATENTBILLITEMTYPE DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE model=new DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE();
+			Model.DROPPING_PATENTBILLITEMTYPE model=new Model.DROPPING_PATENTBILLITEMTYPE();
 			if (row != null)
 			{
 				if(row["BILLCODE"]!=null)

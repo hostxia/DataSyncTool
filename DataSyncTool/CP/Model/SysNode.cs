@@ -1,5 +1,6 @@
 ﻿using System;
-namespace Maticsoft.Model
+
+namespace DataSyncTool.CP.Model
 {
 	
 	/// <summary>

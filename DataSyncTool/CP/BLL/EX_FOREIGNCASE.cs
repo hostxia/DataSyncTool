@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// EX_FOREIGNCASE
 	/// </summary>
 	public partial class EX_FOREIGNCASE
 	{
-		private readonly DataSyncTool.DAL.EX_FOREIGNCASE dal=new DataSyncTool.DAL.EX_FOREIGNCASE();
+		private readonly DAL.EX_FOREIGNCASE dal=new DAL.EX_FOREIGNCASE();
 		public EX_FOREIGNCASE()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.EX_FOREIGNCASE model)
+		public bool Add(Model.EX_FOREIGNCASE model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.EX_FOREIGNCASE model)
+		public bool Update(Model.EX_FOREIGNCASE model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string OURNOlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(OURNOlist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(OURNOlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.EX_FOREIGNCASE GetModel(string OURNO)
+		public Model.EX_FOREIGNCASE GetModel(string OURNO)
 		{
 			
 			return dal.GetModel(OURNO);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.EX_FOREIGNCASE GetModelByCache(string OURNO)
+		public Model.EX_FOREIGNCASE GetModelByCache(string OURNO)
 		{
 			
 			string CacheKey = "EX_FOREIGNCASEModel-" + OURNO;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(OURNO);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.EX_FOREIGNCASE)objModel;
+			return (Model.EX_FOREIGNCASE)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.EX_FOREIGNCASE> GetModelList(string strWhere)
+		public List<Model.EX_FOREIGNCASE> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.EX_FOREIGNCASE> DataTableToList(DataTable dt)
+		public List<Model.EX_FOREIGNCASE> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.EX_FOREIGNCASE> modelList = new List<DataSyncTool.Model.EX_FOREIGNCASE>();
+			List<Model.EX_FOREIGNCASE> modelList = new List<Model.EX_FOREIGNCASE>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.EX_FOREIGNCASE model;
+				Model.EX_FOREIGNCASE model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:EX_FOREIGNCASE
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.EX_FOREIGNCASE model)
+		public bool Add(Model.EX_FOREIGNCASE model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into EX_FOREIGNCASE(");
@@ -205,7 +207,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.EX_FOREIGNCASE model)
+		public bool Update(Model.EX_FOREIGNCASE model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update EX_FOREIGNCASE set ");
@@ -494,7 +496,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.EX_FOREIGNCASE GetModel(string OURNO)
+		public Model.EX_FOREIGNCASE GetModel(string OURNO)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -504,7 +506,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":OURNO", OracleType.VarChar,24)			};
 			parameters[0].Value = OURNO;
 
-			DataSyncTool.Model.EX_FOREIGNCASE model=new DataSyncTool.Model.EX_FOREIGNCASE();
+			Model.EX_FOREIGNCASE model=new Model.EX_FOREIGNCASE();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -520,9 +522,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.EX_FOREIGNCASE DataRowToModel(DataRow row)
+		public Model.EX_FOREIGNCASE DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.EX_FOREIGNCASE model=new DataSyncTool.Model.EX_FOREIGNCASE();
+			Model.EX_FOREIGNCASE model=new Model.EX_FOREIGNCASE();
 			if (row != null)
 			{
 				if(row["OURNO"]!=null)

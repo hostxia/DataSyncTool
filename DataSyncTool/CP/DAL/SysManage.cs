@@ -1,11 +1,10 @@
-﻿using System;
-using System.Text;
-using System.Data;
-using System.Data.OracleClient;
+﻿using System.Data;
 using System.Data.SqlClient;
-using Maticsoft.Model;
-using Maticsoft.DBUtility;
-namespace Maticsoft.DAL
+using System.Text;
+using DataSyncTool.CP.Model;
+using DataSyncTool.DBUtility;
+
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 用参数方式实现数据层示例。

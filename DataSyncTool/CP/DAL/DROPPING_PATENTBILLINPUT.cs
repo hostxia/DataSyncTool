@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:DROPPING_PATENTBILLINPUT
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.DROPPING_PATENTBILLINPUT model)
+		public bool Add(Model.DROPPING_PATENTBILLINPUT model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into DROPPING_PATENTBILLINPUT(");
@@ -71,7 +73,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.DROPPING_PATENTBILLINPUT model)
+		public bool Update(Model.DROPPING_PATENTBILLINPUT model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update DROPPING_PATENTBILLINPUT set ");
@@ -159,7 +161,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_PATENTBILLINPUT GetModel(string PID)
+		public Model.DROPPING_PATENTBILLINPUT GetModel(string PID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -169,7 +171,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":PID", OracleType.VarChar,30)			};
 			parameters[0].Value = PID;
 
-			DataSyncTool.Model.DROPPING_PATENTBILLINPUT model=new DataSyncTool.Model.DROPPING_PATENTBILLINPUT();
+			Model.DROPPING_PATENTBILLINPUT model=new Model.DROPPING_PATENTBILLINPUT();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -185,9 +187,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_PATENTBILLINPUT DataRowToModel(DataRow row)
+		public Model.DROPPING_PATENTBILLINPUT DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.DROPPING_PATENTBILLINPUT model=new DataSyncTool.Model.DROPPING_PATENTBILLINPUT();
+			Model.DROPPING_PATENTBILLINPUT model=new Model.DROPPING_PATENTBILLINPUT();
 			if (row != null)
 			{
 				if(row["PID"]!=null)

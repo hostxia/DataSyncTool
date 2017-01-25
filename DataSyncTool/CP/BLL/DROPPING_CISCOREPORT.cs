@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// DROPPING_CISCOREPORT
 	/// </summary>
 	public partial class DROPPING_CISCOREPORT
 	{
-		private readonly DataSyncTool.DAL.DROPPING_CISCOREPORT dal=new DataSyncTool.DAL.DROPPING_CISCOREPORT();
+		private readonly DAL.DROPPING_CISCOREPORT dal=new DAL.DROPPING_CISCOREPORT();
 		public DROPPING_CISCOREPORT()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.DROPPING_CISCOREPORT model)
+		public bool Add(Model.DROPPING_CISCOREPORT model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.DROPPING_CISCOREPORT model)
+		public bool Update(Model.DROPPING_CISCOREPORT model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string OURNOlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(OURNOlist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(OURNOlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_CISCOREPORT GetModel(string OURNO)
+		public Model.DROPPING_CISCOREPORT GetModel(string OURNO)
 		{
 			
 			return dal.GetModel(OURNO);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_CISCOREPORT GetModelByCache(string OURNO)
+		public Model.DROPPING_CISCOREPORT GetModelByCache(string OURNO)
 		{
 			
 			string CacheKey = "DROPPING_CISCOREPORTModel-" + OURNO;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(OURNO);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.DROPPING_CISCOREPORT)objModel;
+			return (Model.DROPPING_CISCOREPORT)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.DROPPING_CISCOREPORT> GetModelList(string strWhere)
+		public List<Model.DROPPING_CISCOREPORT> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.DROPPING_CISCOREPORT> DataTableToList(DataTable dt)
+		public List<Model.DROPPING_CISCOREPORT> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.DROPPING_CISCOREPORT> modelList = new List<DataSyncTool.Model.DROPPING_CISCOREPORT>();
+			List<Model.DROPPING_CISCOREPORT> modelList = new List<Model.DROPPING_CISCOREPORT>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.DROPPING_CISCOREPORT model;
+				Model.DROPPING_CISCOREPORT model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

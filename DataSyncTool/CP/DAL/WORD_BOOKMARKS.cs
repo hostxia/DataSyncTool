@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:WORD_BOOKMARKS
@@ -35,7 +37,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.WORD_BOOKMARKS model)
+		public bool Add(Model.WORD_BOOKMARKS model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into WORD_BOOKMARKS(");
@@ -63,7 +65,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.WORD_BOOKMARKS model)
+		public bool Update(Model.WORD_BOOKMARKS model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update WORD_BOOKMARKS set ");
@@ -120,7 +122,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.WORD_BOOKMARKS GetModel(string FILE_NAME,string BOOKMARK)
+		public Model.WORD_BOOKMARKS GetModel(string FILE_NAME,string BOOKMARK)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -132,7 +134,7 @@ namespace DataSyncTool.DAL
 			parameters[0].Value = FILE_NAME;
 			parameters[1].Value = BOOKMARK;
 
-			DataSyncTool.Model.WORD_BOOKMARKS model=new DataSyncTool.Model.WORD_BOOKMARKS();
+			Model.WORD_BOOKMARKS model=new Model.WORD_BOOKMARKS();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -148,9 +150,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.WORD_BOOKMARKS DataRowToModel(DataRow row)
+		public Model.WORD_BOOKMARKS DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.WORD_BOOKMARKS model=new DataSyncTool.Model.WORD_BOOKMARKS();
+			Model.WORD_BOOKMARKS model=new Model.WORD_BOOKMARKS();
 			if (row != null)
 			{
 				if(row["FILE_NAME"]!=null)

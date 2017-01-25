@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// DROPPING_PATENTBILLITEMTYPE
 	/// </summary>
 	public partial class DROPPING_PATENTBILLITEMTYPE
 	{
-		private readonly DataSyncTool.DAL.DROPPING_PATENTBILLITEMTYPE dal=new DataSyncTool.DAL.DROPPING_PATENTBILLITEMTYPE();
+		private readonly DAL.DROPPING_PATENTBILLITEMTYPE dal=new DAL.DROPPING_PATENTBILLITEMTYPE();
 		public DROPPING_PATENTBILLITEMTYPE()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE model)
+		public bool Add(Model.DROPPING_PATENTBILLITEMTYPE model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE model)
+		public bool Update(Model.DROPPING_PATENTBILLITEMTYPE model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string BILLCODElist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(BILLCODElist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(BILLCODElist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE GetModel(string BILLCODE)
+		public Model.DROPPING_PATENTBILLITEMTYPE GetModel(string BILLCODE)
 		{
 			
 			return dal.GetModel(BILLCODE);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE GetModelByCache(string BILLCODE)
+		public Model.DROPPING_PATENTBILLITEMTYPE GetModelByCache(string BILLCODE)
 		{
 			
 			string CacheKey = "DROPPING_PATENTBILLITEMTYPEModel-" + BILLCODE;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(BILLCODE);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE)objModel;
+			return (Model.DROPPING_PATENTBILLITEMTYPE)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE> GetModelList(string strWhere)
+		public List<Model.DROPPING_PATENTBILLITEMTYPE> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE> DataTableToList(DataTable dt)
+		public List<Model.DROPPING_PATENTBILLITEMTYPE> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE> modelList = new List<DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE>();
+			List<Model.DROPPING_PATENTBILLITEMTYPE> modelList = new List<Model.DROPPING_PATENTBILLITEMTYPE>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.DROPPING_PATENTBILLITEMTYPE model;
+				Model.DROPPING_PATENTBILLITEMTYPE model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

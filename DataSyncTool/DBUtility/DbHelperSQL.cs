@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Specialized;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
-using System.Data.Common;
-using System.Collections.Generic;
-namespace Maticsoft.DBUtility
+
+namespace DataSyncTool.DBUtility
 {
     /// <summary>
     /// 数据访问抽象基础类

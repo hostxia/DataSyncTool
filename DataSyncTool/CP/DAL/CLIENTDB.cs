@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:CLIENTDB
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.CLIENTDB model)
+		public bool Add(Model.CLIENTDB model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into CLIENTDB(");
@@ -75,7 +77,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.CLIENTDB model)
+		public bool Update(Model.CLIENTDB model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update CLIENTDB set ");
@@ -169,7 +171,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.CLIENTDB GetModel(string CLIENTID)
+		public Model.CLIENTDB GetModel(string CLIENTID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -179,7 +181,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":CLIENTID", OracleType.Char,4)			};
 			parameters[0].Value = CLIENTID;
 
-			DataSyncTool.Model.CLIENTDB model=new DataSyncTool.Model.CLIENTDB();
+			Model.CLIENTDB model=new Model.CLIENTDB();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -195,9 +197,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.CLIENTDB DataRowToModel(DataRow row)
+		public Model.CLIENTDB DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.CLIENTDB model=new DataSyncTool.Model.CLIENTDB();
+			Model.CLIENTDB model=new Model.CLIENTDB();
 			if (row != null)
 			{
 				if(row["CLIENTID"]!=null)

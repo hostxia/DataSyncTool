@@ -5,12 +5,12 @@
 //===============================================================================
 
 using System;
+using System.Collections;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Collections;
 
-namespace Maticsoft.DBUtility
+namespace DataSyncTool.DBUtility
 {
 
     /// <summary>

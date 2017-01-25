@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:FCASE
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.FCASE model)
+		public bool Add(Model.FCASE model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into FCASE(");
@@ -75,7 +77,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.FCASE model)
+		public bool Update(Model.FCASE model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update FCASE set ");
@@ -169,7 +171,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FCASE GetModel(string OURNO)
+		public Model.FCASE GetModel(string OURNO)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -179,7 +181,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":OURNO", OracleType.VarChar,30)			};
 			parameters[0].Value = OURNO;
 
-			DataSyncTool.Model.FCASE model=new DataSyncTool.Model.FCASE();
+			Model.FCASE model=new Model.FCASE();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -195,9 +197,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FCASE DataRowToModel(DataRow row)
+		public Model.FCASE DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.FCASE model=new DataSyncTool.Model.FCASE();
+			Model.FCASE model=new Model.FCASE();
 			if (row != null)
 			{
 				if(row["OURNO"]!=null)

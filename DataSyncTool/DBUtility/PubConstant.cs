@@ -1,6 +1,6 @@
-﻿using System;
-using System.Configuration;
-namespace Maticsoft.DBUtility
+﻿using System.Configuration;
+
+namespace DataSyncTool.DBUtility
 {
     
     public class PubConstant

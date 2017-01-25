@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DataSyncTool.BLL;
+using DataSyncTool.CP.BLL;
 
 namespace DataSyncTool
 {

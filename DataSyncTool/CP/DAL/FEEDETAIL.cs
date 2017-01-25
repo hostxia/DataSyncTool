@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:FEEDETAIL
@@ -45,7 +47,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.FEEDETAIL model)
+		public bool Add(Model.FEEDETAIL model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into FEEDETAIL(");
@@ -83,7 +85,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.FEEDETAIL model)
+		public bool Update(Model.FEEDETAIL model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update FEEDETAIL set ");
@@ -165,7 +167,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FEEDETAIL GetModel(string CASENO,string CLIENTNO,string VOUCHERNO,string FEETYPE,decimal AMOUNT,string PAYMETHOD,DateTime PAYDATE)
+		public Model.FEEDETAIL GetModel(string CASENO,string CLIENTNO,string VOUCHERNO,string FEETYPE,decimal AMOUNT,string PAYMETHOD,DateTime PAYDATE)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -187,7 +189,7 @@ namespace DataSyncTool.DAL
 			parameters[5].Value = PAYMETHOD;
 			parameters[6].Value = PAYDATE;
 
-			DataSyncTool.Model.FEEDETAIL model=new DataSyncTool.Model.FEEDETAIL();
+			Model.FEEDETAIL model=new Model.FEEDETAIL();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -203,9 +205,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FEEDETAIL DataRowToModel(DataRow row)
+		public Model.FEEDETAIL DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.FEEDETAIL model=new DataSyncTool.Model.FEEDETAIL();
+			Model.FEEDETAIL model=new Model.FEEDETAIL();
 			if (row != null)
 			{
 				if(row["CASENO"]!=null)

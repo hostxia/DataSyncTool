@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// PATENTAGENT
 	/// </summary>
 	public partial class PATENTAGENT
 	{
-		private readonly DataSyncTool.DAL.PATENTAGENT dal=new DataSyncTool.DAL.PATENTAGENT();
+		private readonly DAL.PATENTAGENT dal=new DAL.PATENTAGENT();
 		public PATENTAGENT()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.PATENTAGENT model)
+		public bool Add(Model.PATENTAGENT model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.PATENTAGENT model)
+		public bool Update(Model.PATENTAGENT model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string IDlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(IDlist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(IDlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.PATENTAGENT GetModel(string ID)
+		public Model.PATENTAGENT GetModel(string ID)
 		{
 			
 			return dal.GetModel(ID);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.PATENTAGENT GetModelByCache(string ID)
+		public Model.PATENTAGENT GetModelByCache(string ID)
 		{
 			
 			string CacheKey = "PATENTAGENTModel-" + ID;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(ID);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.PATENTAGENT)objModel;
+			return (Model.PATENTAGENT)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.PATENTAGENT> GetModelList(string strWhere)
+		public List<Model.PATENTAGENT> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.PATENTAGENT> DataTableToList(DataTable dt)
+		public List<Model.PATENTAGENT> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.PATENTAGENT> modelList = new List<DataSyncTool.Model.PATENTAGENT>();
+			List<Model.PATENTAGENT> modelList = new List<Model.PATENTAGENT>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.PATENTAGENT model;
+				Model.PATENTAGENT model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

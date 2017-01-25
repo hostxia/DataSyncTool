@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// CLIENTDB
 	/// </summary>
 	public partial class CLIENTDB
 	{
-		private readonly DataSyncTool.DAL.CLIENTDB dal=new DataSyncTool.DAL.CLIENTDB();
+		private readonly DAL.CLIENTDB dal=new DAL.CLIENTDB();
 		public CLIENTDB()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.CLIENTDB model)
+		public bool Add(Model.CLIENTDB model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.CLIENTDB model)
+		public bool Update(Model.CLIENTDB model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string CLIENTIDlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(CLIENTIDlist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(CLIENTIDlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.CLIENTDB GetModel(string CLIENTID)
+		public Model.CLIENTDB GetModel(string CLIENTID)
 		{
 			
 			return dal.GetModel(CLIENTID);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.CLIENTDB GetModelByCache(string CLIENTID)
+		public Model.CLIENTDB GetModelByCache(string CLIENTID)
 		{
 			
 			string CacheKey = "CLIENTDBModel-" + CLIENTID;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(CLIENTID);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.CLIENTDB)objModel;
+			return (Model.CLIENTDB)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.CLIENTDB> GetModelList(string strWhere)
+		public List<Model.CLIENTDB> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.CLIENTDB> DataTableToList(DataTable dt)
+		public List<Model.CLIENTDB> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.CLIENTDB> modelList = new List<DataSyncTool.Model.CLIENTDB>();
+			List<Model.CLIENTDB> modelList = new List<Model.CLIENTDB>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.CLIENTDB model;
+				Model.CLIENTDB model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:SIMPLECOMMANDS
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.SIMPLECOMMANDS model)
+		public bool Add(Model.SIMPLECOMMANDS model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into SIMPLECOMMANDS(");
@@ -61,7 +63,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.SIMPLECOMMANDS model)
+		public bool Update(Model.SIMPLECOMMANDS model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update SIMPLECOMMANDS set ");
@@ -134,7 +136,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.SIMPLECOMMANDS GetModel(string ID)
+		public Model.SIMPLECOMMANDS GetModel(string ID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -144,7 +146,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":ID", OracleType.VarChar,50)			};
 			parameters[0].Value = ID;
 
-			DataSyncTool.Model.SIMPLECOMMANDS model=new DataSyncTool.Model.SIMPLECOMMANDS();
+			Model.SIMPLECOMMANDS model=new Model.SIMPLECOMMANDS();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -160,9 +162,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.SIMPLECOMMANDS DataRowToModel(DataRow row)
+		public Model.SIMPLECOMMANDS DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.SIMPLECOMMANDS model=new DataSyncTool.Model.SIMPLECOMMANDS();
+			Model.SIMPLECOMMANDS model=new Model.SIMPLECOMMANDS();
 			if (row != null)
 			{
 				if(row["ID"]!=null)

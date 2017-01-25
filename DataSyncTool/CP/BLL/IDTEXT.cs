@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// IDTEXT
 	/// </summary>
 	public partial class IDTEXT
 	{
-		private readonly DataSyncTool.DAL.IDTEXT dal=new DataSyncTool.DAL.IDTEXT();
+		private readonly DAL.IDTEXT dal=new DAL.IDTEXT();
 		public IDTEXT()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.IDTEXT model)
+		public bool Add(Model.IDTEXT model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.IDTEXT model)
+		public bool Update(Model.IDTEXT model)
 		{
 			return dal.Update(model);
 		}
@@ -50,7 +50,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.IDTEXT GetModel(string IDGROUP,string ID)
+		public Model.IDTEXT GetModel(string IDGROUP,string ID)
 		{
 			
 			return dal.GetModel(IDGROUP,ID);
@@ -59,11 +59,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.IDTEXT GetModelByCache(string IDGROUP,string ID)
+		public Model.IDTEXT GetModelByCache(string IDGROUP,string ID)
 		{
 			
 			string CacheKey = "IDTEXTModel-" + IDGROUP+ID;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -71,13 +71,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(IDGROUP,ID);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.IDTEXT)objModel;
+			return (Model.IDTEXT)objModel;
 		}
 
 		/// <summary>
@@ -90,7 +90,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.IDTEXT> GetModelList(string strWhere)
+		public List<Model.IDTEXT> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -98,13 +98,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.IDTEXT> DataTableToList(DataTable dt)
+		public List<Model.IDTEXT> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.IDTEXT> modelList = new List<DataSyncTool.Model.IDTEXT>();
+			List<Model.IDTEXT> modelList = new List<Model.IDTEXT>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.IDTEXT model;
+				Model.IDTEXT model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

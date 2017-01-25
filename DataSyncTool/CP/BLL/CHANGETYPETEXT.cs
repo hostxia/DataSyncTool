@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// CHANGETYPETEXT
 	/// </summary>
 	public partial class CHANGETYPETEXT
 	{
-		private readonly DataSyncTool.DAL.CHANGETYPETEXT dal=new DataSyncTool.DAL.CHANGETYPETEXT();
+		private readonly DAL.CHANGETYPETEXT dal=new DAL.CHANGETYPETEXT();
 		public CHANGETYPETEXT()
 		{}
 		#region  BasicMethod
@@ -18,7 +18,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.CHANGETYPETEXT model)
+		public bool Add(Model.CHANGETYPETEXT model)
 		{
 			return dal.Add(model);
 		}
@@ -26,7 +26,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.CHANGETYPETEXT model)
+		public bool Update(Model.CHANGETYPETEXT model)
 		{
 			return dal.Update(model);
 		}
@@ -43,7 +43,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.CHANGETYPETEXT GetModel()
+		public Model.CHANGETYPETEXT GetModel()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			return dal.GetModel();
@@ -52,11 +52,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.CHANGETYPETEXT GetModelByCache()
+		public Model.CHANGETYPETEXT GetModelByCache()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			string CacheKey = "CHANGETYPETEXTModel-" ;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -64,13 +64,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel();
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.CHANGETYPETEXT)objModel;
+			return (Model.CHANGETYPETEXT)objModel;
 		}
 
 		/// <summary>
@@ -83,7 +83,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.CHANGETYPETEXT> GetModelList(string strWhere)
+		public List<Model.CHANGETYPETEXT> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -91,13 +91,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.CHANGETYPETEXT> DataTableToList(DataTable dt)
+		public List<Model.CHANGETYPETEXT> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.CHANGETYPETEXT> modelList = new List<DataSyncTool.Model.CHANGETYPETEXT>();
+			List<Model.CHANGETYPETEXT> modelList = new List<Model.CHANGETYPETEXT>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.CHANGETYPETEXT model;
+				Model.CHANGETYPETEXT model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

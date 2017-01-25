@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// COUNTRYCODE
 	/// </summary>
 	public partial class COUNTRYCODE
 	{
-		private readonly DataSyncTool.DAL.COUNTRYCODE dal=new DataSyncTool.DAL.COUNTRYCODE();
+		private readonly DAL.COUNTRYCODE dal=new DAL.COUNTRYCODE();
 		public COUNTRYCODE()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.COUNTRYCODE model)
+		public bool Add(Model.COUNTRYCODE model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.COUNTRYCODE model)
+		public bool Update(Model.COUNTRYCODE model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string IDlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(IDlist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(IDlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.COUNTRYCODE GetModel(string ID)
+		public Model.COUNTRYCODE GetModel(string ID)
 		{
 			
 			return dal.GetModel(ID);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.COUNTRYCODE GetModelByCache(string ID)
+		public Model.COUNTRYCODE GetModelByCache(string ID)
 		{
 			
 			string CacheKey = "COUNTRYCODEModel-" + ID;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(ID);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.COUNTRYCODE)objModel;
+			return (Model.COUNTRYCODE)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.COUNTRYCODE> GetModelList(string strWhere)
+		public List<Model.COUNTRYCODE> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.COUNTRYCODE> DataTableToList(DataTable dt)
+		public List<Model.COUNTRYCODE> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.COUNTRYCODE> modelList = new List<DataSyncTool.Model.COUNTRYCODE>();
+			List<Model.COUNTRYCODE> modelList = new List<Model.COUNTRYCODE>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.COUNTRYCODE model;
+				Model.COUNTRYCODE model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

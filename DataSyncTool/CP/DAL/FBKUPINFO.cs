@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:FBKUPINFO
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.FBKUPINFO model)
+		public bool Add(Model.FBKUPINFO model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into FBKUPINFO(");
@@ -65,7 +67,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.FBKUPINFO model)
+		public bool Update(Model.FBKUPINFO model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update FBKUPINFO set ");
@@ -144,7 +146,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FBKUPINFO GetModel(string FNAME)
+		public Model.FBKUPINFO GetModel(string FNAME)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -154,7 +156,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":FNAME", OracleType.VarChar,200)			};
 			parameters[0].Value = FNAME;
 
-			DataSyncTool.Model.FBKUPINFO model=new DataSyncTool.Model.FBKUPINFO();
+			Model.FBKUPINFO model=new Model.FBKUPINFO();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -170,9 +172,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FBKUPINFO DataRowToModel(DataRow row)
+		public Model.FBKUPINFO DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.FBKUPINFO model=new DataSyncTool.Model.FBKUPINFO();
+			Model.FBKUPINFO model=new Model.FBKUPINFO();
 			if (row != null)
 			{
 				if(row["FNAME"]!=null)

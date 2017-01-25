@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:FILE_TRACKING
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.FILE_TRACKING model)
+		public bool Add(Model.FILE_TRACKING model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into FILE_TRACKING(");
@@ -65,7 +67,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.FILE_TRACKING model)
+		public bool Update(Model.FILE_TRACKING model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update FILE_TRACKING set ");
@@ -144,7 +146,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FILE_TRACKING GetModel(string OURNO)
+		public Model.FILE_TRACKING GetModel(string OURNO)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -154,7 +156,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":OURNO", OracleType.VarChar,30)			};
 			parameters[0].Value = OURNO;
 
-			DataSyncTool.Model.FILE_TRACKING model=new DataSyncTool.Model.FILE_TRACKING();
+			Model.FILE_TRACKING model=new Model.FILE_TRACKING();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -170,9 +172,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FILE_TRACKING DataRowToModel(DataRow row)
+		public Model.FILE_TRACKING DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.FILE_TRACKING model=new DataSyncTool.Model.FILE_TRACKING();
+			Model.FILE_TRACKING model=new Model.FILE_TRACKING();
 			if (row != null)
 			{
 				if(row["OURNO"]!=null)

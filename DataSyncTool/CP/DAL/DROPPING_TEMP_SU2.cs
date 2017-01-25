@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:DROPPING_TEMP_SU2
@@ -19,7 +21,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.DROPPING_TEMP_SU2 model)
+		public bool Add(Model.DROPPING_TEMP_SU2 model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into DROPPING_TEMP_SU2(");
@@ -91,7 +93,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.DROPPING_TEMP_SU2 model)
+		public bool Update(Model.DROPPING_TEMP_SU2 model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update DROPPING_TEMP_SU2 set ");
@@ -211,7 +213,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_TEMP_SU2 GetModel()
+		public Model.DROPPING_TEMP_SU2 GetModel()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
@@ -220,7 +222,7 @@ namespace DataSyncTool.DAL
 			OracleParameter[] parameters = {
 			};
 
-			DataSyncTool.Model.DROPPING_TEMP_SU2 model=new DataSyncTool.Model.DROPPING_TEMP_SU2();
+			Model.DROPPING_TEMP_SU2 model=new Model.DROPPING_TEMP_SU2();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -236,9 +238,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_TEMP_SU2 DataRowToModel(DataRow row)
+		public Model.DROPPING_TEMP_SU2 DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.DROPPING_TEMP_SU2 model=new DataSyncTool.Model.DROPPING_TEMP_SU2();
+			Model.DROPPING_TEMP_SU2 model=new Model.DROPPING_TEMP_SU2();
 			if (row != null)
 			{
 				if(row["SEQ"]!=null && row["SEQ"].ToString()!="")

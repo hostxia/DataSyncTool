@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:FCASE_WORKLOAD
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.FCASE_WORKLOAD model)
+		public bool Add(Model.FCASE_WORKLOAD model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into FCASE_WORKLOAD(");
@@ -73,7 +75,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.FCASE_WORKLOAD model)
+		public bool Update(Model.FCASE_WORKLOAD model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update FCASE_WORKLOAD set ");
@@ -164,7 +166,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FCASE_WORKLOAD GetModel(string PID)
+		public Model.FCASE_WORKLOAD GetModel(string PID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -174,7 +176,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":PID", OracleType.VarChar,20)			};
 			parameters[0].Value = PID;
 
-			DataSyncTool.Model.FCASE_WORKLOAD model=new DataSyncTool.Model.FCASE_WORKLOAD();
+			Model.FCASE_WORKLOAD model=new Model.FCASE_WORKLOAD();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -190,9 +192,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FCASE_WORKLOAD DataRowToModel(DataRow row)
+		public Model.FCASE_WORKLOAD DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.FCASE_WORKLOAD model=new DataSyncTool.Model.FCASE_WORKLOAD();
+			Model.FCASE_WORKLOAD model=new Model.FCASE_WORKLOAD();
 			if (row != null)
 			{
 				if(row["PID"]!=null)

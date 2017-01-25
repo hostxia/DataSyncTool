@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// FBKUPINFO
 	/// </summary>
 	public partial class FBKUPINFO
 	{
-		private readonly DataSyncTool.DAL.FBKUPINFO dal=new DataSyncTool.DAL.FBKUPINFO();
+		private readonly DAL.FBKUPINFO dal=new DAL.FBKUPINFO();
 		public FBKUPINFO()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.FBKUPINFO model)
+		public bool Add(Model.FBKUPINFO model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.FBKUPINFO model)
+		public bool Update(Model.FBKUPINFO model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string FNAMElist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(FNAMElist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(FNAMElist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FBKUPINFO GetModel(string FNAME)
+		public Model.FBKUPINFO GetModel(string FNAME)
 		{
 			
 			return dal.GetModel(FNAME);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.FBKUPINFO GetModelByCache(string FNAME)
+		public Model.FBKUPINFO GetModelByCache(string FNAME)
 		{
 			
 			string CacheKey = "FBKUPINFOModel-" + FNAME;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(FNAME);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.FBKUPINFO)objModel;
+			return (Model.FBKUPINFO)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.FBKUPINFO> GetModelList(string strWhere)
+		public List<Model.FBKUPINFO> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.FBKUPINFO> DataTableToList(DataTable dt)
+		public List<Model.FBKUPINFO> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.FBKUPINFO> modelList = new List<DataSyncTool.Model.FBKUPINFO>();
+			List<Model.FBKUPINFO> modelList = new List<Model.FBKUPINFO>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.FBKUPINFO model;
+				Model.FBKUPINFO model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

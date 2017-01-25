@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:DROPPING_CISCOREPORT
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.DROPPING_CISCOREPORT model)
+		public bool Add(Model.DROPPING_CISCOREPORT model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into DROPPING_CISCOREPORT(");
@@ -97,7 +99,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.DROPPING_CISCOREPORT model)
+		public bool Update(Model.DROPPING_CISCOREPORT model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update DROPPING_CISCOREPORT set ");
@@ -224,7 +226,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_CISCOREPORT GetModel(string OURNO)
+		public Model.DROPPING_CISCOREPORT GetModel(string OURNO)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -234,7 +236,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":OURNO", OracleType.VarChar,30)			};
 			parameters[0].Value = OURNO;
 
-			DataSyncTool.Model.DROPPING_CISCOREPORT model=new DataSyncTool.Model.DROPPING_CISCOREPORT();
+			Model.DROPPING_CISCOREPORT model=new Model.DROPPING_CISCOREPORT();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -250,9 +252,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.DROPPING_CISCOREPORT DataRowToModel(DataRow row)
+		public Model.DROPPING_CISCOREPORT DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.DROPPING_CISCOREPORT model=new DataSyncTool.Model.DROPPING_CISCOREPORT();
+			Model.DROPPING_CISCOREPORT model=new Model.DROPPING_CISCOREPORT();
 			if (row != null)
 			{
 				if(row["YOURNO"]!=null)

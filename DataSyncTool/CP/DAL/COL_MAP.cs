@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:COL_MAP
@@ -19,7 +21,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.COL_MAP model)
+		public bool Add(Model.COL_MAP model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into COL_MAP(");
@@ -45,7 +47,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.COL_MAP model)
+		public bool Update(Model.COL_MAP model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update COL_MAP set ");
@@ -96,7 +98,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.COL_MAP GetModel()
+		public Model.COL_MAP GetModel()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
@@ -105,7 +107,7 @@ namespace DataSyncTool.DAL
 			OracleParameter[] parameters = {
 			};
 
-			DataSyncTool.Model.COL_MAP model=new DataSyncTool.Model.COL_MAP();
+			Model.COL_MAP model=new Model.COL_MAP();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -121,9 +123,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.COL_MAP DataRowToModel(DataRow row)
+		public Model.COL_MAP DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.COL_MAP model=new DataSyncTool.Model.COL_MAP();
+			Model.COL_MAP model=new Model.COL_MAP();
 			if (row != null)
 			{
 				if(row["COL"]!=null)

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:ALERTMETA
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.ALERTMETA model)
+		public bool Add(Model.ALERTMETA model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into ALERTMETA(");
@@ -85,7 +87,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.ALERTMETA model)
+		public bool Update(Model.ALERTMETA model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update ALERTMETA set ");
@@ -194,7 +196,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.ALERTMETA GetModel(string TYPEID)
+		public Model.ALERTMETA GetModel(string TYPEID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -204,7 +206,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":TYPEID", OracleType.VarChar,20)			};
 			parameters[0].Value = TYPEID;
 
-			DataSyncTool.Model.ALERTMETA model=new DataSyncTool.Model.ALERTMETA();
+			Model.ALERTMETA model=new Model.ALERTMETA();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -220,9 +222,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.ALERTMETA DataRowToModel(DataRow row)
+		public Model.ALERTMETA DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.ALERTMETA model=new DataSyncTool.Model.ALERTMETA();
+			Model.ALERTMETA model=new Model.ALERTMETA();
 			if (row != null)
 			{
 				if(row["TYPEID"]!=null)

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:CUX_IDTEXT_BK_20150731
@@ -19,7 +21,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.CUX_IDTEXT_BK_20150731 model)
+		public bool Add(Model.CUX_IDTEXT_BK_20150731 model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into CUX_IDTEXT_BK_20150731(");
@@ -49,7 +51,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.CUX_IDTEXT_BK_20150731 model)
+		public bool Update(Model.CUX_IDTEXT_BK_20150731 model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update CUX_IDTEXT_BK_20150731 set ");
@@ -106,7 +108,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.CUX_IDTEXT_BK_20150731 GetModel()
+		public Model.CUX_IDTEXT_BK_20150731 GetModel()
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
@@ -115,7 +117,7 @@ namespace DataSyncTool.DAL
 			OracleParameter[] parameters = {
 			};
 
-			DataSyncTool.Model.CUX_IDTEXT_BK_20150731 model=new DataSyncTool.Model.CUX_IDTEXT_BK_20150731();
+			Model.CUX_IDTEXT_BK_20150731 model=new Model.CUX_IDTEXT_BK_20150731();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -131,9 +133,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.CUX_IDTEXT_BK_20150731 DataRowToModel(DataRow row)
+		public Model.CUX_IDTEXT_BK_20150731 DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.CUX_IDTEXT_BK_20150731 model=new DataSyncTool.Model.CUX_IDTEXT_BK_20150731();
+			Model.CUX_IDTEXT_BK_20150731 model=new Model.CUX_IDTEXT_BK_20150731();
 			if (row != null)
 			{
 				if(row["IDGROUP"]!=null)

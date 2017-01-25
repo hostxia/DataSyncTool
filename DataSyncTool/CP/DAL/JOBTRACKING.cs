@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:JOBTRACKING
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.JOBTRACKING model)
+		public bool Add(Model.JOBTRACKING model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into JOBTRACKING(");
@@ -81,7 +83,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.JOBTRACKING model)
+		public bool Update(Model.JOBTRACKING model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update JOBTRACKING set ");
@@ -184,7 +186,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.JOBTRACKING GetModel(string PID)
+		public Model.JOBTRACKING GetModel(string PID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -194,7 +196,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":PID", OracleType.VarChar,50)			};
 			parameters[0].Value = PID;
 
-			DataSyncTool.Model.JOBTRACKING model=new DataSyncTool.Model.JOBTRACKING();
+			Model.JOBTRACKING model=new Model.JOBTRACKING();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -210,9 +212,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.JOBTRACKING DataRowToModel(DataRow row)
+		public Model.JOBTRACKING DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.JOBTRACKING model=new DataSyncTool.Model.JOBTRACKING();
+			Model.JOBTRACKING model=new Model.JOBTRACKING();
 			if (row != null)
 			{
 				if(row["OURNO"]!=null)

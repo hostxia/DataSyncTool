@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using Maticsoft.Common;
-using DataSyncTool.Model;
-namespace DataSyncTool.BLL
+using System.Data;
+using DataSyncTool.Common;
+
+namespace DataSyncTool.CP.BLL
 {
 	/// <summary>
 	/// FEETYPE
 	/// </summary>
 	public partial class FEETYPE
 	{
-		private readonly DataSyncTool.DAL.FEETYPE dal=new DataSyncTool.DAL.FEETYPE();
+		private readonly DAL.FEETYPE dal=new DAL.FEETYPE();
 		public FEETYPE()
 		{}
 		#region  BasicMethod
@@ -25,7 +25,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.FEETYPE model)
+		public bool Add(Model.FEETYPE model)
 		{
 			return dal.Add(model);
 		}
@@ -33,7 +33,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.FEETYPE model)
+		public bool Update(Model.FEETYPE model)
 		{
 			return dal.Update(model);
 		}
@@ -51,13 +51,13 @@ namespace DataSyncTool.BLL
 		/// </summary>
 		public bool DeleteList(string TYPENAMElist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(TYPENAMElist,0) );
+			return dal.DeleteList(PageValidate.SafeLongFilter(TYPENAMElist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.FEETYPE GetModel(string TYPENAME)
+		public Model.FEETYPE GetModel(string TYPENAME)
 		{
 			
 			return dal.GetModel(TYPENAME);
@@ -66,11 +66,11 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public DataSyncTool.Model.FEETYPE GetModelByCache(string TYPENAME)
+		public Model.FEETYPE GetModelByCache(string TYPENAME)
 		{
 			
 			string CacheKey = "FEETYPEModel-" + TYPENAME;
-			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			object objModel = DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
@@ -78,13 +78,13 @@ namespace DataSyncTool.BLL
 					objModel = dal.GetModel(TYPENAME);
 					if (objModel != null)
 					{
-						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (DataSyncTool.Model.FEETYPE)objModel;
+			return (Model.FEETYPE)objModel;
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.FEETYPE> GetModelList(string strWhere)
+		public List<Model.FEETYPE> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -105,13 +105,13 @@ namespace DataSyncTool.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<DataSyncTool.Model.FEETYPE> DataTableToList(DataTable dt)
+		public List<Model.FEETYPE> DataTableToList(DataTable dt)
 		{
-			List<DataSyncTool.Model.FEETYPE> modelList = new List<DataSyncTool.Model.FEETYPE>();
+			List<Model.FEETYPE> modelList = new List<Model.FEETYPE>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				DataSyncTool.Model.FEETYPE model;
+				Model.FEETYPE model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

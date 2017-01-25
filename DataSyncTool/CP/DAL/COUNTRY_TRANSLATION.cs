@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Data.OracleClient;
-using Maticsoft.DBUtility;//Please add references
-namespace DataSyncTool.DAL
+using System.Text;
+using DataSyncTool.DBUtility;
+
+//Please add references
+namespace DataSyncTool.CP.DAL
 {
 	/// <summary>
 	/// 数据访问类:COUNTRY_TRANSLATION
@@ -33,7 +35,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(DataSyncTool.Model.COUNTRY_TRANSLATION model)
+		public bool Add(Model.COUNTRY_TRANSLATION model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into COUNTRY_TRANSLATION(");
@@ -59,7 +61,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(DataSyncTool.Model.COUNTRY_TRANSLATION model)
+		public bool Update(Model.COUNTRY_TRANSLATION model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update COUNTRY_TRANSLATION set ");
@@ -129,7 +131,7 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.COUNTRY_TRANSLATION GetModel(string NAME)
+		public Model.COUNTRY_TRANSLATION GetModel(string NAME)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -139,7 +141,7 @@ namespace DataSyncTool.DAL
 					new OracleParameter(":NAME", OracleType.VarChar,30)			};
 			parameters[0].Value = NAME;
 
-			DataSyncTool.Model.COUNTRY_TRANSLATION model=new DataSyncTool.Model.COUNTRY_TRANSLATION();
+			Model.COUNTRY_TRANSLATION model=new Model.COUNTRY_TRANSLATION();
 			DataSet ds=DbHelperOra.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -155,9 +157,9 @@ namespace DataSyncTool.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public DataSyncTool.Model.COUNTRY_TRANSLATION DataRowToModel(DataRow row)
+		public Model.COUNTRY_TRANSLATION DataRowToModel(DataRow row)
 		{
-			DataSyncTool.Model.COUNTRY_TRANSLATION model=new DataSyncTool.Model.COUNTRY_TRANSLATION();
+			Model.COUNTRY_TRANSLATION model=new Model.COUNTRY_TRANSLATION();
 			if (row != null)
 			{
 				if(row["NAME"]!=null)
