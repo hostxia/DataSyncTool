@@ -37,6 +37,7 @@
     <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -363,6 +364,12 @@
     <Compile Include="CP\Model\TMCASE.cs" />
     <Compile Include="CP\Model\WORD_BOOKMARKS.cs" />
     <Compile Include="CP\Model\WORD_TEMPLATES.cs" />
+    <Compile Include="CP\SearchCase\XFrmPatent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CP\SearchCase\XFrmPatent.Designer.cs">
+      <DependentUpon>XFrmPatent.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBUtility\CommandInfo.cs" />
     <Compile Include="DBUtility\DbHelperOra.cs" />
     <Compile Include="DBUtility\DbHelperSQL.cs" />
@@ -377,6 +384,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CP\SearchCase\XFrmPatent.resx">
+      <DependentUpon>XFrmPatent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

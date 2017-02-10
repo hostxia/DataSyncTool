@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataSyncTool.CP.SearchCase;
 
 namespace DataSyncTool
 {
@@ -16,7 +17,7 @@ namespace DataSyncTool
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new XFrmMain());
+            Application.Run(new XFrmPatent());
         }
     }
 }
