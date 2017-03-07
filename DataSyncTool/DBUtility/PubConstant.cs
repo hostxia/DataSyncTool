@@ -2,23 +2,40 @@
 
 namespace DataSyncTool.DBUtility
 {
-    
+
     public class PubConstant
-    {        
+    {
         /// <summary>
         /// 获取连接字符串
         /// </summary>
-        public static string ConnectionString
-        {           
-            get 
+        public static string ConnectionStringPC
+        {
+            get
             {
-                string _connectionString = ConfigurationManager.AppSettings["ConnectionString"];       
+                string _connectionString = ConfigurationManager.AppSettings["ConnectionStringPC"];
                 //string ConStringEncrypt = ConfigurationManager.AppSettings["ConStringEncrypt"];
                 //if (ConStringEncrypt == "true")
                 //{
                 //    _connectionString = DESEncrypt.Decrypt(_connectionString);
                 //}
-                return _connectionString; 
+                return _connectionString;
+            }
+        }
+
+        /// <summary>
+        /// 获取连接字符串
+        /// </summary>
+        public static string ConnectionStringIPSP
+        {
+            get
+            {
+                string _connectionString = ConfigurationManager.AppSettings["ConnectionStringIPSP"];
+                //string ConStringEncrypt = ConfigurationManager.AppSettings["ConStringEncrypt"];
+                //if (ConStringEncrypt == "true")
+                //{
+                //    _connectionString = DESEncrypt.Decrypt(_connectionString);
+                //}
+                return _connectionString;
             }
         }
 

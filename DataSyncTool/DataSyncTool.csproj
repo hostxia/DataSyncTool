@@ -33,10 +33,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Email, Version=17.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.17.2.0\lib\net40\Aspose.Email.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Data.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -61,321 +67,389 @@
     <Compile Include="Common\ConfigHelper.cs" />
     <Compile Include="Common\DataCache.cs" />
     <Compile Include="Common\PageValidate.cs" />
-    <Compile Include="CP\BLL\ALERTMETA.cs" />
-    <Compile Include="CP\BLL\ALERTTYPEGROUP.cs" />
-    <Compile Include="CP\BLL\ALERTVIEW.cs" />
-    <Compile Include="CP\BLL\ANNUALFEE.cs" />
-    <Compile Include="CP\BLL\BILL.cs" />
-    <Compile Include="CP\BLL\BILLCODE.cs" />
-    <Compile Include="CP\BLL\BILLCODE_V2.cs" />
-    <Compile Include="CP\BLL\BILLFEEMNT.cs" />
-    <Compile Include="CP\BLL\BILLGROUP.cs" />
-    <Compile Include="CP\BLL\BILLTYPE.cs" />
-    <Compile Include="CP\BLL\BILLTYPEITEMS.cs" />
-    <Compile Include="CP\BLL\CASEOTHERINFO.cs" />
-    <Compile Include="CP\BLL\CASEOTHERTEXT.cs" />
-    <Compile Include="CP\BLL\CHANGELOG.cs" />
-    <Compile Include="CP\BLL\CHANGETYPETEXT.cs" />
-    <Compile Include="CP\BLL\CLASSIFIERTB.cs" />
-    <Compile Include="CP\BLL\CLIENTDB.cs" />
-    <Compile Include="CP\BLL\COL_MAP.cs" />
-    <Compile Include="CP\BLL\COUNTRYCODE.cs" />
-    <Compile Include="CP\BLL\COUNTRY_TRANSLATION.cs" />
-    <Compile Include="CP\BLL\CUX_FCASE_BK_20130827.cs" />
-    <Compile Include="CP\BLL\CUX_FCASE_ENT_REL_BK_20130913.cs" />
-    <Compile Include="CP\BLL\CUX_IDTEXT_BK_20150731.cs" />
-    <Compile Include="CP\BLL\CUX_PATENTCASE_BK_20141118.cs" />
-    <Compile Include="CP\BLL\CUX_PATENTCASE_BK_20141120.cs" />
-    <Compile Include="CP\BLL\CUX_PATENTCASE_BK_20151102.cs" />
-    <Compile Include="CP\BLL\DROPPING_CASE.cs" />
-    <Compile Include="CP\BLL\DROPPING_CISCOREPORT.cs" />
-    <Compile Include="CP\BLL\DROPPING_CONTACTINFO.cs" />
-    <Compile Include="CP\BLL\DROPPING_FISH_RICHARDSON.cs" />
-    <Compile Include="CP\BLL\DROPPING_HKPATENT.cs" />
-    <Compile Include="CP\BLL\DROPPING_LEGALSTATUS.cs" />
-    <Compile Include="CP\BLL\DROPPING_PATENTBILLINPUT.cs" />
-    <Compile Include="CP\BLL\DROPPING_PATENTBILLITEMTYPE.cs" />
-    <Compile Include="CP\BLL\DROPPING_TEMP_A.cs" />
-    <Compile Include="CP\BLL\DROPPING_TEMP_SN.cs" />
-    <Compile Include="CP\BLL\DROPPING_TEMP_SONYUS.cs" />
-    <Compile Include="CP\BLL\DROPPING_TEMP_SU2.cs" />
-    <Compile Include="CP\BLL\DROPPING_TEMP_SUGGMATCH.cs" />
-    <Compile Include="CP\BLL\DROPPING_TEMP_SUTFER.cs" />
-    <Compile Include="CP\BLL\EX_FOREIGNCASE.cs" />
-    <Compile Include="CP\BLL\EX_HKCASE.cs" />
-    <Compile Include="CP\BLL\FBKUPINFO.cs" />
-    <Compile Include="CP\BLL\FCASE.cs" />
-    <Compile Include="CP\BLL\FCASE_ENT_REL.cs" />
-    <Compile Include="CP\BLL\FCASE_INVENTORS.cs" />
-    <Compile Include="CP\BLL\FCASE_LOG.cs" />
-    <Compile Include="CP\BLL\FCASE_PRIORITY.cs" />
-    <Compile Include="CP\BLL\FCASE_REL.cs" />
-    <Compile Include="CP\BLL\FCASE_WORKLOAD.cs" />
-    <Compile Include="CP\BLL\FEEDETAIL.cs" />
-    <Compile Include="CP\BLL\FEETYPE.cs" />
-    <Compile Include="CP\BLL\FILE_TRACKING.cs" />
-    <Compile Include="CP\BLL\FLFEEDETAIL.cs" />
-    <Compile Include="CP\BLL\FLFEETYPE.cs" />
-    <Compile Include="CP\BLL\FORMCONTROL.cs" />
-    <Compile Include="CP\BLL\FORWARDOAPOLICY.cs" />
-    <Compile Include="CP\BLL\GENERALALERT.cs" />
-    <Compile Include="CP\BLL\GENERAL_INSTRUCTION.cs" />
-    <Compile Include="CP\BLL\HEADERMAPPINGTB.cs" />
-    <Compile Include="CP\BLL\IDTEXT.cs" />
-    <Compile Include="CP\BLL\INVENTORS.cs" />
-    <Compile Include="CP\BLL\JOBINCIDENT.cs" />
-    <Compile Include="CP\BLL\JOBTRACKING.cs" />
-    <Compile Include="CP\BLL\PATENTAGENT.cs" />
-    <Compile Include="CP\BLL\PATENTBILLINPUT_V2.cs" />
-    <Compile Include="CP\BLL\PATENTBILLITEMTYPE_V2.cs" />
-    <Compile Include="CP\BLL\PATENTCASE.cs" />
-    <Compile Include="CP\BLL\PTFILE_CHECK.cs" />
-    <Compile Include="CP\BLL\RECEIVINGLOG.cs" />
-    <Compile Include="CP\BLL\SBFEEDETAIL.cs" />
-    <Compile Include="CP\BLL\SBFEETYPE.cs" />
-    <Compile Include="CP\BLL\SIMPLECOMMANDS.cs" />
-    <Compile Include="CP\BLL\SysManage.cs" />
-    <Compile Include="CP\BLL\TEMP_SG.cs" />
-    <Compile Include="CP\BLL\TEST1.cs" />
-    <Compile Include="CP\BLL\TEST10.cs" />
-    <Compile Include="CP\BLL\TEST11.cs" />
-    <Compile Include="CP\BLL\TEST12.cs" />
-    <Compile Include="CP\BLL\TEST13.cs" />
-    <Compile Include="CP\BLL\TEST14.cs" />
-    <Compile Include="CP\BLL\TEST2.cs" />
-    <Compile Include="CP\BLL\TEST3.cs" />
-    <Compile Include="CP\BLL\TEST4.cs" />
-    <Compile Include="CP\BLL\TEST5.cs" />
-    <Compile Include="CP\BLL\TEST6.cs" />
-    <Compile Include="CP\BLL\TEST7.cs" />
-    <Compile Include="CP\BLL\TEST8.cs" />
-    <Compile Include="CP\BLL\TEST9.cs" />
-    <Compile Include="CP\BLL\TESTOUR.cs" />
-    <Compile Include="CP\BLL\TEST_AGT.cs" />
-    <Compile Include="CP\BLL\TEST_APP.cs" />
-    <Compile Include="CP\BLL\TEST_APP1.cs" />
-    <Compile Include="CP\BLL\TEST_BOR_CASE.cs" />
-    <Compile Include="CP\BLL\TEST_CLIENT.cs" />
-    <Compile Include="CP\BLL\TEST_DEPT.cs" />
-    <Compile Include="CP\BLL\TEST_HKCLI.cs" />
-    <Compile Include="CP\BLL\TEST_OURNO.cs" />
-    <Compile Include="CP\BLL\TMCASE.cs" />
-    <Compile Include="CP\BLL\WORD_BOOKMARKS.cs" />
-    <Compile Include="CP\BLL\WORD_TEMPLATES.cs" />
-    <Compile Include="CP\DAL\ALERTMETA.cs" />
-    <Compile Include="CP\DAL\ALERTTYPEGROUP.cs" />
-    <Compile Include="CP\DAL\ALERTVIEW.cs" />
-    <Compile Include="CP\DAL\ANNUALFEE.cs" />
-    <Compile Include="CP\DAL\BILL.cs" />
-    <Compile Include="CP\DAL\BILLCODE.cs" />
-    <Compile Include="CP\DAL\BILLCODE_V2.cs" />
-    <Compile Include="CP\DAL\BILLFEEMNT.cs" />
-    <Compile Include="CP\DAL\BILLGROUP.cs" />
-    <Compile Include="CP\DAL\BILLTYPE.cs" />
-    <Compile Include="CP\DAL\BILLTYPEITEMS.cs" />
-    <Compile Include="CP\DAL\CASEOTHERINFO.cs" />
-    <Compile Include="CP\DAL\CASEOTHERTEXT.cs" />
-    <Compile Include="CP\DAL\CHANGELOG.cs" />
-    <Compile Include="CP\DAL\CHANGETYPETEXT.cs" />
-    <Compile Include="CP\DAL\CLASSIFIERTB.cs" />
-    <Compile Include="CP\DAL\CLIENTDB.cs" />
-    <Compile Include="CP\DAL\COL_MAP.cs" />
-    <Compile Include="CP\DAL\COUNTRYCODE.cs" />
-    <Compile Include="CP\DAL\COUNTRY_TRANSLATION.cs" />
-    <Compile Include="CP\DAL\CUX_FCASE_BK_20130827.cs" />
-    <Compile Include="CP\DAL\CUX_FCASE_ENT_REL_BK_20130913.cs" />
-    <Compile Include="CP\DAL\CUX_IDTEXT_BK_20150731.cs" />
-    <Compile Include="CP\DAL\CUX_PATENTCASE_BK_20141118.cs" />
-    <Compile Include="CP\DAL\CUX_PATENTCASE_BK_20141120.cs" />
-    <Compile Include="CP\DAL\CUX_PATENTCASE_BK_20151102.cs" />
-    <Compile Include="CP\DAL\DROPPING_CASE.cs" />
-    <Compile Include="CP\DAL\DROPPING_CISCOREPORT.cs" />
-    <Compile Include="CP\DAL\DROPPING_CONTACTINFO.cs" />
-    <Compile Include="CP\DAL\DROPPING_FISH_RICHARDSON.cs" />
-    <Compile Include="CP\DAL\DROPPING_HKPATENT.cs" />
-    <Compile Include="CP\DAL\DROPPING_LEGALSTATUS.cs" />
-    <Compile Include="CP\DAL\DROPPING_PATENTBILLINPUT.cs" />
-    <Compile Include="CP\DAL\DROPPING_PATENTBILLITEMTYPE.cs" />
-    <Compile Include="CP\DAL\DROPPING_TEMP_A.cs" />
-    <Compile Include="CP\DAL\DROPPING_TEMP_SN.cs" />
-    <Compile Include="CP\DAL\DROPPING_TEMP_SONYUS.cs" />
-    <Compile Include="CP\DAL\DROPPING_TEMP_SU2.cs" />
-    <Compile Include="CP\DAL\DROPPING_TEMP_SUGGMATCH.cs" />
-    <Compile Include="CP\DAL\DROPPING_TEMP_SUTFER.cs" />
-    <Compile Include="CP\DAL\EX_FOREIGNCASE.cs" />
-    <Compile Include="CP\DAL\EX_HKCASE.cs" />
-    <Compile Include="CP\DAL\FBKUPINFO.cs" />
-    <Compile Include="CP\DAL\FCASE.cs" />
-    <Compile Include="CP\DAL\FCASE_ENT_REL.cs" />
-    <Compile Include="CP\DAL\FCASE_INVENTORS.cs" />
-    <Compile Include="CP\DAL\FCASE_LOG.cs" />
-    <Compile Include="CP\DAL\FCASE_PRIORITY.cs" />
-    <Compile Include="CP\DAL\FCASE_REL.cs" />
-    <Compile Include="CP\DAL\FCASE_WORKLOAD.cs" />
-    <Compile Include="CP\DAL\FEEDETAIL.cs" />
-    <Compile Include="CP\DAL\FEETYPE.cs" />
-    <Compile Include="CP\DAL\FILE_TRACKING.cs" />
-    <Compile Include="CP\DAL\FLFEEDETAIL.cs" />
-    <Compile Include="CP\DAL\FLFEETYPE.cs" />
-    <Compile Include="CP\DAL\FORMCONTROL.cs" />
-    <Compile Include="CP\DAL\FORWARDOAPOLICY.cs" />
-    <Compile Include="CP\DAL\GENERALALERT.cs" />
-    <Compile Include="CP\DAL\GENERAL_INSTRUCTION.cs" />
-    <Compile Include="CP\DAL\HEADERMAPPINGTB.cs" />
-    <Compile Include="CP\DAL\IDTEXT.cs" />
-    <Compile Include="CP\DAL\INVENTORS.cs" />
-    <Compile Include="CP\DAL\JOBINCIDENT.cs" />
-    <Compile Include="CP\DAL\JOBTRACKING.cs" />
-    <Compile Include="CP\DAL\PATENTAGENT.cs" />
-    <Compile Include="CP\DAL\PATENTBILLINPUT_V2.cs" />
-    <Compile Include="CP\DAL\PATENTBILLITEMTYPE_V2.cs" />
-    <Compile Include="CP\DAL\PATENTCASE.cs" />
-    <Compile Include="CP\DAL\PTFILE_CHECK.cs" />
-    <Compile Include="CP\DAL\RECEIVINGLOG.cs" />
-    <Compile Include="CP\DAL\SBFEEDETAIL.cs" />
-    <Compile Include="CP\DAL\SBFEETYPE.cs" />
-    <Compile Include="CP\DAL\SIMPLECOMMANDS.cs" />
-    <Compile Include="CP\DAL\SysManage.cs" />
-    <Compile Include="CP\DAL\TEMP_SG.cs" />
-    <Compile Include="CP\DAL\TEST1.cs" />
-    <Compile Include="CP\DAL\TEST10.cs" />
-    <Compile Include="CP\DAL\TEST11.cs" />
-    <Compile Include="CP\DAL\TEST12.cs" />
-    <Compile Include="CP\DAL\TEST13.cs" />
-    <Compile Include="CP\DAL\TEST14.cs" />
-    <Compile Include="CP\DAL\TEST2.cs" />
-    <Compile Include="CP\DAL\TEST3.cs" />
-    <Compile Include="CP\DAL\TEST4.cs" />
-    <Compile Include="CP\DAL\TEST5.cs" />
-    <Compile Include="CP\DAL\TEST6.cs" />
-    <Compile Include="CP\DAL\TEST7.cs" />
-    <Compile Include="CP\DAL\TEST8.cs" />
-    <Compile Include="CP\DAL\TEST9.cs" />
-    <Compile Include="CP\DAL\TESTOUR.cs" />
-    <Compile Include="CP\DAL\TEST_AGT.cs" />
-    <Compile Include="CP\DAL\TEST_APP.cs" />
-    <Compile Include="CP\DAL\TEST_APP1.cs" />
-    <Compile Include="CP\DAL\TEST_BOR_CASE.cs" />
-    <Compile Include="CP\DAL\TEST_CLIENT.cs" />
-    <Compile Include="CP\DAL\TEST_DEPT.cs" />
-    <Compile Include="CP\DAL\TEST_HKCLI.cs" />
-    <Compile Include="CP\DAL\TEST_OURNO.cs" />
-    <Compile Include="CP\DAL\TMCASE.cs" />
-    <Compile Include="CP\DAL\WORD_BOOKMARKS.cs" />
-    <Compile Include="CP\DAL\WORD_TEMPLATES.cs" />
-    <Compile Include="CP\Model\ALERTMETA.cs" />
-    <Compile Include="CP\Model\ALERTTYPEGROUP.cs" />
-    <Compile Include="CP\Model\ALERTVIEW.cs" />
-    <Compile Include="CP\Model\ANNUALFEE.cs" />
-    <Compile Include="CP\Model\BILL.cs" />
-    <Compile Include="CP\Model\BILLCODE.cs" />
-    <Compile Include="CP\Model\BILLCODE_V2.cs" />
-    <Compile Include="CP\Model\BILLFEEMNT.cs" />
-    <Compile Include="CP\Model\BILLGROUP.cs" />
-    <Compile Include="CP\Model\BILLTYPE.cs" />
-    <Compile Include="CP\Model\BILLTYPEITEMS.cs" />
-    <Compile Include="CP\Model\CASEOTHERINFO.cs" />
-    <Compile Include="CP\Model\CASEOTHERTEXT.cs" />
-    <Compile Include="CP\Model\CHANGELOG.cs" />
-    <Compile Include="CP\Model\CHANGETYPETEXT.cs" />
-    <Compile Include="CP\Model\CLASSIFIERTB.cs" />
-    <Compile Include="CP\Model\CLIENTDB.cs" />
-    <Compile Include="CP\Model\COL_MAP.cs" />
-    <Compile Include="CP\Model\COUNTRYCODE.cs" />
-    <Compile Include="CP\Model\COUNTRY_TRANSLATION.cs" />
-    <Compile Include="CP\Model\CUX_FCASE_BK_20130827.cs" />
-    <Compile Include="CP\Model\CUX_FCASE_ENT_REL_BK_20130913.cs" />
-    <Compile Include="CP\Model\CUX_IDTEXT_BK_20150731.cs" />
-    <Compile Include="CP\Model\CUX_PATENTCASE_BK_20141118.cs" />
-    <Compile Include="CP\Model\CUX_PATENTCASE_BK_20141120.cs" />
-    <Compile Include="CP\Model\CUX_PATENTCASE_BK_20151102.cs" />
-    <Compile Include="CP\Model\DROPPING_CASE.cs" />
-    <Compile Include="CP\Model\DROPPING_CISCOREPORT.cs" />
-    <Compile Include="CP\Model\DROPPING_CONTACTINFO.cs" />
-    <Compile Include="CP\Model\DROPPING_FISH_RICHARDSON.cs" />
-    <Compile Include="CP\Model\DROPPING_HKPATENT.cs" />
-    <Compile Include="CP\Model\DROPPING_LEGALSTATUS.cs" />
-    <Compile Include="CP\Model\DROPPING_PATENTBILLINPUT.cs" />
-    <Compile Include="CP\Model\DROPPING_PATENTBILLITEMTYPE.cs" />
-    <Compile Include="CP\Model\DROPPING_TEMP_A.cs" />
-    <Compile Include="CP\Model\DROPPING_TEMP_SN.cs" />
-    <Compile Include="CP\Model\DROPPING_TEMP_SONYUS.cs" />
-    <Compile Include="CP\Model\DROPPING_TEMP_SU2.cs" />
-    <Compile Include="CP\Model\DROPPING_TEMP_SUGGMATCH.cs" />
-    <Compile Include="CP\Model\DROPPING_TEMP_SUTFER.cs" />
-    <Compile Include="CP\Model\EX_FOREIGNCASE.cs" />
-    <Compile Include="CP\Model\EX_HKCASE.cs" />
-    <Compile Include="CP\Model\FBKUPINFO.cs" />
-    <Compile Include="CP\Model\FCASE.cs" />
-    <Compile Include="CP\Model\FCASE_ENT_REL.cs" />
-    <Compile Include="CP\Model\FCASE_INVENTORS.cs" />
-    <Compile Include="CP\Model\FCASE_LOG.cs" />
-    <Compile Include="CP\Model\FCASE_PRIORITY.cs" />
-    <Compile Include="CP\Model\FCASE_REL.cs" />
-    <Compile Include="CP\Model\FCASE_WORKLOAD.cs" />
-    <Compile Include="CP\Model\FEEDETAIL.cs" />
-    <Compile Include="CP\Model\FEETYPE.cs" />
-    <Compile Include="CP\Model\FILE_TRACKING.cs" />
-    <Compile Include="CP\Model\FLFEEDETAIL.cs" />
-    <Compile Include="CP\Model\FLFEETYPE.cs" />
-    <Compile Include="CP\Model\FORMCONTROL.cs" />
-    <Compile Include="CP\Model\FORWARDOAPOLICY.cs" />
-    <Compile Include="CP\Model\GENERALALERT.cs" />
-    <Compile Include="CP\Model\GENERAL_INSTRUCTION.cs" />
-    <Compile Include="CP\Model\HEADERMAPPINGTB.cs" />
-    <Compile Include="CP\Model\IDTEXT.cs" />
-    <Compile Include="CP\Model\INVENTORS.cs" />
-    <Compile Include="CP\Model\JOBINCIDENT.cs" />
-    <Compile Include="CP\Model\JOBTRACKING.cs" />
-    <Compile Include="CP\Model\PATENTAGENT.cs" />
-    <Compile Include="CP\Model\PATENTBILLINPUT_V2.cs" />
-    <Compile Include="CP\Model\PATENTBILLITEMTYPE_V2.cs" />
-    <Compile Include="CP\Model\PATENTCASE.cs" />
-    <Compile Include="CP\Model\PTFILE_CHECK.cs" />
-    <Compile Include="CP\Model\RECEIVINGLOG.cs" />
-    <Compile Include="CP\Model\SBFEEDETAIL.cs" />
-    <Compile Include="CP\Model\SBFEETYPE.cs" />
-    <Compile Include="CP\Model\SIMPLECOMMANDS.cs" />
-    <Compile Include="CP\Model\SysNode.cs" />
-    <Compile Include="CP\Model\TEMP_SG.cs" />
-    <Compile Include="CP\Model\TEST1.cs" />
-    <Compile Include="CP\Model\TEST10.cs" />
-    <Compile Include="CP\Model\TEST11.cs" />
-    <Compile Include="CP\Model\TEST12.cs" />
-    <Compile Include="CP\Model\TEST13.cs" />
-    <Compile Include="CP\Model\TEST14.cs" />
-    <Compile Include="CP\Model\TEST2.cs" />
-    <Compile Include="CP\Model\TEST3.cs" />
-    <Compile Include="CP\Model\TEST4.cs" />
-    <Compile Include="CP\Model\TEST5.cs" />
-    <Compile Include="CP\Model\TEST6.cs" />
-    <Compile Include="CP\Model\TEST7.cs" />
-    <Compile Include="CP\Model\TEST8.cs" />
-    <Compile Include="CP\Model\TEST9.cs" />
-    <Compile Include="CP\Model\TESTOUR.cs" />
-    <Compile Include="CP\Model\TEST_AGT.cs" />
-    <Compile Include="CP\Model\TEST_APP.cs" />
-    <Compile Include="CP\Model\TEST_APP1.cs" />
-    <Compile Include="CP\Model\TEST_BOR_CASE.cs" />
-    <Compile Include="CP\Model\TEST_CLIENT.cs" />
-    <Compile Include="CP\Model\TEST_DEPT.cs" />
-    <Compile Include="CP\Model\TEST_HKCLI.cs" />
-    <Compile Include="CP\Model\TEST_OURNO.cs" />
-    <Compile Include="CP\Model\TMCASE.cs" />
-    <Compile Include="CP\Model\WORD_BOOKMARKS.cs" />
-    <Compile Include="CP\Model\WORD_TEMPLATES.cs" />
-    <Compile Include="CP\SearchCase\XFrmPatent.cs">
-      <SubType>Form</SubType>
+    <Compile Include="IPSP\IPSPModelCode\ConnectionHelper.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_AgencyAddress.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_AgencyAddress.Designer.cs">
+      <DependentUpon>TCstmr_AgencyAddress.cs</DependentUpon>
     </Compile>
-    <Compile Include="CP\SearchCase\XFrmPatent.Designer.cs">
-      <DependentUpon>XFrmPatent.cs</DependentUpon>
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_AgencyConAddress.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_AgencyConAddress.Designer.cs">
+      <DependentUpon>TCstmr_AgencyConAddress.cs</DependentUpon>
     </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_AgencyContact.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_AgencyContact.Designer.cs">
+      <DependentUpon>TCstmr_AgencyContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_AppAddress.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_AppAddress.Designer.cs">
+      <DependentUpon>TCstmr_AppAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_AppConAddress.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_AppConAddress.Designer.cs">
+      <DependentUpon>TCstmr_AppConAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_AppContact.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_AppContact.Designer.cs">
+      <DependentUpon>TCstmr_AppContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_Applicant.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_Applicant.Designer.cs">
+      <DependentUpon>TCstmr_Applicant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_Client.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_Client.Designer.cs">
+      <DependentUpon>TCstmr_Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_ClientAddress.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_ClientAddress.Designer.cs">
+      <DependentUpon>TCstmr_ClientAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_ClientConAddress.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_ClientConAddress.Designer.cs">
+      <DependentUpon>TCstmr_ClientConAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_ClientContact.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_ClientContact.Designer.cs">
+      <DependentUpon>TCstmr_ClientContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_CoopAgency.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCstmr_CoopAgency.Designer.cs">
+      <DependentUpon>TCstmr_CoopAgency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\T_Demand.cs" />
+    <Compile Include="IPSP\IPSPModelCode\T_Demand.Designer.cs">
+      <DependentUpon>T_Demand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PC\BLL\ALERTMETA.cs" />
+    <Compile Include="PC\BLL\ALERTTYPEGROUP.cs" />
+    <Compile Include="PC\BLL\ALERTVIEW.cs" />
+    <Compile Include="PC\BLL\ANNUALFEE.cs" />
+    <Compile Include="PC\BLL\BILL.cs" />
+    <Compile Include="PC\BLL\BILLCODE.cs" />
+    <Compile Include="PC\BLL\BILLCODE_V2.cs" />
+    <Compile Include="PC\BLL\BILLFEEMNT.cs" />
+    <Compile Include="PC\BLL\BILLGROUP.cs" />
+    <Compile Include="PC\BLL\BILLTYPE.cs" />
+    <Compile Include="PC\BLL\BILLTYPEITEMS.cs" />
+    <Compile Include="PC\BLL\CASEOTHERINFO.cs" />
+    <Compile Include="PC\BLL\CASEOTHERTEXT.cs" />
+    <Compile Include="PC\BLL\CHANGELOG.cs" />
+    <Compile Include="PC\BLL\CHANGETYPETEXT.cs" />
+    <Compile Include="PC\BLL\CLASSIFIERTB.cs" />
+    <Compile Include="PC\BLL\CLIENTDB.cs" />
+    <Compile Include="PC\BLL\COL_MAP.cs" />
+    <Compile Include="PC\BLL\COUNTRYCODE.cs" />
+    <Compile Include="PC\BLL\COUNTRY_TRANSLATION.cs" />
+    <Compile Include="PC\BLL\CUX_FCASE_BK_20130827.cs" />
+    <Compile Include="PC\BLL\CUX_FCASE_ENT_REL_BK_20130913.cs" />
+    <Compile Include="PC\BLL\CUX_IDTEXT_BK_20150731.cs" />
+    <Compile Include="PC\BLL\CUX_PATENTCASE_BK_20141118.cs" />
+    <Compile Include="PC\BLL\CUX_PATENTCASE_BK_20141120.cs" />
+    <Compile Include="PC\BLL\CUX_PATENTCASE_BK_20151102.cs" />
+    <Compile Include="PC\BLL\DROPPING_CASE.cs" />
+    <Compile Include="PC\BLL\DROPPING_CISCOREPORT.cs" />
+    <Compile Include="PC\BLL\DROPPING_CONTACTINFO.cs" />
+    <Compile Include="PC\BLL\DROPPING_FISH_RICHARDSON.cs" />
+    <Compile Include="PC\BLL\DROPPING_HKPATENT.cs" />
+    <Compile Include="PC\BLL\DROPPING_LEGALSTATUS.cs" />
+    <Compile Include="PC\BLL\DROPPING_PATENTBILLINPUT.cs" />
+    <Compile Include="PC\BLL\DROPPING_PATENTBILLITEMTYPE.cs" />
+    <Compile Include="PC\BLL\DROPPING_TEMP_A.cs" />
+    <Compile Include="PC\BLL\DROPPING_TEMP_SN.cs" />
+    <Compile Include="PC\BLL\DROPPING_TEMP_SONYUS.cs" />
+    <Compile Include="PC\BLL\DROPPING_TEMP_SU2.cs" />
+    <Compile Include="PC\BLL\DROPPING_TEMP_SUGGMATCH.cs" />
+    <Compile Include="PC\BLL\DROPPING_TEMP_SUTFER.cs" />
+    <Compile Include="PC\BLL\EX_FOREIGNCASE.cs" />
+    <Compile Include="PC\BLL\EX_HKCASE.cs" />
+    <Compile Include="PC\BLL\FBKUPINFO.cs" />
+    <Compile Include="PC\BLL\FCASE.cs" />
+    <Compile Include="PC\BLL\FCASE_ENT_REL.cs" />
+    <Compile Include="PC\BLL\FCASE_INVENTORS.cs" />
+    <Compile Include="PC\BLL\FCASE_LOG.cs" />
+    <Compile Include="PC\BLL\FCASE_PRIORITY.cs" />
+    <Compile Include="PC\BLL\FCASE_REL.cs" />
+    <Compile Include="PC\BLL\FCASE_WORKLOAD.cs" />
+    <Compile Include="PC\BLL\FEEDETAIL.cs" />
+    <Compile Include="PC\BLL\FEETYPE.cs" />
+    <Compile Include="PC\BLL\FILE_TRACKING.cs" />
+    <Compile Include="PC\BLL\FLFEEDETAIL.cs" />
+    <Compile Include="PC\BLL\FLFEETYPE.cs" />
+    <Compile Include="PC\BLL\FORMCONTROL.cs" />
+    <Compile Include="PC\BLL\FORWARDOAPOLICY.cs" />
+    <Compile Include="PC\BLL\GENERALALERT.cs" />
+    <Compile Include="PC\BLL\GENERAL_INSTRUCTION.cs" />
+    <Compile Include="PC\BLL\HEADERMAPPINGTB.cs" />
+    <Compile Include="PC\BLL\IDTEXT.cs" />
+    <Compile Include="PC\BLL\INVENTORS.cs" />
+    <Compile Include="PC\BLL\JOBINCIDENT.cs" />
+    <Compile Include="PC\BLL\JOBTRACKING.cs" />
+    <Compile Include="PC\BLL\PATENTAGENT.cs" />
+    <Compile Include="PC\BLL\PATENTBILLINPUT_V2.cs" />
+    <Compile Include="PC\BLL\PATENTBILLITEMTYPE_V2.cs" />
+    <Compile Include="PC\BLL\PATENTCASE.cs" />
+    <Compile Include="PC\BLL\PTFILE_CHECK.cs" />
+    <Compile Include="PC\BLL\RECEIVINGLOG.cs" />
+    <Compile Include="PC\BLL\SBFEEDETAIL.cs" />
+    <Compile Include="PC\BLL\SBFEETYPE.cs" />
+    <Compile Include="PC\BLL\SIMPLECOMMANDS.cs" />
+    <Compile Include="PC\BLL\SysManage.cs" />
+    <Compile Include="PC\BLL\TEMP_SG.cs" />
+    <Compile Include="PC\BLL\TEST1.cs" />
+    <Compile Include="PC\BLL\TEST10.cs" />
+    <Compile Include="PC\BLL\TEST11.cs" />
+    <Compile Include="PC\BLL\TEST12.cs" />
+    <Compile Include="PC\BLL\TEST13.cs" />
+    <Compile Include="PC\BLL\TEST14.cs" />
+    <Compile Include="PC\BLL\TEST2.cs" />
+    <Compile Include="PC\BLL\TEST3.cs" />
+    <Compile Include="PC\BLL\TEST4.cs" />
+    <Compile Include="PC\BLL\TEST5.cs" />
+    <Compile Include="PC\BLL\TEST6.cs" />
+    <Compile Include="PC\BLL\TEST7.cs" />
+    <Compile Include="PC\BLL\TEST8.cs" />
+    <Compile Include="PC\BLL\TEST9.cs" />
+    <Compile Include="PC\BLL\TESTOUR.cs" />
+    <Compile Include="PC\BLL\TEST_AGT.cs" />
+    <Compile Include="PC\BLL\TEST_APP.cs" />
+    <Compile Include="PC\BLL\TEST_APP1.cs" />
+    <Compile Include="PC\BLL\TEST_BOR_CASE.cs" />
+    <Compile Include="PC\BLL\TEST_CLIENT.cs" />
+    <Compile Include="PC\BLL\TEST_DEPT.cs" />
+    <Compile Include="PC\BLL\TEST_HKCLI.cs" />
+    <Compile Include="PC\BLL\TEST_OURNO.cs" />
+    <Compile Include="PC\BLL\TMCASE.cs" />
+    <Compile Include="PC\BLL\WORD_BOOKMARKS.cs" />
+    <Compile Include="PC\BLL\WORD_TEMPLATES.cs" />
+    <Compile Include="PC\DAL\ALERTMETA.cs" />
+    <Compile Include="PC\DAL\ALERTTYPEGROUP.cs" />
+    <Compile Include="PC\DAL\ALERTVIEW.cs" />
+    <Compile Include="PC\DAL\ANNUALFEE.cs" />
+    <Compile Include="PC\DAL\BILL.cs" />
+    <Compile Include="PC\DAL\BILLCODE.cs" />
+    <Compile Include="PC\DAL\BILLCODE_V2.cs" />
+    <Compile Include="PC\DAL\BILLFEEMNT.cs" />
+    <Compile Include="PC\DAL\BILLGROUP.cs" />
+    <Compile Include="PC\DAL\BILLTYPE.cs" />
+    <Compile Include="PC\DAL\BILLTYPEITEMS.cs" />
+    <Compile Include="PC\DAL\CASEOTHERINFO.cs" />
+    <Compile Include="PC\DAL\CASEOTHERTEXT.cs" />
+    <Compile Include="PC\DAL\CHANGELOG.cs" />
+    <Compile Include="PC\DAL\CHANGETYPETEXT.cs" />
+    <Compile Include="PC\DAL\CLASSIFIERTB.cs" />
+    <Compile Include="PC\DAL\CLIENTDB.cs" />
+    <Compile Include="PC\DAL\COL_MAP.cs" />
+    <Compile Include="PC\DAL\COUNTRYCODE.cs" />
+    <Compile Include="PC\DAL\COUNTRY_TRANSLATION.cs" />
+    <Compile Include="PC\DAL\CUX_FCASE_BK_20130827.cs" />
+    <Compile Include="PC\DAL\CUX_FCASE_ENT_REL_BK_20130913.cs" />
+    <Compile Include="PC\DAL\CUX_IDTEXT_BK_20150731.cs" />
+    <Compile Include="PC\DAL\CUX_PATENTCASE_BK_20141118.cs" />
+    <Compile Include="PC\DAL\CUX_PATENTCASE_BK_20141120.cs" />
+    <Compile Include="PC\DAL\CUX_PATENTCASE_BK_20151102.cs" />
+    <Compile Include="PC\DAL\DROPPING_CASE.cs" />
+    <Compile Include="PC\DAL\DROPPING_CISCOREPORT.cs" />
+    <Compile Include="PC\DAL\DROPPING_CONTACTINFO.cs" />
+    <Compile Include="PC\DAL\DROPPING_FISH_RICHARDSON.cs" />
+    <Compile Include="PC\DAL\DROPPING_HKPATENT.cs" />
+    <Compile Include="PC\DAL\DROPPING_LEGALSTATUS.cs" />
+    <Compile Include="PC\DAL\DROPPING_PATENTBILLINPUT.cs" />
+    <Compile Include="PC\DAL\DROPPING_PATENTBILLITEMTYPE.cs" />
+    <Compile Include="PC\DAL\DROPPING_TEMP_A.cs" />
+    <Compile Include="PC\DAL\DROPPING_TEMP_SN.cs" />
+    <Compile Include="PC\DAL\DROPPING_TEMP_SONYUS.cs" />
+    <Compile Include="PC\DAL\DROPPING_TEMP_SU2.cs" />
+    <Compile Include="PC\DAL\DROPPING_TEMP_SUGGMATCH.cs" />
+    <Compile Include="PC\DAL\DROPPING_TEMP_SUTFER.cs" />
+    <Compile Include="PC\DAL\EX_FOREIGNCASE.cs" />
+    <Compile Include="PC\DAL\EX_HKCASE.cs" />
+    <Compile Include="PC\DAL\FBKUPINFO.cs" />
+    <Compile Include="PC\DAL\FCASE.cs" />
+    <Compile Include="PC\DAL\FCASE_ENT_REL.cs" />
+    <Compile Include="PC\DAL\FCASE_INVENTORS.cs" />
+    <Compile Include="PC\DAL\FCASE_LOG.cs" />
+    <Compile Include="PC\DAL\FCASE_PRIORITY.cs" />
+    <Compile Include="PC\DAL\FCASE_REL.cs" />
+    <Compile Include="PC\DAL\FCASE_WORKLOAD.cs" />
+    <Compile Include="PC\DAL\FEEDETAIL.cs" />
+    <Compile Include="PC\DAL\FEETYPE.cs" />
+    <Compile Include="PC\DAL\FILE_TRACKING.cs" />
+    <Compile Include="PC\DAL\FLFEEDETAIL.cs" />
+    <Compile Include="PC\DAL\FLFEETYPE.cs" />
+    <Compile Include="PC\DAL\FORMCONTROL.cs" />
+    <Compile Include="PC\DAL\FORWARDOAPOLICY.cs" />
+    <Compile Include="PC\DAL\GENERALALERT.cs" />
+    <Compile Include="PC\DAL\GENERAL_INSTRUCTION.cs" />
+    <Compile Include="PC\DAL\HEADERMAPPINGTB.cs" />
+    <Compile Include="PC\DAL\IDTEXT.cs" />
+    <Compile Include="PC\DAL\INVENTORS.cs" />
+    <Compile Include="PC\DAL\JOBINCIDENT.cs" />
+    <Compile Include="PC\DAL\JOBTRACKING.cs" />
+    <Compile Include="PC\DAL\PATENTAGENT.cs" />
+    <Compile Include="PC\DAL\PATENTBILLINPUT_V2.cs" />
+    <Compile Include="PC\DAL\PATENTBILLITEMTYPE_V2.cs" />
+    <Compile Include="PC\DAL\PATENTCASE.cs" />
+    <Compile Include="PC\DAL\PTFILE_CHECK.cs" />
+    <Compile Include="PC\DAL\RECEIVINGLOG.cs" />
+    <Compile Include="PC\DAL\SBFEEDETAIL.cs" />
+    <Compile Include="PC\DAL\SBFEETYPE.cs" />
+    <Compile Include="PC\DAL\SIMPLECOMMANDS.cs" />
+    <Compile Include="PC\DAL\SysManage.cs" />
+    <Compile Include="PC\DAL\TEMP_SG.cs" />
+    <Compile Include="PC\DAL\TEST1.cs" />
+    <Compile Include="PC\DAL\TEST10.cs" />
+    <Compile Include="PC\DAL\TEST11.cs" />
+    <Compile Include="PC\DAL\TEST12.cs" />
+    <Compile Include="PC\DAL\TEST13.cs" />
+    <Compile Include="PC\DAL\TEST14.cs" />
+    <Compile Include="PC\DAL\TEST2.cs" />
+    <Compile Include="PC\DAL\TEST3.cs" />
+    <Compile Include="PC\DAL\TEST4.cs" />
+    <Compile Include="PC\DAL\TEST5.cs" />
+    <Compile Include="PC\DAL\TEST6.cs" />
+    <Compile Include="PC\DAL\TEST7.cs" />
+    <Compile Include="PC\DAL\TEST8.cs" />
+    <Compile Include="PC\DAL\TEST9.cs" />
+    <Compile Include="PC\DAL\TESTOUR.cs" />
+    <Compile Include="PC\DAL\TEST_AGT.cs" />
+    <Compile Include="PC\DAL\TEST_APP.cs" />
+    <Compile Include="PC\DAL\TEST_APP1.cs" />
+    <Compile Include="PC\DAL\TEST_BOR_CASE.cs" />
+    <Compile Include="PC\DAL\TEST_CLIENT.cs" />
+    <Compile Include="PC\DAL\TEST_DEPT.cs" />
+    <Compile Include="PC\DAL\TEST_HKCLI.cs" />
+    <Compile Include="PC\DAL\TEST_OURNO.cs" />
+    <Compile Include="PC\DAL\TMCASE.cs" />
+    <Compile Include="PC\DAL\WORD_BOOKMARKS.cs" />
+    <Compile Include="PC\DAL\WORD_TEMPLATES.cs" />
+    <Compile Include="PC\Model\ALERTMETA.cs" />
+    <Compile Include="PC\Model\ALERTTYPEGROUP.cs" />
+    <Compile Include="PC\Model\ALERTVIEW.cs" />
+    <Compile Include="PC\Model\ANNUALFEE.cs" />
+    <Compile Include="PC\Model\BILL.cs" />
+    <Compile Include="PC\Model\BILLCODE.cs" />
+    <Compile Include="PC\Model\BILLCODE_V2.cs" />
+    <Compile Include="PC\Model\BILLFEEMNT.cs" />
+    <Compile Include="PC\Model\BILLGROUP.cs" />
+    <Compile Include="PC\Model\BILLTYPE.cs" />
+    <Compile Include="PC\Model\BILLTYPEITEMS.cs" />
+    <Compile Include="PC\Model\CASEOTHERINFO.cs" />
+    <Compile Include="PC\Model\CASEOTHERTEXT.cs" />
+    <Compile Include="PC\Model\CHANGELOG.cs" />
+    <Compile Include="PC\Model\CHANGETYPETEXT.cs" />
+    <Compile Include="PC\Model\CLASSIFIERTB.cs" />
+    <Compile Include="PC\Model\CLIENTDB.cs" />
+    <Compile Include="PC\Model\COL_MAP.cs" />
+    <Compile Include="PC\Model\COUNTRYCODE.cs" />
+    <Compile Include="PC\Model\COUNTRY_TRANSLATION.cs" />
+    <Compile Include="PC\Model\CUX_FCASE_BK_20130827.cs" />
+    <Compile Include="PC\Model\CUX_FCASE_ENT_REL_BK_20130913.cs" />
+    <Compile Include="PC\Model\CUX_IDTEXT_BK_20150731.cs" />
+    <Compile Include="PC\Model\CUX_PATENTCASE_BK_20141118.cs" />
+    <Compile Include="PC\Model\CUX_PATENTCASE_BK_20141120.cs" />
+    <Compile Include="PC\Model\CUX_PATENTCASE_BK_20151102.cs" />
+    <Compile Include="PC\Model\DROPPING_CASE.cs" />
+    <Compile Include="PC\Model\DROPPING_CISCOREPORT.cs" />
+    <Compile Include="PC\Model\DROPPING_CONTACTINFO.cs" />
+    <Compile Include="PC\Model\DROPPING_FISH_RICHARDSON.cs" />
+    <Compile Include="PC\Model\DROPPING_HKPATENT.cs" />
+    <Compile Include="PC\Model\DROPPING_LEGALSTATUS.cs" />
+    <Compile Include="PC\Model\DROPPING_PATENTBILLINPUT.cs" />
+    <Compile Include="PC\Model\DROPPING_PATENTBILLITEMTYPE.cs" />
+    <Compile Include="PC\Model\DROPPING_TEMP_A.cs" />
+    <Compile Include="PC\Model\DROPPING_TEMP_SN.cs" />
+    <Compile Include="PC\Model\DROPPING_TEMP_SONYUS.cs" />
+    <Compile Include="PC\Model\DROPPING_TEMP_SU2.cs" />
+    <Compile Include="PC\Model\DROPPING_TEMP_SUGGMATCH.cs" />
+    <Compile Include="PC\Model\DROPPING_TEMP_SUTFER.cs" />
+    <Compile Include="PC\Model\EX_FOREIGNCASE.cs" />
+    <Compile Include="PC\Model\EX_HKCASE.cs" />
+    <Compile Include="PC\Model\FBKUPINFO.cs" />
+    <Compile Include="PC\Model\FCASE.cs" />
+    <Compile Include="PC\Model\FCASE_ENT_REL.cs" />
+    <Compile Include="PC\Model\FCASE_INVENTORS.cs" />
+    <Compile Include="PC\Model\FCASE_LOG.cs" />
+    <Compile Include="PC\Model\FCASE_PRIORITY.cs" />
+    <Compile Include="PC\Model\FCASE_REL.cs" />
+    <Compile Include="PC\Model\FCASE_WORKLOAD.cs" />
+    <Compile Include="PC\Model\FEEDETAIL.cs" />
+    <Compile Include="PC\Model\FEETYPE.cs" />
+    <Compile Include="PC\Model\FILE_TRACKING.cs" />
+    <Compile Include="PC\Model\FLFEEDETAIL.cs" />
+    <Compile Include="PC\Model\FLFEETYPE.cs" />
+    <Compile Include="PC\Model\FORMCONTROL.cs" />
+    <Compile Include="PC\Model\FORWARDOAPOLICY.cs" />
+    <Compile Include="PC\Model\GENERALALERT.cs" />
+    <Compile Include="PC\Model\GENERAL_INSTRUCTION.cs" />
+    <Compile Include="PC\Model\HEADERMAPPINGTB.cs" />
+    <Compile Include="PC\Model\IDTEXT.cs" />
+    <Compile Include="PC\Model\INVENTORS.cs" />
+    <Compile Include="PC\Model\JOBINCIDENT.cs" />
+    <Compile Include="PC\Model\JOBTRACKING.cs" />
+    <Compile Include="PC\Model\PATENTAGENT.cs" />
+    <Compile Include="PC\Model\PATENTBILLINPUT_V2.cs" />
+    <Compile Include="PC\Model\PATENTBILLITEMTYPE_V2.cs" />
+    <Compile Include="PC\Model\PATENTCASE.cs" />
+    <Compile Include="PC\Model\PTFILE_CHECK.cs" />
+    <Compile Include="PC\Model\RECEIVINGLOG.cs" />
+    <Compile Include="PC\Model\SBFEEDETAIL.cs" />
+    <Compile Include="PC\Model\SBFEETYPE.cs" />
+    <Compile Include="PC\Model\SIMPLECOMMANDS.cs" />
+    <Compile Include="PC\Model\SysNode.cs" />
+    <Compile Include="PC\Model\TEMP_SG.cs" />
+    <Compile Include="PC\Model\TEST1.cs" />
+    <Compile Include="PC\Model\TEST10.cs" />
+    <Compile Include="PC\Model\TEST11.cs" />
+    <Compile Include="PC\Model\TEST12.cs" />
+    <Compile Include="PC\Model\TEST13.cs" />
+    <Compile Include="PC\Model\TEST14.cs" />
+    <Compile Include="PC\Model\TEST2.cs" />
+    <Compile Include="PC\Model\TEST3.cs" />
+    <Compile Include="PC\Model\TEST4.cs" />
+    <Compile Include="PC\Model\TEST5.cs" />
+    <Compile Include="PC\Model\TEST6.cs" />
+    <Compile Include="PC\Model\TEST7.cs" />
+    <Compile Include="PC\Model\TEST8.cs" />
+    <Compile Include="PC\Model\TEST9.cs" />
+    <Compile Include="PC\Model\TESTOUR.cs" />
+    <Compile Include="PC\Model\TEST_AGT.cs" />
+    <Compile Include="PC\Model\TEST_APP.cs" />
+    <Compile Include="PC\Model\TEST_APP1.cs" />
+    <Compile Include="PC\Model\TEST_BOR_CASE.cs" />
+    <Compile Include="PC\Model\TEST_CLIENT.cs" />
+    <Compile Include="PC\Model\TEST_DEPT.cs" />
+    <Compile Include="PC\Model\TEST_HKCLI.cs" />
+    <Compile Include="PC\Model\TEST_OURNO.cs" />
+    <Compile Include="PC\Model\TMCASE.cs" />
+    <Compile Include="PC\Model\WORD_BOOKMARKS.cs" />
+    <Compile Include="PC\Model\WORD_TEMPLATES.cs" />
     <Compile Include="DBUtility\CommandInfo.cs" />
     <Compile Include="DBUtility\DbHelperOra.cs" />
     <Compile Include="DBUtility\DbHelperSQL.cs" />
     <Compile Include="DBUtility\OracleHelper.cs" />
     <Compile Include="DBUtility\PubConstant.cs" />
     <Compile Include="DBUtility\SQLHelper.cs" />
+    <Compile Include="FormConfig\XFrmConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConfig\XFrmConnection.Designer.cs">
+      <DependentUpon>XFrmConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormConfig\XFrmConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConfig\XFrmConfig.Designer.cs">
+      <DependentUpon>XFrmConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\SyncResultInfo.cs" />
+    <Compile Include="Sync\Base\SyncData.cs" />
+    <Compile Include="Sync\Base\SyncList.cs" />
+    <Compile Include="Sync\Contact\SyncApplicantData.cs" />
+    <Compile Include="Sync\Contact\SyncAgencyData.cs" />
+    <Compile Include="Sync\Contact\SyncClientData.cs" />
+    <Compile Include="Sync\Contact\SyncApplicantList.cs" />
+    <Compile Include="Sync\Contact\SyncAgencyList.cs" />
+    <Compile Include="Sync\Contact\SyncClientList.cs" />
     <Compile Include="XFrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -384,8 +458,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CP\SearchCase\XFrmPatent.resx">
-      <DependentUpon>XFrmPatent.cs</DependentUpon>
+    <EmbeddedResource Include="FormConfig\XFrmConfig.resx">
+      <DependentUpon>XFrmConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConfig\XFrmConnection.resx">
+      <DependentUpon>XFrmConnection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -400,6 +477,11 @@
     <EmbeddedResource Include="XFrmMain.resx">
       <DependentUpon>XFrmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="IPSP\IPSPModel.xpo" />
+    <None Include="IPSP\IPSPModel.xpo.diagram">
+      <DependentUpon>IPSPModel.xpo</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -414,7 +496,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="IPSP\" />
+    <Folder Include="Sync\Case\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

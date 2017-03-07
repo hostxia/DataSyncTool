@@ -13,7 +13,7 @@ namespace DataSyncTool.DBUtility
     public abstract class DbHelperSQL
     {
         //数据库连接字符串(web.config来配置)，多数据库可使用DbHelperSQLP来实现.
-        public static string connectionString = PubConstant.ConnectionString;     		
+        public static string connectionString = PubConstant.ConnectionStringIPSP;     		
         public DbHelperSQL()
         {            
         }
