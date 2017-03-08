@@ -15,7 +15,7 @@ namespace DataSyncTool.DBIPS4_Import
 {
     public static class ConnectionHelper
     {
-        public const string ConnectionString = @"XpoProvider=MSSqlServer;data source=192.168.0.239;user id=sa;password=qwer1234!;initial catalog=DBIPS4_Import;Persist Security Info=true";
+        public const string ConnectionString = @"XpoProvider=MSSqlServer;data source=192.168.0.239;user id=sa;password=qwer1234!;initial catalog=DBIPS+0209;Persist Security Info=true";
         public static void Connect(DevExpress.Xpo.DB.AutoCreateOption autoCreateOption)
         {
             XpoDefault.DataLayer = XpoDefault.GetDataLayer(ConnectionString, autoCreateOption);

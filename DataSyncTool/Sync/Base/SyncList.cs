@@ -27,12 +27,12 @@ namespace DataSyncTool.Sync.Base
             {
                 AddRange(GetListSyncData());
             }
-            SyncResultInfoSet?.AddInfo("同步数据...", typeof(TSource).Name, typeof(TTarget).Name);
+            SyncResultInfoSet?.AddInfo("开始同步数据...", typeof(TSource).Name, typeof(TTarget).Name);
             ForEach(d =>
             {
                 d.SaveDataPC();
             });
-            SyncResultInfoSet?.AddInfo("数据同步完成！", typeof(TSource).Name, typeof(TTarget).Name);
+            SyncResultInfoSet?.AddInfo("数据同步完成。", typeof(TSource).Name, typeof(TTarget).Name);
         }
     }
 }

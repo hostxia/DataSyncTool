@@ -527,6 +527,14 @@ namespace DataSyncTool.DBIPS4_Import
         public XPCollection<TCstmr_ClientContact> TCstmr_ClientContacts { get { return GetCollection<TCstmr_ClientContact>("TCstmr_ClientContacts"); } }
         [Association(@"T_DemandReferencesTCstmr_Client")]
         public XPCollection<T_Demand> T_Demands { get { return GetCollection<T_Demand>("T_Demands"); } }
+        [Association(@"T_MainFilesReferencesTCstmr_Client")]
+        public XPCollection<T_MainFiles> T_MainFiless { get { return GetCollection<T_MainFiles>("T_MainFiless"); } }
+        [Association(@"T_MainFilesReferencesTCstmr_Client1")]
+        public XPCollection<T_MainFiles> T_MainFiless1 { get { return GetCollection<T_MainFiles>("T_MainFiless1"); } }
+        [Association(@"TCase_BaseReferencesTCstmr_Client")]
+        public XPCollection<TCase_Base> TCase_Bases { get { return GetCollection<TCase_Base>("TCase_Bases"); } }
+        [Association(@"TCase_ClientsReferencesTCstmr_Client")]
+        public XPCollection<TCase_Clients> TCase_Clientss { get { return GetCollection<TCase_Clients>("TCase_Clientss"); } }
     }
 
 }

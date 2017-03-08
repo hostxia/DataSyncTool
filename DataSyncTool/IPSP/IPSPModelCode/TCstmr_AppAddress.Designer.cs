@@ -37,7 +37,6 @@ namespace DataSyncTool.DBIPS4_Import
             set { SetPropertyValue<int>("n_Country", ref fn_Country, value); }
         }
         string fs_State;
-        [Size(300)]
         public string s_State
         {
             get { return fs_State; }

@@ -421,6 +421,10 @@ namespace DataSyncTool.DBIPS4_Import
         public XPCollection<TCstmr_AppAddress> TCstmr_AppAddresss { get { return GetCollection<TCstmr_AppAddress>("TCstmr_AppAddresss"); } }
         [Association(@"TCstmr_AppContactReferencesTCstmr_Applicant")]
         public XPCollection<TCstmr_AppContact> TCstmr_AppContacts { get { return GetCollection<TCstmr_AppContact>("TCstmr_AppContacts"); } }
+        [Association(@"T_MainFilesReferencesTCstmr_Applicant")]
+        public XPCollection<T_MainFiles> T_MainFiless { get { return GetCollection<T_MainFiles>("T_MainFiless"); } }
+        [Association(@"T_MainFilesReferencesTCstmr_Applicant1")]
+        public XPCollection<T_MainFiles> T_MainFiless1 { get { return GetCollection<T_MainFiles>("T_MainFiless1"); } }
     }
 
 }

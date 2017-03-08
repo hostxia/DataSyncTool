@@ -68,6 +68,70 @@
     <Compile Include="Common\DataCache.cs" />
     <Compile Include="Common\PageValidate.cs" />
     <Compile Include="IPSP\IPSPModelCode\ConnectionHelper.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_Applicant.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_Applicant.Designer.cs">
+      <DependentUpon>TCase_Applicant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCase_Attorney.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_Attorney.Designer.cs">
+      <DependentUpon>TCase_Attorney.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCase_Base.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_Base.Designer.cs">
+      <DependentUpon>TCase_Base.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCase_CaseCustomField.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_CaseCustomField.Designer.cs">
+      <DependentUpon>TCase_CaseCustomField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCase_CaseRelative.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_CaseRelative.Designer.cs">
+      <DependentUpon>TCase_CaseRelative.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCase_ClientContact.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_ClientContact.Designer.cs">
+      <DependentUpon>TCase_ClientContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCase_Clients.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_Clients.Designer.cs">
+      <DependentUpon>TCase_Clients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCase_Contact.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_Contact.Designer.cs">
+      <DependentUpon>TCase_Contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCase_Department.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_Department.Designer.cs">
+      <DependentUpon>TCase_Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCase_IntroContact.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_IntroContact.Designer.cs">
+      <DependentUpon>TCase_IntroContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCase_Memo.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_Memo.Designer.cs">
+      <DependentUpon>TCase_Memo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCase_ToAgencyContact.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCase_ToAgencyContact.Designer.cs">
+      <DependentUpon>TCase_ToAgencyContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCode_CaseCustomField.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCode_CaseCustomField.Designer.cs">
+      <DependentUpon>TCode_CaseCustomField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCode_CaseRole.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCode_CaseRole.Designer.cs">
+      <DependentUpon>TCode_CaseRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCode_Country.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCode_Country.Designer.cs">
+      <DependentUpon>TCode_Country.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TCode_Employee.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TCode_Employee.Designer.cs">
+      <DependentUpon>TCode_Employee.cs</DependentUpon>
+    </Compile>
     <Compile Include="IPSP\IPSPModelCode\TCstmr_AgencyAddress.cs" />
     <Compile Include="IPSP\IPSPModelCode\TCstmr_AgencyAddress.Designer.cs">
       <DependentUpon>TCstmr_AgencyAddress.cs</DependentUpon>
@@ -116,9 +180,233 @@
     <Compile Include="IPSP\IPSPModelCode\TCstmr_CoopAgency.Designer.cs">
       <DependentUpon>TCstmr_CoopAgency.cs</DependentUpon>
     </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_Action.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_Action.Designer.cs">
+      <DependentUpon>TFCode_Action.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_ActionInCodeTask.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_ActionInCodeTask.Designer.cs">
+      <DependentUpon>TFCode_ActionInCodeTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_BaseDate.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_BaseDate.Designer.cs">
+      <DependentUpon>TFCode_BaseDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_BaseDateInCodeDeadline.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_BaseDateInCodeDeadline.Designer.cs">
+      <DependentUpon>TFCode_BaseDateInCodeDeadline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_CaseProcessInCodeTaskChain.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_CaseProcessInCodeTaskChain.Designer.cs">
+      <DependentUpon>TFCode_CaseProcessInCodeTaskChain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_CustomCondition.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_CustomCondition.Designer.cs">
+      <DependentUpon>TFCode_CustomCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_Deadline.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_Deadline.Designer.cs">
+      <DependentUpon>TFCode_Deadline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_DeadlineInCodeTask.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_DeadlineInCodeTask.Designer.cs">
+      <DependentUpon>TFCode_DeadlineInCodeTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_DeadlineInCodeTaskChain.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_DeadlineInCodeTaskChain.Designer.cs">
+      <DependentUpon>TFCode_DeadlineInCodeTaskChain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_Demand.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_Demand.Designer.cs">
+      <DependentUpon>TFCode_Demand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_DemandType.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_DemandType.Designer.cs">
+      <DependentUpon>TFCode_DemandType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_DemandTypeInCodeTask.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_DemandTypeInCodeTask.Designer.cs">
+      <DependentUpon>TFCode_DemandTypeInCodeTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_Node.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_Node.Designer.cs">
+      <DependentUpon>TFCode_Node.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_NodeRelation.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_NodeRelation.Designer.cs">
+      <DependentUpon>TFCode_NodeRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_Task.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_Task.Designer.cs">
+      <DependentUpon>TFCode_Task.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskChain.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskChain.Designer.cs">
+      <DependentUpon>TFCode_TaskChain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskChainLayout.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskChainLayout.Designer.cs">
+      <DependentUpon>TFCode_TaskChainLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskChainType.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskChainType.Designer.cs">
+      <DependentUpon>TFCode_TaskChainType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskGenerateFee.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskGenerateFee.Designer.cs">
+      <DependentUpon>TFCode_TaskGenerateFee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskTriggerTaskChain.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskTriggerTaskChain.Designer.cs">
+      <DependentUpon>TFCode_TaskTriggerTaskChain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskType.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskType.Designer.cs">
+      <DependentUpon>TFCode_TaskType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskUrgency.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_TaskUrgency.Designer.cs">
+      <DependentUpon>TFCode_TaskUrgency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_WorkItem.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_WorkItem.Designer.cs">
+      <DependentUpon>TFCode_WorkItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TFCode_WorkItemInCodeTaskChain.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TFCode_WorkItemInCodeTaskChain.Designer.cs">
+      <DependentUpon>TFCode_WorkItemInCodeTaskChain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TF_ActionInTask.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TF_ActionInTask.Designer.cs">
+      <DependentUpon>TF_ActionInTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TF_CustomConditionInTaskChain.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TF_CustomConditionInTaskChain.Designer.cs">
+      <DependentUpon>TF_CustomConditionInTaskChain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TF_Deadline.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TF_Deadline.Designer.cs">
+      <DependentUpon>TF_Deadline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TF_DemandTypeInTask.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TF_DemandTypeInTask.Designer.cs">
+      <DependentUpon>TF_DemandTypeInTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TF_Node.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TF_Node.Designer.cs">
+      <DependentUpon>TF_Node.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TF_OperationLog.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TF_OperationLog.Designer.cs">
+      <DependentUpon>TF_OperationLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TF_Task.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TF_Task.Designer.cs">
+      <DependentUpon>TF_Task.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TF_TaskChain.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TF_TaskChain.Designer.cs">
+      <DependentUpon>TF_TaskChain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TF_TaskCheck.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TF_TaskCheck.Designer.cs">
+      <DependentUpon>TF_TaskCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TF_TaskCycleConfig.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TF_TaskCycleConfig.Designer.cs">
+      <DependentUpon>TF_TaskCycleConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TF_TaskParameter.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TF_TaskParameter.Designer.cs">
+      <DependentUpon>TF_TaskParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TF_WorkItemInTaskChain.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TF_WorkItemInTaskChain.Designer.cs">
+      <DependentUpon>TF_WorkItemInTaskChain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_CustomMemo.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_CustomMemo.Designer.cs">
+      <DependentUpon>TPCase_CustomMemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_HongKongApplication.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_HongKongApplication.Designer.cs">
+      <DependentUpon>TPCase_HongKongApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_Inventor.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_Inventor.Designer.cs">
+      <DependentUpon>TPCase_Inventor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_LawInfo.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_LawInfo.Designer.cs">
+      <DependentUpon>TPCase_LawInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_LawsuitInfo.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_LawsuitInfo.Designer.cs">
+      <DependentUpon>TPCase_LawsuitInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_MacaoApplication.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_MacaoApplication.Designer.cs">
+      <DependentUpon>TPCase_MacaoApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_OrigPatInfo.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_OrigPatInfo.Designer.cs">
+      <DependentUpon>TPCase_OrigPatInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_Patent.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_Patent.Designer.cs">
+      <DependentUpon>TPCase_Patent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_PCTICaseInfo.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_PCTICaseInfo.Designer.cs">
+      <DependentUpon>TPCase_PCTICaseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_PCTICountry.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_PCTICountry.Designer.cs">
+      <DependentUpon>TPCase_PCTICountry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_Priority.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_Priority.Designer.cs">
+      <DependentUpon>TPCase_Priority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_ReviewInfo.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_ReviewInfo.Designer.cs">
+      <DependentUpon>TPCase_ReviewInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\TPCase_SearchInfo.cs" />
+    <Compile Include="IPSP\IPSPModelCode\TPCase_SearchInfo.Designer.cs">
+      <DependentUpon>TPCase_SearchInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="IPSP\IPSPModelCode\T_Demand.cs" />
     <Compile Include="IPSP\IPSPModelCode\T_Demand.Designer.cs">
       <DependentUpon>T_Demand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\T_Fee.cs" />
+    <Compile Include="IPSP\IPSPModelCode\T_Fee.Designer.cs">
+      <DependentUpon>T_Fee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\T_FeeInCase.cs" />
+    <Compile Include="IPSP\IPSPModelCode\T_FeeInCase.Designer.cs">
+      <DependentUpon>T_FeeInCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\T_FileInCase.cs" />
+    <Compile Include="IPSP\IPSPModelCode\T_FileInCase.Designer.cs">
+      <DependentUpon>T_FileInCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\T_InFiles.cs" />
+    <Compile Include="IPSP\IPSPModelCode\T_InFiles.Designer.cs">
+      <DependentUpon>T_InFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\T_MainFiles.cs" />
+    <Compile Include="IPSP\IPSPModelCode\T_MainFiles.Designer.cs">
+      <DependentUpon>T_MainFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\T_OutFiles.cs" />
+    <Compile Include="IPSP\IPSPModelCode\T_OutFiles.Designer.cs">
+      <DependentUpon>T_OutFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPSP\IPSPModelCode\T_Role.cs" />
+    <Compile Include="IPSP\IPSPModelCode\T_Role.Designer.cs">
+      <DependentUpon>T_Role.cs</DependentUpon>
     </Compile>
     <Compile Include="PC\BLL\ALERTMETA.cs" />
     <Compile Include="PC\BLL\ALERTTYPEGROUP.cs" />
@@ -444,6 +732,8 @@
     <Compile Include="Log\SyncResultInfo.cs" />
     <Compile Include="Sync\Base\SyncData.cs" />
     <Compile Include="Sync\Base\SyncList.cs" />
+    <Compile Include="Sync\Case\SyncPatentData.cs" />
+    <Compile Include="Sync\Case\SyncPatentList.cs" />
     <Compile Include="Sync\Contact\SyncApplicantData.cs" />
     <Compile Include="Sync\Contact\SyncAgencyData.cs" />
     <Compile Include="Sync\Contact\SyncClientData.cs" />
@@ -495,9 +785,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sync\Case\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

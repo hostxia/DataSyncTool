@@ -137,12 +137,13 @@ namespace DataSyncTool.DBIPS4_Import
             get { return fn_ApplicantID; }
             set { SetPropertyValue<TCstmr_Applicant>("n_ApplicantID", ref fn_ApplicantID, value); }
         }
-        int fn_CaseID;
+        TCase_Base fn_CaseID;
         [Indexed(Name = @"in_CaseID_T_Demand")]
-        public int n_CaseID
+        [Association(@"T_DemandReferencesTCase_Base")]
+        public TCase_Base n_CaseID
         {
             get { return fn_CaseID; }
-            set { SetPropertyValue<int>("n_CaseID", ref fn_CaseID, value); }
+            set { SetPropertyValue<TCase_Base>("n_CaseID", ref fn_CaseID, value); }
         }
         TCstmr_CoopAgency fn_AgencyID;
         [Indexed(Name = @"in_AgencyID_T_Demand")]

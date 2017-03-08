@@ -27,13 +27,9 @@ namespace DataSyncTool.Sync.Contact
             dataPC.CLIENTNAME = dataIPSP.s_NativeName;
             dataPC.CLIENTCNAME = dataIPSP.s_Name;
             dataPC.BILLALIAS = dataIPSP.s_AccountName;
-
-            var contact = dataIPSP.TCstmr_ClientContacts.FirstOrDefault(c => c.TCstmr_ClientConAddresss.Any(a => a.s_Type.Contains("B")));
-            dataPC.BILLING_CONTACT = contact?.s_LastName + contact?.s_FirstName;
+            dataPC.BILLING_CONTACT = dataIPSP.TCstmr_ClientAddresss.FirstOrDefault(a => a.s_Type.Contains("B"))?.s_Street;
             dataPC.MAILING_ADDR = dataIPSP.TCstmr_ClientAddresss.FirstOrDefault(a => a.s_Type.Contains("M"))?.s_Street;
-
-            var contactMailing = dataIPSP.TCstmr_ClientContacts.FirstOrDefault(c => c.TCstmr_ClientConAddresss.Any(a => a.s_Type.Contains("M")));
-            dataPC.MAILING_CONTACT = contactMailing?.s_LastName + contactMailing?.s_FirstName;
+            dataPC.MAILING_CONTACT = dataIPSP.TCstmr_ClientAddresss.FirstOrDefault(a => a.s_Type.Contains("M"))?.s_TitleAddress;
             dataPC.PT_GENERAL_INSTR =
                 new XPQuery<T_Demand>(new UnitOfWork()).Where(d => d.n_ClientID != null && d.n_ClientID.n_ClientID == dataIPSP.n_ClientID).ToList()
                     .Aggregate(string.Empty, (s, d) => s + "\r\n" + d.s_Title + "\r\n" + d.s_Description + "\r\n");

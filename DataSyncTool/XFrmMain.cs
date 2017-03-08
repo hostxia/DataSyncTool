@@ -7,6 +7,7 @@ using DataSyncTool.Common;
 using DataSyncTool.DBUtility;
 using DataSyncTool.FormConfig;
 using DataSyncTool.Log;
+using DataSyncTool.Sync.Case;
 using DataSyncTool.Sync.Contact;
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
@@ -61,9 +62,10 @@ namespace DataSyncTool
             xbiCommonConfig.Enabled = false;
             Task.Run(() =>
                 {
-                    new SyncClientList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    new SyncApplicantList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    new SyncAgencyList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    //new SyncClientList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    //new SyncApplicantList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    //new SyncAgencyList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncPatentList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                 })
                 .ContinueWith(t =>
                 {
