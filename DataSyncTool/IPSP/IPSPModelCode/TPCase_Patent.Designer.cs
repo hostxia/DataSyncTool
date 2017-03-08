@@ -199,6 +199,20 @@ namespace DataSyncTool.DBIPS4_Import
         public XPCollection<TPCase_ReviewInfo> TPCase_ReviewInfos { get { return GetCollection<TPCase_ReviewInfo>("TPCase_ReviewInfos"); } }
         [Association(@"TPCase_SearchInfoReferencesTPCase_Patent")]
         public XPCollection<TPCase_SearchInfo> TPCase_SearchInfos { get { return GetCollection<TPCase_SearchInfo>("TPCase_SearchInfos"); } }
+        [Association(@"TPCase_AnnFeeInfoReferencesTPCase_Patent")]
+        public XPCollection<TPCase_AnnFeeInfo> TPCase_AnnFeeInfos { get { return GetCollection<TPCase_AnnFeeInfo>("TPCase_AnnFeeInfos"); } }
+        [Association(@"TPCase_ChangeItemsReferencesTPCase_Patent")]
+        public XPCollection<TPCase_ChangeItems> TPCase_ChangeItemss { get { return GetCollection<TPCase_ChangeItems>("TPCase_ChangeItemss"); } }
+        [Association(@"TPCase_ConsultInfoReferencesTPCase_Patent")]
+        public XPCollection<TPCase_ConsultInfo> TPCase_ConsultInfos { get { return GetCollection<TPCase_ConsultInfo>("TPCase_ConsultInfos"); } }
+        [Association(@"TPCase_InvalidityInfoReferencesTPCase_Patent")]
+        public XPCollection<TPCase_InvalidityInfo> TPCase_InvalidityInfos { get { return GetCollection<TPCase_InvalidityInfo>("TPCase_InvalidityInfos"); } }
+        [Association(@"TPCase_OppositePersonsReferencesTPCase_Patent")]
+        public XPCollection<TPCase_OppositePersons> TPCase_OppositePersonss { get { return GetCollection<TPCase_OppositePersons>("TPCase_OppositePersonss"); } }
+        [Association(@"TPCase_TranslateInfoReferencesTPCase_Patent")]
+        public XPCollection<TPCase_TranslateInfo> TPCase_TranslateInfos { get { return GetCollection<TPCase_TranslateInfo>("TPCase_TranslateInfos"); } }
+        [Association(@"TPCase_WriteInfoReferencesTPCase_Patent")]
+        public XPCollection<TPCase_WriteInfo> TPCase_WriteInfos { get { return GetCollection<TPCase_WriteInfo>("TPCase_WriteInfos"); } }
     }
 
 }

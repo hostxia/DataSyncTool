@@ -1,14 +1,15 @@
 ﻿using System.Linq;
-using DataSyncTool.DBIPS4_Import;
+using DataEntities.Contact.Applicant;
+using DataEntities.Contact.Demand;
 using DataSyncTool.PC.Model;
 using DataSyncTool.Sync.Base;
 using DevExpress.Xpo;
 
 namespace DataSyncTool.Sync.Contact
 {
-    public class SyncApplicantData : SyncData<TCstmr_Applicant, CLIENTDB>
+    public class SyncApplicantData : SyncData<Applicant, CLIENTDB>
     {
-        public override CLIENTDB GetExistDataPC(TCstmr_Applicant dataIPSP)
+        public override CLIENTDB GetExistDataPC(Applicant dataIPSP)
         {
             if (string.IsNullOrWhiteSpace(dataIPSP.s_AppCode))
             {
@@ -21,18 +22,16 @@ namespace DataSyncTool.Sync.Contact
             return existClient;
         }
 
-        public override void ConvertToDataPC(CLIENTDB dataPC, TCstmr_Applicant dataIPSP)
+        public override void ConvertToDataPC(CLIENTDB dataPC, Applicant dataIPSP)
         {
             dataPC.CLIENTID = dataIPSP.s_AppCode;
             dataPC.CLIENTNAME = dataIPSP.s_NativeName;
             dataPC.CLIENTCNAME = dataIPSP.s_Name;
             dataPC.BILLALIAS = dataIPSP.s_AccountName;
-            dataPC.BILLING_CONTACT = dataIPSP.TCstmr_AppAddresss.FirstOrDefault(a => a.s_Type.Contains("B"))?.s_Street;
-            dataPC.MAILING_ADDR = dataIPSP.TCstmr_AppAddresss.FirstOrDefault(a => a.s_Type.Contains("M"))?.s_Street;
-            dataPC.MAILING_CONTACT = dataIPSP.TCstmr_AppAddresss.FirstOrDefault(a => a.s_Type.Contains("M"))?.s_TitleAddress;
-            dataPC.PT_GENERAL_INSTR =
-                new XPQuery<T_Demand>(new UnitOfWork()).Where(d => d.n_ApplicantID != null && d.n_ApplicantID.n_AppID == dataIPSP.n_AppID).ToList()
-                    .Aggregate(string.Empty, (s, d) => s + "\r\n" + d.s_Title + "\r\n" + d.s_Description + "\r\n");
+            dataPC.BILLING_CONTACT = dataIPSP.ApplicantAddress.Cast<ApplicantAddress>().FirstOrDefault(a => a.s_Type.Contains("B"))?.s_Street;
+            dataPC.MAILING_ADDR = dataIPSP.ApplicantAddress.Cast<ApplicantAddress>().FirstOrDefault(a => a.s_Type.Contains("M"))?.s_Street;
+            dataPC.MAILING_CONTACT = dataIPSP.ApplicantAddress.Cast<ApplicantAddress>().FirstOrDefault(a => a.s_Type.Contains("M"))?.s_TitleAddress;
+            dataPC.PT_GENERAL_INSTR = dataIPSP.Demands.Cast<Demand>().Aggregate(string.Empty, (s, d) => s + "\r\n" + d.s_Title + "\r\n" + d.s_Description + "\r\n");
             dataPC.PT_APPN_COPY = 0;
             dataPC.PT_BILL_COPY = 0;
 

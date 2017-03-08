@@ -109,6 +109,8 @@ namespace DataSyncTool.DBIPS4_Import
             get { return fdt_MemoExpireDate; }
             set { SetPropertyValue<DateTime>("dt_MemoExpireDate", ref fdt_MemoExpireDate, value); }
         }
+        [Association(@"TPCase_TortiousWareReferencesTPCase_CustomMemo")]
+        public XPCollection<TPCase_TortiousWare> TPCase_TortiousWares { get { return GetCollection<TPCase_TortiousWare>("TPCase_TortiousWares"); } }
     }
 
 }

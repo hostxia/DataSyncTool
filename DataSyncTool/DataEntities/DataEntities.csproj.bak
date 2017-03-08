@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9CA2BF6A-79F1-4041-A621-AC9097A39075}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataEntities</RootNamespace>
+    <AssemblyName>DataEntities</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>IPSpacePlus\IPSpacePlus\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>IPSpacePlus\IPSpacePlus\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\DataEntities.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\DataEntities.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v12.2, Version=12.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v12.2, Version=12.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Infralution.Localization">
+      <HintPath>..\_DLL\Infralution.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\CodeCaseRole.cs" />
+    <Compile Include="Config\CodeFileConfirmOpinion.cs" />
+    <Compile Include="Config\CodeHolidayManage.cs" />
+    <Compile Include="Config\CodePreferentialCombine.cs" />
+    <Compile Include="Config\CodePreferentialPolicy.cs" />
+    <Compile Include="Config\CodePreferentialPolicyInCombine.cs" />
+    <Compile Include="Config\CodeTeam.cs" />
+    <Compile Include="Config\UserTeam.cs" />
+    <Compile Include="Element\Files\FileConfirm.cs" />
+    <Compile Include="Element\Files\FileConfirmOpinion.cs" />
+    <Compile Include="Finance\Accounting\BillListPay.cs" />
+    <Compile Include="Finance\Accounting\BillPay.cs" />
+    <Compile Include="Finance\Accounting\CameMoney.cs" />
+    <Compile Include="Finance\Bill\Bill.cs" />
+    <Compile Include="Finance\Bill\BillList.cs" />
+    <Compile Include="Finance\Bill\BillRemindHistory.cs" />
+    <Compile Include="Finance\Bill\BillTemp.cs" />
+    <Compile Include="Case\Applicant.cs" />
+    <Compile Include="Case\BasicCase.cs" />
+    <Compile Include="Case\BasicCaseMethods.cs" />
+    <Compile Include="Case\CaseAttorney.cs" />
+    <Compile Include="Case\CaseDepartments.cs" />
+    <Compile Include="Case\ClientContact.cs" />
+    <Compile Include="Case\Copyrights\CopyrightCustomMemo.cs" />
+    <Compile Include="Case\Copyrights\CopyrightTortiousWare.cs" />
+    <Compile Include="Case\CustomField.cs" />
+    <Compile Include="Case\DomainNames\DNRenewalFee.cs" />
+    <Compile Include="Case\FormPage.cs" />
+    <Compile Include="Case\IntroContact.cs" />
+    <Compile Include="Case\Memo.cs" />
+    <Compile Include="Case\Patents\ExtendedPatent.cs" />
+    <Compile Include="Case\Patents\HongKongApplication.cs" />
+    <Compile Include="Case\Patents\LawInfo.cs" />
+    <Compile Include="Case\Patents\MacaoApplication.cs" />
+    <Compile Include="Case\Patents\OrigPatInfo.cs" />
+    <Compile Include="Case\Patents\PatentCustomMemo.cs" />
+    <Compile Include="Case\Patents\PatentTortiousWare.cs" />
+    <Compile Include="Case\Process.cs" />
+    <Compile Include="Case\ProcessCustomField.cs" />
+    <Compile Include="Case\Relative.cs" />
+    <Compile Include="Case\StatusHistory.cs" />
+    <Compile Include="Case\Copyrights\BasicCopyright.cs" />
+    <Compile Include="Case\Copyrights\ExtendedCopyright.cs" />
+    <Compile Include="Case\DomainNames\BasicDomain.cs" />
+    <Compile Include="Case\DomainNames\ExtendedDomain.cs" />
+    <Compile Include="Case\Others\BasicOtherCase.cs" />
+    <Compile Include="Case\Others\ExtendedOtherCase.cs" />
+    <Compile Include="Case\Patents\AnnFeeStage.cs" />
+    <Compile Include="Case\Patents\AnnualFee.cs" />
+    <Compile Include="Case\Patents\BasicPatent.cs" />
+    <Compile Include="Case\Patents\CaseAnnFee.cs" />
+    <Compile Include="Case\Patents\CaseChange.cs" />
+    <Compile Include="Case\Patents\CaseConsultion.cs" />
+    <Compile Include="Case\Patents\CaseInvalidity.cs" />
+    <Compile Include="Case\Patents\CaseInvalidityReply.cs" />
+    <Compile Include="Case\Patents\CaseLawsuit.cs" />
+    <Compile Include="Case\Patents\CaseLawsuitReply.cs" />
+    <Compile Include="Case\Patents\CasePCTI.cs" />
+    <Compile Include="Case\Patents\CasePCTN.cs" />
+    <Compile Include="Case\Patents\CasePermitMemo.cs" />
+    <Compile Include="Case\Patents\CaseRegApplication.cs" />
+    <Compile Include="Case\Patents\CaseReview.cs" />
+    <Compile Include="Case\Patents\CaseSearch.cs" />
+    <Compile Include="Case\Patents\CaseTransfer.cs" />
+    <Compile Include="Case\Patents\CaseTranslation.cs" />
+    <Compile Include="Case\Patents\CaseWriting.cs" />
+    <Compile Include="Case\Patents\ChangeItems.cs" />
+    <Compile Include="Case\Patents\ConsultInfo.cs" />
+    <Compile Include="Case\Patents\Inventor.cs" />
+    <Compile Include="Case\Patents\OppositePerson.cs" />
+    <Compile Include="Case\Patents\PCTICountry.cs" />
+    <Compile Include="Case\Patents\PermitPatent.cs" />
+    <Compile Include="Case\Patents\Priority.cs" />
+    <Compile Include="Case\Patents\RelativeCase.cs" />
+    <Compile Include="Case\Patents\ReviewInfo.cs" />
+    <Compile Include="Case\Patents\WriteInfo.cs" />
+    <Compile Include="Case\ToAgencyContact.cs" />
+    <Compile Include="Case\Trademarks\BasicTrademark.cs" />
+    <Compile Include="Case\Trademarks\CaseBeSued.cs" />
+    <Compile Include="Case\Trademarks\CaseCancellationInfo.cs" />
+    <Compile Include="Case\Trademarks\CaseChange.cs" />
+    <Compile Include="Case\Trademarks\CaseComplementInfo.cs" />
+    <Compile Include="Case\Trademarks\CaseCountermandInfo.cs" />
+    <Compile Include="Case\Trademarks\CaseDispute.cs" />
+    <Compile Include="Case\Trademarks\CaseDisputeReply.cs" />
+    <Compile Include="Case\Trademarks\CaseDissent.cs" />
+    <Compile Include="Case\Trademarks\CaseDissentReply.cs" />
+    <Compile Include="Case\Trademarks\CaseDissentReview.cs" />
+    <Compile Include="Case\Trademarks\CaseLawsuit.cs" />
+    <Compile Include="Case\Trademarks\CaseLawsuitReply.cs" />
+    <Compile Include="Case\Trademarks\CaseRenewal.cs" />
+    <Compile Include="Case\Trademarks\CaseRepeal3Info.cs" />
+    <Compile Include="Case\Trademarks\CaseSearchInfo.cs" />
+    <Compile Include="Case\Trademarks\MadridBasicApp.cs" />
+    <Compile Include="Case\Trademarks\MadridInfo.cs" />
+    <Compile Include="Case\Trademarks\MultiPersonCase.cs" />
+    <Compile Include="Case\Trademarks\CaseRefusedReview.cs" />
+    <Compile Include="Case\Trademarks\CaseRegApplication.cs" />
+    <Compile Include="Case\Trademarks\CaseRepeal3ReplyInfo.cs" />
+    <Compile Include="Case\Trademarks\CaseRepealReview.cs" />
+    <Compile Include="Case\Trademarks\CaseRepealReviewReply.cs" />
+    <Compile Include="Case\Trademarks\CaseTransfer.cs" />
+    <Compile Include="Case\Trademarks\CaseTranslation.cs" />
+    <Compile Include="Case\Trademarks\ExtendedTrademark.cs" />
+    <Compile Include="Case\Trademarks\ChangeItems.cs" />
+    <Compile Include="Case\Trademarks\ConflictInfo.cs" />
+    <Compile Include="Case\Trademarks\CaseConsulting.cs" />
+    <Compile Include="Case\Trademarks\Goods.cs" />
+    <Compile Include="Case\Trademarks\Group.cs" />
+    <Compile Include="Case\Trademarks\LawInfo.cs" />
+    <Compile Include="Case\Trademarks\MadridCountry.cs" />
+    <Compile Include="Case\Trademarks\OppositePersons.cs" />
+    <Compile Include="Case\Trademarks\OtherImage.cs" />
+    <Compile Include="Case\Trademarks\CasePermitMemo.cs" />
+    <Compile Include="Case\Trademarks\Priority.cs" />
+    <Compile Include="Case\Trademarks\TMRenewalFee.cs" />
+    <Compile Include="Case\Trademarks\CaseTrademarkCustomMemo.cs" />
+    <Compile Include="Case\Trademarks\TrademarkTortiousWare.cs" />
+    <Compile Include="Case\UserCaseInConsole.cs" />
+    <Compile Include="Config\Check\Config\CodeCheckActions.cs" />
+    <Compile Include="Config\Check\Config\CodeCheckers.cs" />
+    <Compile Include="Config\Check\Config\CodeCheckStatuses.cs" />
+    <Compile Include="Config\Check\Config\CodeModuleCheck.cs" />
+    <Compile Include="Config\Check\Config\CodeModuleCheckStatuses.cs" />
+    <Compile Include="Config\Check\Config\CodeStatusActions.cs" />
+    <Compile Include="Config\Check\Info\CheckFlow.cs" />
+    <Compile Include="Config\Check\Info\CheckInfo.cs" />
+    <Compile Include="Config\Check\Info\ExpenseChecks.cs" />
+    <Compile Include="Config\Check\Info\OutFileChecks.cs" />
+    <Compile Include="Config\Check\Info\EmailChecks.cs" />
+    <Compile Include="Config\Check\Info\BillChecks.cs" />
+    <Compile Include="Config\Check\Info\AbroadBillChecks.cs" />
+    <Compile Include="Config\Check\Info\TaskChecks.cs" />
+    <Compile Include="Config\CodeAgencyInfo.cs" />
+    <Compile Include="Config\CodeAnnualFee.cs" />
+    <Compile Include="Config\CodeAnnualFeeItem.cs" />
+    <Compile Include="Config\CodeBillTemplate.cs" />
+    <Compile Include="Config\CodeBillTemplateColumn.cs" />
+    <Compile Include="Config\CodeBusinessType.cs" />
+    <Compile Include="Config\CodeCameFile.cs" />
+    <Compile Include="Config\CodeCaseCustomField.cs" />
+    <Compile Include="Config\CodeCaseProcess.cs" />
+    <Compile Include="Config\CodeCaseProcessItem.cs" />
+    <Compile Include="Config\CodeCPCTemplate.cs" />
+    <Compile Include="Config\CodeEmailServer.cs" />
+    <Compile Include="Config\CodeInFileImportConfig.cs" />
+    <Compile Include="Config\CodeProxyServer.cs" />
+    <Compile Include="Config\CodeSecurityLevelConfig.cs" />
+    <Compile Include="Config\CodeSysTaskInFile.cs" />
+    <Compile Include="Config\CodeState.cs" />
+    <Compile Include="Config\CodeColor.cs" />
+    <Compile Include="Config\CodeCountry.cs" />
+    <Compile Include="Config\CodeCPCCountry.cs" />
+    <Compile Include="Config\CodeCPCProvince.cs" />
+    <Compile Include="Config\CodeCurrency.cs" />
+    <Compile Include="Config\CodeDomainRenewalFee.cs" />
+    <Compile Include="Config\CodeDomainRenewalFeeItem.cs" />
+    <Compile Include="Config\CodeFee.cs" />
+    <Compile Include="Config\CodeFeeItem.cs" />
+    <Compile Include="Config\CodeFlowNoRule.cs" />
+    <Compile Include="Config\CodeGoods.cs" />
+    <Compile Include="Config\CodeGridLayout.cs" />
+    <Compile Include="Config\CodeLanguage.cs" />
+    <Compile Include="Config\CodeOfficial.cs" />
+    <Compile Include="Config\CodeOtherTemplate.cs" />
+    <Compile Include="Config\CodeProcess.cs" />
+    <Compile Include="Config\CodeProcessCustomField.cs" />
+    <Compile Include="Config\CodePTCType.cs" />
+    <Compile Include="Config\CodeEmployee.cs" />
+    <Compile Include="Config\CodeSearch.cs" />
+    <Compile Include="Config\CodeSerialRule.cs" />
+    <Compile Include="Config\CodeCity.cs" />
+    <Compile Include="Config\CodeSysTasks.cs" />
+    <Compile Include="Config\CodeSysTasksDemandCondition.cs" />
+    <Compile Include="Config\CodeTemplate.cs" />
+    <Compile Include="Config\CodeTrademarkRenewalFee.cs" />
+    <Compile Include="Config\CodeTrademarkRenewalFeeItem.cs" />
+    <Compile Include="Config\CodeVersion.cs" />
+    <Compile Include="Config\CodeSysTasksCondition.cs" />
+    <Compile Include="Config\CodeDemand.cs" />
+    <Compile Include="Config\CodeSecurityConfig.cs" />
+    <Compile Include="CommonEntities\DropDownList.cs" />
+    <Compile Include="CommonEntities\DropDownValues.cs" />
+    <Compile Include="Contact\ContactMemo\ContactMemo.cs" />
+    <Compile Include="Contact\Agency\Agency.cs" />
+    <Compile Include="Contact\Agency\AgencyAddress.cs" />
+    <Compile Include="Contact\Agency\AgencyContact.cs" />
+    <Compile Include="Contact\Agency\AgencyContactAddress.cs" />
+    <Compile Include="Contact\Applicant\Applicant.cs" />
+    <Compile Include="Contact\Applicant\ApplicantAddress.cs" />
+    <Compile Include="Contact\Applicant\ApplicantChangeHistory.cs" />
+    <Compile Include="Contact\Applicant\ApplicantContact.cs" />
+    <Compile Include="Contact\Applicant\ApplicantContactAddress.cs" />
+    <Compile Include="Contact\Client\Client.cs" />
+    <Compile Include="Contact\Client\ClientAddress.cs" />
+    <Compile Include="Contact\Client\ClientChangeHistory.cs" />
+    <Compile Include="Contact\Client\ClientContact.cs" />
+    <Compile Include="Contact\Client\ClientContactAddress.cs" />
+    <Compile Include="Contact\Client\ClientFeePolicy.cs" />
+    <Compile Include="Contact\Client\ClientFile.cs" />
+    <Compile Include="Contact\Client\RoleClient.cs" />
+    <Compile Include="Contact\Client\UserClientRight.cs" />
+    <Compile Include="Contact\CommContact\CommContact.cs" />
+    <Compile Include="Contact\Introducer\IntroAddress.cs" />
+    <Compile Include="Contact\Introducer\IntroContactAddress.cs" />
+    <Compile Include="Contact\Introducer\IntroContact.cs" />
+    <Compile Include="Contact\Introducer\Introducer.cs" />
+    <Compile Include="Finance\Accounting\Deposit.cs" />
+    <Compile Include="Finance\Contract\Contract.cs" />
+    <Compile Include="Contact\Demand\Demand.cs" />
+    <Compile Include="Element\Emails\Email.cs" />
+    <Compile Include="Element\Emails\EmailAttach.cs" />
+    <Compile Include="Element\Emails\EmailInCase.cs" />
+    <Compile Include="Element\Emails\EmailInFolder.cs" />
+    <Compile Include="Element\Emails\EmailTemplate.cs" />
+    <Compile Include="Element\Emails\EmailTree.cs" />
+    <Compile Include="Element\Fee\ABillHedge.cs" />
+    <Compile Include="Element\Fee\AbroadBillList.cs" />
+    <Compile Include="Element\Fee\APayment.cs" />
+    <Compile Include="Element\Fee\Expense.cs" />
+    <Compile Include="Element\Fee\ExpenseInCase.cs" />
+    <Compile Include="Element\Fee\FeeInCase.cs" />
+    <Compile Include="Element\Fee\Fee.cs" />
+    <Compile Include="Element\Fee\FeePayList.cs" />
+    <Compile Include="Element\Fee\AbroadBill.cs" />
+    <Compile Include="Element\Fee\Payment.cs" />
+    <Compile Include="Element\Files\BaseFile.cs" />
+    <Compile Include="Element\Files\FileFolder.cs" />
+    <Compile Include="Element\Files\FileHistory.cs" />
+    <Compile Include="Element\Files\FileInCase.cs" />
+    <Compile Include="Element\Files\FileInFolder.cs" />
+    <Compile Include="Element\Files\InFile.cs" />
+    <Compile Include="Element\Files\OtherFile.cs" />
+    <Compile Include="Element\Files\OutFile.cs" />
+    <Compile Include="Element\Files\SubmitListInFee.cs" />
+    <Compile Include="Element\Files\SubmitListInFile.cs" />
+    <Compile Include="Element\Files\TrademarkSubmitList.cs" />
+    <Compile Include="Config\Log\Log.cs" />
+    <Compile Include="Element\Monitor\Monitor.cs" />
+    <Compile Include="Element\Monitor\MonitorInCase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Config\Right\Department.cs" />
+    <Compile Include="Config\Right\Right.cs" />
+    <Compile Include="Config\Right\Role.cs" />
+    <Compile Include="Config\Right\RoleRights.cs" />
+    <Compile Include="Config\Right\UserDepartments.cs" />
+    <Compile Include="Config\Right\UserRights.cs" />
+    <Compile Include="Config\Right\UserRoles.cs" />
+    <Compile Include="Statistic\StatisticStruct.cs" />
+    <Compile Include="Element\Tasks\Task.cs" />
+    <Compile Include="Element\Tasks\TaskInCase.cs" />
+    <Compile Include="Element\Tasks\TaskRelation.cs" />
+    <Compile Include="Business\SpecialFieldWrite.cs" />
+    <Compile Include="Element\TimeSheet\TimeSheet.cs" />
+    <Compile Include="Element\TimeSheet\TimeSheetInCase.cs" />
+    <Compile Include="Element\TimeSheet\TimeSheetItems.cs" />
+    <Compile Include="TaskFlowConfig\CodeTaskChainInCodeCaseProcess.cs" />
+    <Compile Include="TaskFlowConfig\CodeTaskInChainInCodeCaseProcess.cs" />
+    <Compile Include="TaskFlowConfig\CodeTaskInChainInCodeDemand.cs" />
+    <Compile Include="TaskFlowConfig\TFCodeActions.cs" />
+    <Compile Include="TaskFlowConfig\TFCodeConditionTask.cs" />
+    <Compile Include="TaskFlowConfig\TFCodeCreateCodeTaskChain.cs" />
+    <Compile Include="TaskFlowConfig\TFCodeTask.cs" />
+    <Compile Include="TaskFlowConfig\TFCodeTaskActions.cs" />
+    <Compile Include="TaskFlowConfig\TFCodeTaskChain.cs" />
+    <Compile Include="TaskFlowConfig\TFCodeDeadLine.cs" />
+    <Compile Include="TaskFlowConfig\TFCodeTaskChainInCameFile.cs" />
+    <Compile Include="TaskFlowConfig\TFCodeTaskFees.cs" />
+    <Compile Include="TaskFlowConfig\TFCodeTaskInChain.cs" />
+    <Compile Include="TaskFlowConfig\TFCodeTaskChainDeadline.cs" />
+    <Compile Include="TaskFlowConfig\TFCodeTaskChainInCodeDemand.cs" />
+    <Compile Include="TaskFlow\TFDeadline.cs" />
+    <Compile Include="TaskFlow\TFTask.cs" />
+    <Compile Include="TaskFlow\TFTaskChain.cs" />
+    <Compile Include="TaskFlow\TFTaskParameter.cs" />
+    <Compile Include="TaskFlow\TFTaskResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resource.zh-CN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BasicFacility\BasicFacility.csproj">
+      <Project>{6087dc17-09c1-453c-b9e7-72104b2818fe}</Project>
+      <Name>BasicFacility %28BasicFacility\BasicFacility%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

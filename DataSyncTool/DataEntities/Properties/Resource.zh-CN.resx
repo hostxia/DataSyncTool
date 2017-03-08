@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcceptYear" xml:space="preserve">
+    <value>承办日期的年份</value>
+  </data>
+  <data name="AgenctCode" xml:space="preserve">
+    <value>来自本所职员配置模块</value>
+  </data>
+  <data name="ApplicateType" xml:space="preserve">
+    <value>提交类型</value>
+  </data>
+  <data name="ApplicateWay" xml:space="preserve">
+    <value>申请途径</value>
+  </data>
+  <data name="AppTypePersonal" xml:space="preserve">
+    <value>个人</value>
+  </data>
+  <data name="AppTypeUnitOrEnterprise" xml:space="preserve">
+    <value>单位/企业</value>
+  </data>
+  <data name="BussinessType" xml:space="preserve">
+    <value>来自业务类型配置模块</value>
+  </data>
+  <data name="ClientCode" xml:space="preserve">
+    <value>来自客户模块</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>版权</value>
+    <comment>版权</comment>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>域名</value>
+    <comment>域名</comment>
+  </data>
+  <data name="Example" xml:space="preserve">
+    <value>例子</value>
+  </data>
+  <data name="FileActive_Active" xml:space="preserve">
+    <value>未结案</value>
+  </data>
+  <data name="FileActive_NotActive" xml:space="preserve">
+    <value>已结案</value>
+  </data>
+  <data name="FileClientGov_Client" xml:space="preserve">
+    <value>客户</value>
+  </data>
+  <data name="FileClientGov_Officical" xml:space="preserve">
+    <value>官方</value>
+  </data>
+  <data name="FileClientGov_Other" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="FileIOType_Out" xml:space="preserve">
+    <value>发文</value>
+  </data>
+  <data name="FileIOType_In" xml:space="preserve">
+    <value>来文</value>
+  </data>
+  <data name="FileIOType_Other" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="File_NotTransfer" xml:space="preserve">
+    <value>未转函</value>
+  </data>
+  <data name="File_Transfered" xml:space="preserve">
+    <value>已转函</value>
+  </data>
+  <data name="FixedWords" xml:space="preserve">
+    <value>固定文字</value>
+  </data>
+  <data name="FlowDirection" xml:space="preserve">
+    <value>案件流向</value>
+  </data>
+  <data name="FlowNumber" xml:space="preserve">
+    <value>流水号</value>
+  </data>
+  <data name="FollowNotUsed" xml:space="preserve">
+    <value>补漏</value>
+  </data>
+  <data name="FromAgentCode" xml:space="preserve">
+    <value>来自代理机构模块</value>
+  </data>
+  <data name="FromBussinessType" xml:space="preserve">
+    <value>来自业务类型配置模块</value>
+  </data>
+  <data name="FromClientCode" xml:space="preserve">
+    <value>来自客户模块</value>
+  </data>
+  <data name="FromIntroducerCode" xml:space="preserve">
+    <value>来自案源人模块</value>
+  </data>
+  <data name="FromPatentType" xml:space="preserve">
+    <value>来自专利配置模块</value>
+  </data>
+  <data name="FromTrademarkType" xml:space="preserve">
+    <value>来自商标配置模块</value>
+  </data>
+  <data name="IntroducerCode" xml:space="preserve">
+    <value>来自案源人模块</value>
+  </data>
+  <data name="In_In" xml:space="preserve">
+    <value>内-内：</value>
+  </data>
+  <data name="In_Out" xml:space="preserve">
+    <value>内-外：</value>
+  </data>
+  <data name="MadridAgreement" xml:space="preserve">
+    <value>马德里协定国</value>
+  </data>
+  <data name="MadridApplicate" xml:space="preserve">
+    <value>马德里申请</value>
+  </data>
+  <data name="MadridProtocol" xml:space="preserve">
+    <value>马德里议定国</value>
+  </data>
+  <data name="MaxNumber" xml:space="preserve">
+    <value>最大值加1</value>
+  </data>
+  <data name="NotUse" xml:space="preserve">
+    <value>不使用</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>电子申请</value>
+  </data>
+  <data name="OnlyChar" xml:space="preserve">
+    <value>你可以在每个输入框里输入一个字符。</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>其他</value>
+    <comment>其他(类型)</comment>
+  </data>
+  <data name="Out_In" xml:space="preserve">
+    <value>外-内：</value>
+  </data>
+  <data name="Out_Out" xml:space="preserve">
+    <value>外-外：</value>
+  </data>
+  <data name="Paper" xml:space="preserve">
+    <value>纸质申请</value>
+  </data>
+  <data name="Patent" xml:space="preserve">
+    <value>专利</value>
+    <comment>专利(类型)</comment>
+  </data>
+  <data name="PatentType" xml:space="preserve">
+    <value>来自专利类型配置模块</value>
+  </data>
+  <data name="RegCountryOrState" xml:space="preserve">
+    <value>来自国家/地区配置模块</value>
+  </data>
+  <data name="SerialNoIsTooLong" xml:space="preserve">
+    <value>我方文号最大长度不能超过50</value>
+  </data>
+  <data name="SingleApplicate" xml:space="preserve">
+    <value>直接申请</value>
+  </data>
+  <data name="Trademark" xml:space="preserve">
+    <value>商标</value>
+    <comment>商标(类型)</comment>
+  </data>
+  <data name="TrademarkType" xml:space="preserve">
+    <value>来自商标类型配置模块</value>
+  </data>
+  <data name="TypeOfBussinessType" xml:space="preserve">
+    <value>业务类型类别</value>
+  </data>
+  <data name="Office" xml:space="preserve">
+    <value>&lt;官方&gt;</value>
+  </data>
+  <data name="Dealing" xml:space="preserve">
+    <value>处理中</value>
+  </data>
+  <data name="High" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="Low" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="Middle" xml:space="preserve">
+    <value>中</value>
+  </data>
+  <data name="TaskFinish" xml:space="preserve">
+    <value>已完成</value>
+  </data>
+  <data name="TaskInvalid" xml:space="preserve">
+    <value>退回</value>
+  </data>
+  <data name="Undeal" xml:space="preserve">
+    <value>未处理</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>已结案</value>
+  </data>
+  <data name="UnClose" xml:space="preserve">
+    <value>未结案</value>
+  </data>
+  <data name="Color_Config_Before_1" xml:space="preserve">
+    <value>距离到期：</value>
+  </data>
+  <data name="Color_Config_Before_2" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="Color_Config_Be_Due" xml:space="preserve">
+    <value>到期</value>
+  </data>
+  <data name="Color_Config_Overdue" xml:space="preserve">
+    <value>已过期</value>
+  </data>
+  <data name="Agent_Fee_Discount" xml:space="preserve">
+    <value>代理费折扣({0}%)</value>
+  </data>
+  <data name="Fixed_AFee" xml:space="preserve">
+    <value>固定代理费({0})</value>
+  </data>
+  <data name="Fixed_Total_Fee" xml:space="preserve">
+    <value>固定全案费({0})</value>
+  </data>
+  <data name="Column_Text_Charge_First" xml:space="preserve">
+    <value>先办理，后收费</value>
+  </data>
+  <data name="Column_Text_Client" xml:space="preserve">
+    <value>客户自缴</value>
+  </data>
+  <data name="Column_Text_Pay_First" xml:space="preserve">
+    <value>先收费，后办理</value>
+  </data>
+  <data name="RadioGroup_3_Text" xml:space="preserve">
+    <value>进度已完成</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>周</value>
+  </data>
+  <data name="AnnualFee" xml:space="preserve">
+    <value>年费</value>
+  </data>
+  <data name="DomainRenewalFee" xml:space="preserve">
+    <value>域名续展费</value>
+  </data>
+  <data name="TrademarkRenewalFee" xml:space="preserve">
+    <value>商标续展费</value>
+  </data>
+  <data name="ApplicationDemand" xml:space="preserve">
+    <value>申请人</value>
+  </data>
+  <data name="CaseDemand" xml:space="preserve">
+    <value>案件</value>
+  </data>
+  <data name="ClientDemand" xml:space="preserve">
+    <value>客户</value>
+  </data>
+  <data name="AgencyDemand" xml:space="preserve">
+    <value>代理机构</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>取第</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>位</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>位到第</value>
+  </data>
+  <data name="In_In_Value" xml:space="preserve">
+    <value>内内</value>
+  </data>
+  <data name="In_Out_Value" xml:space="preserve">
+    <value>内外</value>
+  </data>
+  <data name="Out_In_Value" xml:space="preserve">
+    <value>外内</value>
+  </data>
+  <data name="Out_Out_Value" xml:space="preserve">
+    <value>外外</value>
+  </data>
+  <data name="sUnValid" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="sValid" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="ApplicantClientDemand" xml:space="preserve">
+    <value>申请人-客户</value>
+  </data>
+  <data name="ClientApplicantDemand" xml:space="preserve">
+    <value>客户-申请人</value>
+  </data>
+  <data name="FromApplicantCode" xml:space="preserve">
+    <value>来自申请人模块</value>
+  </data>
+  <data name="AboardAngecy" xml:space="preserve">
+    <value>外所</value>
+  </data>
+  <data name="RelatedClient" xml:space="preserve">
+    <value>相关客户</value>
+  </data>
+</root>
