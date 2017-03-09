@@ -34,7 +34,7 @@ namespace DataSyncTool.Sync.Case
             dataPC.CLIENT = dataIPSP.TheClient?.s_ClientCode;
             dataPC.RECEIVED = dataIPSP.dt_UndertakeDate;
             dataPC.AGENT =
-                new XPQuery<CodeEmployee>(new UnitOfWork()).FirstOrDefault(c => c.n_ID == dataIPSP.n_FirstAttorney)?
+                new XPQuery<CodeEmployee>(dataIPSP.Session).FirstOrDefault(c => c.n_ID == dataIPSP.n_FirstAttorney)?
                     .s_InternalCode;
             dataPC.CLIENT_NUMBER = dataIPSP.s_ClientSerial;
             if (dataIPSP.TheLawInfo != null)
@@ -117,7 +117,7 @@ namespace DataSyncTool.Sync.Case
                 var caseApplicant = dataIPSP.Applicants.Cast<Applicant>().OrderBy(c => c.n_Sequence).ToList()[i];
                 dataPC.GetType().GetProperty($"APPLICANT{i + 1}").SetValue(dataPC, caseApplicant.s_NativeName);
                 dataPC.GetType().GetProperty($"APPLICANT_CH{i + 1}").SetValue(dataPC, caseApplicant.s_Name);
-                var applicant = new XPQuery<DataEntities.Contact.Applicant.Applicant>(new UnitOfWork()).FirstOrDefault(a => a.n_AppID == caseApplicant.n_ApplicantID);
+                var applicant = new XPQuery<DataEntities.Contact.Applicant.Applicant>(dataIPSP.Session).FirstOrDefault(a => a.n_AppID == caseApplicant.n_ApplicantID);
                 if (applicant != null)
                     dataPC.GetType().GetProperty($"APPL_CODE{i + 1}").SetValue(dataPC, applicant.s_AppCode);
             }
@@ -136,7 +136,7 @@ namespace DataSyncTool.Sync.Case
             {
                 if (i > 11) continue;
                 var priority = dataIPSP.Priorities.Cast<Priority>().OrderBy(v => v.n_Sequence).ToList()[i];
-                var country = new XPQuery<CodeCountry>(new UnitOfWork()).FirstOrDefault(c => c.n_ID == priority.n_PCountry);
+                var country = new XPQuery<CodeCountry>(dataIPSP.Session).FirstOrDefault(c => c.n_ID == priority.n_PCountry);
                 dataPC.GetType().GetProperty($"PRI_COUNTRY{(i == 0 ? string.Empty : (i + 1).ToString())}").SetValue(dataPC, country?.s_CountryCode);
                 dataPC.GetType().GetProperty($"PRI_NUMBER{(i == 0 ? string.Empty : (i + 1).ToString())}").SetValue(dataPC, priority.s_PNum);
                 dataPC.GetType().GetProperty(i == 0 ? "EARLIEST_PRIORITY" : "PRI_DATE" + (i + 1)).SetValue(dataPC, priority.dt_PDate);
@@ -154,7 +154,7 @@ namespace DataSyncTool.Sync.Case
             dataPC.DEADLINE = dataIPSP.dt_ShldSbmtDate;//客户指定/绝限期——要求提交日
             dataPC.TITLE_CHINESE = dataIPSP.s_CaseName;
             //dataPC.AGENT_ACTUAL //实际代理人——处理人里找对应角色人员
-            var caseRoleActual = new XPQuery<CodeCaseRole>(new UnitOfWork()).FirstOrDefault(r => r.s_Name == "实际代理人")?.n_ID;
+            var caseRoleActual = new XPQuery<CodeCaseRole>(dataIPSP.Session).FirstOrDefault(r => r.s_Name == "实际代理人")?.n_ID;
             dataPC.AGENT_ACTUAL = dataIPSP.CaseAttorneys.Cast<CaseAttorney>().FirstOrDefault(a => a.n_CaseRoleID == caseRoleActual)?.TheAttorney?.s_InternalCode;
             //dataPC.APPN_COPY//申请文件份数--苏文静说不用回写
             //dataPC.BILL_COPY//账单份数--苏文静说不用回写
@@ -179,7 +179,7 @@ namespace DataSyncTool.Sync.Case
                 int.TryParse(claimNum.s_Memo, out nClaimNum);
                 dataPC.CLAIM_NUM = nClaimNum;//权项数
             }
-            var nCodeFieldId = new XPQuery<CodeCaseCustomField>(new UnitOfWork()).FirstOrDefault(f => f.s_CustomFieldName == "文种")?.n_ID;
+            var nCodeFieldId = new XPQuery<CodeCaseCustomField>(dataIPSP.Session).FirstOrDefault(f => f.s_CustomFieldName == "文种")?.n_ID;
             if (nCodeFieldId > 0)
             {
                 var memoLanguage = dataIPSP.CustomFields.Cast<CustomField>().FirstOrDefault(m => m.n_FieldCodeID == nCodeFieldId);
@@ -215,10 +215,8 @@ namespace DataSyncTool.Sync.Case
             //dataPC.YFEE1
             //dataPC.YFEE2
             dataPC.CERTIFICATE_NO = Convert.ToDecimal(string.IsNullOrWhiteSpace(dataIPSP.TheLawInfo?.s_CertfNo) ? "0" : dataIPSP.TheLawInfo?.s_CertfNo);
-            dataPC.OAGENT1 = new XPQuery<CodeEmployee>(new UnitOfWork()).FirstOrDefault(c => c.n_ID == dataIPSP.n_FirstAttorney)?
-                                .s_InternalCode;
-            dataPC.OAGENT2 = new XPQuery<CodeEmployee>(new UnitOfWork()).FirstOrDefault(c => c.n_ID == dataIPSP.n_SecondAttorney)?
-                    .s_InternalCode;
+            dataPC.OAGENT1 = new XPQuery<CodeEmployee>(dataIPSP.Session).FirstOrDefault(c => c.n_ID == dataIPSP.n_FirstAttorney)?.s_InternalCode;
+            dataPC.OAGENT2 = new XPQuery<CodeEmployee>(dataIPSP.Session).FirstOrDefault(c => c.n_ID == dataIPSP.n_SecondAttorney)?.s_InternalCode;
 
             //实审费已交——官费是否存在“实审费”并且状态是已缴
             if (dataIPSP.FeeInCases.Cast<FeeInCase>().Select(i => i.TheFee)
@@ -233,15 +231,15 @@ namespace DataSyncTool.Sync.Case
             dataPC.IGNOREANNUALFEE = dataIPSP.Demands.Cast<Demand>().Where(d => d.s_Title.Contains("年费")).Aggregate(string.Empty, (s, d) => "\r\n" + d.s_Title + "\r\n" + d.s_Description + "\r\n");//年费备注——找对应的要求
 
             //翻译人——案件处理人
-            var caseRoleTrans = new XPQuery<CodeCaseRole>(new UnitOfWork()).FirstOrDefault(r => r.s_Name == "翻译")?.n_ID;
+            var caseRoleTrans = new XPQuery<CodeCaseRole>(dataIPSP.Session).FirstOrDefault(r => r.s_Name == "翻译")?.n_ID;
             dataPC.TRANSLATOR = dataIPSP.CaseAttorneys.Cast<CaseAttorney>().FirstOrDefault(a => a.n_CaseRoleID == caseRoleTrans)?.TheAttorney?.s_InternalCode;
 
             //一校——案件处理人
-            var caseRoleFirstCheck = new XPQuery<CodeCaseRole>(new UnitOfWork()).FirstOrDefault(r => r.s_Name == "一校")?.n_ID;
+            var caseRoleFirstCheck = new XPQuery<CodeCaseRole>(dataIPSP.Session).FirstOrDefault(r => r.s_Name == "一校")?.n_ID;
             dataPC.CORRECTOR1 = dataIPSP.CaseAttorneys.Cast<CaseAttorney>().FirstOrDefault(a => a.n_CaseRoleID == caseRoleFirstCheck)?.TheAttorney?.s_InternalCode;
 
             //二校——案件处理人
-            var caseRoleSecondCheck = new XPQuery<CodeCaseRole>(new UnitOfWork()).FirstOrDefault(r => r.s_Name == "二校")?.n_ID;
+            var caseRoleSecondCheck = new XPQuery<CodeCaseRole>(dataIPSP.Session).FirstOrDefault(r => r.s_Name == "二校")?.n_ID;
             dataPC.CORRECTOR2 = dataIPSP.CaseAttorneys.Cast<CaseAttorney>().FirstOrDefault(a => a.n_CaseRoleID == caseRoleSecondCheck)?.TheAttorney?.s_InternalCode;
 
             //dataPC.URGENT_CO//加急系数
@@ -251,7 +249,6 @@ namespace DataSyncTool.Sync.Case
             dataPC.DIV_FILINGDATE = dataIPSP.dt_DivSubmitDate;//分案-申请提交日
             dataPC.DIV_PARENTAPPNO = dataIPSP.s_OrigAppNo; //分案-母案申请号
             //dataPC.STATUS
-
 
             //if (!IsExistDataPC.HasValue) return;
             //if (IsExistDataPC.Value)

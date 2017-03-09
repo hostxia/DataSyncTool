@@ -11,6 +11,8 @@ namespace DataSyncTool.Sync.Base
 
         public bool? IsExistDataPC { get; set; }
 
+        public object DataIPSPIndex { get; set; }
+
         public TSource DataIPSP { get; set; }
 
         public TTarget DataPC { get; set; }
@@ -21,14 +23,19 @@ namespace DataSyncTool.Sync.Base
 
         public virtual TTarget SaveDataPC()
         {
-            DataPC = GetExistDataPC(DataIPSP) ?? new TTarget();
-            if (!IsExistDataPC.HasValue)
-                return null;
-            var sInfo =
-                $"{(IsExistDataPC.Value ? "更新" : "添加")}：{typeof(TSource).Name} - {DataIPSP.ClassInfo.KeyProperty.GetValue(DataIPSP)}";
-            SyncResultInfoSet?.AddInfo(sInfo, typeof(TSource).Name, typeof(TTarget).Name);
-            ConvertToDataPC(DataPC, DataIPSP);
-            return DataPC;
+            using (var unitOfWork = new UnitOfWork())
+            {
+                DataIPSP = unitOfWork.GetObjectByKey<TSource>(DataIPSPIndex);
+                DataPC = GetExistDataPC(DataIPSP) ?? new TTarget();
+                if (!IsExistDataPC.HasValue)
+                    return null;
+                var sInfo =
+                    $"{(IsExistDataPC.Value ? "更新" : "添加")}：{typeof(TSource).Name} - {DataIPSP.ClassInfo.KeyProperty.GetValue(DataIPSP)}";
+                SyncResultInfoSet?.AddInfo(sInfo, typeof(TSource).Name, typeof(TTarget).Name);
+                ConvertToDataPC(DataPC, DataIPSP);
+                unitOfWork.Dispose();
+                return DataPC;
+            }
         }
     }
 }
