@@ -67,6 +67,7 @@
     <Compile Include="Common\ConfigHelper.cs" />
     <Compile Include="Common\DataCache.cs" />
     <Compile Include="Common\PageValidate.cs" />
+    <Compile Include="Log\InfoString.cs" />
     <Compile Include="PC\BLL\ALERTMETA.cs" />
     <Compile Include="PC\BLL\ALERTTYPEGROUP.cs" />
     <Compile Include="PC\BLL\ALERTVIEW.cs" />
@@ -391,7 +392,11 @@
     <Compile Include="Log\SyncResultInfo.cs" />
     <Compile Include="Sync\Base\SyncData.cs" />
     <Compile Include="Sync\Base\SyncList.cs" />
+    <Compile Include="Sync\Case\SyncPatentAbroadData.cs" />
+    <Compile Include="Sync\Case\SyncPatentHKData.cs" />
     <Compile Include="Sync\Case\SyncPatentData.cs" />
+    <Compile Include="Sync\Case\SyncPatentAbroadList.cs" />
+    <Compile Include="Sync\Case\SyncPatentHKList.cs" />
     <Compile Include="Sync\Case\SyncPatentList.cs" />
     <Compile Include="Sync\Contact\SyncApplicantData.cs" />
     <Compile Include="Sync\Contact\SyncAgencyData.cs" />

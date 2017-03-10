@@ -1,14 +1,18 @@
 ﻿using System.Linq;
 using DataEntities.Contact.Applicant;
 using DataEntities.Contact.Demand;
+using DataSyncTool.Log;
 using DataSyncTool.PC.Model;
 using DataSyncTool.Sync.Base;
-using DevExpress.Xpo;
 
 namespace DataSyncTool.Sync.Contact
 {
     public class SyncApplicantData : SyncData<Applicant, CLIENTDB>
     {
+        public SyncApplicantData(object dataIPSPIndex) : base(dataIPSPIndex)
+        {
+        }
+
         public override CLIENTDB GetExistDataPC(Applicant dataIPSP)
         {
             if (string.IsNullOrWhiteSpace(dataIPSP.s_AppCode))
@@ -17,9 +21,11 @@ namespace DataSyncTool.Sync.Contact
                 IsExistDataPC = null;
                 return null;
             }
-            var existClient = new PC.BLL.CLIENTDB().GetModel(dataIPSP.s_AppCode);
-            IsExistDataPC = existClient != null;
-            return existClient;
+            var existApplicant = new PC.BLL.CLIENTDB().GetModel(dataIPSP.s_AppCode);
+            IsExistDataPC = existApplicant != null;
+            SyncResultInfoSet.AddInfo(InfoString.ToSyncInfo("申请人", IsExistDataPC.Value, dataIPSP.n_AppID, dataIPSP.s_AppCode),
+                dataIPSP.ClassInfo.TableName, typeof(CLIENTDB).Name);
+            return existApplicant;
         }
 
         public override void ConvertToDataPC(CLIENTDB dataPC, Applicant dataIPSP)
@@ -27,23 +33,29 @@ namespace DataSyncTool.Sync.Contact
             dataPC.CLIENTID = dataIPSP.s_AppCode;
             dataPC.CLIENTNAME = dataIPSP.s_NativeName;
             dataPC.CLIENTCNAME = dataIPSP.s_Name;
-            dataPC.BILLALIAS = dataIPSP.s_AccountName;
-            dataPC.BILLING_CONTACT = dataIPSP.ApplicantAddress.Cast<ApplicantAddress>().FirstOrDefault(a => a.s_Type.Contains("B"))?.s_Street;
-            dataPC.MAILING_ADDR = dataIPSP.ApplicantAddress.Cast<ApplicantAddress>().FirstOrDefault(a => a.s_Type.Contains("M"))?.s_Street;
-            dataPC.MAILING_CONTACT = dataIPSP.ApplicantAddress.Cast<ApplicantAddress>().FirstOrDefault(a => a.s_Type.Contains("M"))?.s_TitleAddress;
-            dataPC.PT_GENERAL_INSTR = dataIPSP.Demands.Cast<Demand>().Aggregate(string.Empty, (s, d) => s + "\r\n" + d.s_Title + "\r\n" + d.s_Description + "\r\n");
+            //dataPC.BILLALIAS = dataIPSP.s_AccountName;
+            dataPC.BILLING_CONTACT =
+                dataIPSP.AppAddress.Cast<ApplicantAddress>()
+                    .FirstOrDefault(a => a.s_Type != null && a.s_Type.Contains("B"))?.s_Street;
+            dataPC.MAILING_ADDR =
+                dataIPSP.AppAddress.Cast<ApplicantAddress>()
+                    .FirstOrDefault(a => a.s_Type != null && a.s_Type.Contains("M"))?.s_Street;
+            dataPC.MAILING_CONTACT =
+                dataIPSP.AppAddress.Cast<ApplicantAddress>()
+                    .FirstOrDefault(a => a.s_Type != null && a.s_Type.Contains("M"))?.s_TitleAddress;
+            dataPC.PT_GENERAL_INSTR = dataIPSP.s_Notes;
             dataPC.PT_APPN_COPY = 0;
             dataPC.PT_BILL_COPY = 0;
-
-            //if (!IsExistDataPC.HasValue) return;
-            //if (IsExistDataPC.Value)
-            //{
-            //    new PC.BLL.CLIENTDB().Update(dataPC);
-            //}
-            //else
-            //{
-            //    new PC.BLL.CLIENTDB().Add(dataPC);
-            //}
+            FillDefaultValue();
+            if (!IsExistDataPC.HasValue) return;
+            if (IsExistDataPC.Value)
+            {
+                new PC.BLL.CLIENTDB().Update(dataPC);
+            }
+            else
+            {
+                new PC.BLL.CLIENTDB().Add(dataPC);
+            }
         }
     }
 }

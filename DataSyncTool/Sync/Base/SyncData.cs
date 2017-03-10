@@ -1,4 +1,5 @@
-﻿using DataSyncTool.Log;
+﻿using System;
+using DataSyncTool.Log;
 using DevExpress.Xpo;
 
 namespace DataSyncTool.Sync.Base
@@ -7,13 +8,15 @@ namespace DataSyncTool.Sync.Base
         where TSource : XPLiteObject, new()
         where TTarget : class, new()
     {
+        protected SyncData(object dataIPSPIndex)
+        {
+            DataIPSPIndex = dataIPSPIndex;
+        }
         public SyncResultInfoSet SyncResultInfoSet { get; set; }
 
         public bool? IsExistDataPC { get; set; }
 
         public object DataIPSPIndex { get; set; }
-
-        public TSource DataIPSP { get; set; }
 
         public TTarget DataPC { get; set; }
 
@@ -25,17 +28,31 @@ namespace DataSyncTool.Sync.Base
         {
             using (var unitOfWork = new UnitOfWork())
             {
-                DataIPSP = unitOfWork.GetObjectByKey<TSource>(DataIPSPIndex);
-                DataPC = GetExistDataPC(DataIPSP) ?? new TTarget();
+                var dataIPSP = unitOfWork.GetObjectByKey<TSource>(DataIPSPIndex);
+                DataPC = GetExistDataPC(dataIPSP) ?? new TTarget();
                 if (!IsExistDataPC.HasValue)
                     return null;
-                var sInfo =
-                    $"{(IsExistDataPC.Value ? "更新" : "添加")}：{typeof(TSource).Name} - {DataIPSP.ClassInfo.KeyProperty.GetValue(DataIPSP)}";
-                SyncResultInfoSet?.AddInfo(sInfo, typeof(TSource).Name, typeof(TTarget).Name);
-                ConvertToDataPC(DataPC, DataIPSP);
+                ConvertToDataPC(DataPC, dataIPSP);
                 unitOfWork.Dispose();
-                return DataPC;
             }
+            return DataPC;
+
+        }
+
+        public void FillDefaultValue()
+        {
+            FillDefaultValue(DataPC);
+        }
+
+        public void FillDefaultValue(object objData)
+        {
+            foreach (var property in objData.GetType().GetProperties())
+            {
+                if (property.PropertyType != typeof(string)) continue;
+                if (property.GetValue(objData) != null) continue;
+                property.SetValue(objData, string.Empty);
+            }
+
         }
     }
 }

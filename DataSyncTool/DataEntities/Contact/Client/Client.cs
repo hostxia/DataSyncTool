@@ -93,7 +93,6 @@ namespace DataEntities.Contact.Client
             set { SetPropertyValue<int>("n_ClientID", ref fn_ClientID, value); }
         }
 
-        [Delayed("fs_Name")]
         [Size(300)]
         public string s_Name
         {
@@ -101,7 +100,6 @@ namespace DataEntities.Contact.Client
             set { fs_Name.Value = value; }
         }
 
-        [Delayed("fs_NativeName")]
         [Size(200)]
         public string s_NativeName
         {
@@ -109,7 +107,6 @@ namespace DataEntities.Contact.Client
             set { fs_NativeName.Value = value; }
         }
 
-        [Delayed("fs_OtherName")]
         [Size(200)]
         public string s_OtherName
         {
@@ -117,7 +114,6 @@ namespace DataEntities.Contact.Client
             set { fs_OtherName.Value = value; }
         }
 
-        [Delayed("fs_ClientCode")]
         [Size(20)]
         public string s_ClientCode
         {
@@ -125,7 +121,6 @@ namespace DataEntities.Contact.Client
             set { fs_ClientCode.Value = value; }
         }
 
-        [Delayed("fs_IPType")]
         [Size(50)]
         public string s_IPType
         {
@@ -133,7 +128,6 @@ namespace DataEntities.Contact.Client
             set { fs_IPType.Value = value; }
         }
 
-        [Delayed("fs_Type")]
         [Size(50)]
         public string s_Type
         {
@@ -141,7 +135,6 @@ namespace DataEntities.Contact.Client
             set { fs_Type.Value = value; }
         }
 
-        [Delayed("fs_Credit")]
         [Size(10)]
         public string s_Credit
         {
@@ -150,7 +143,6 @@ namespace DataEntities.Contact.Client
         }
        
         
-        [Delayed("fn_ApplicantID")]
         public int n_ApplicantID
         {
             get
@@ -164,7 +156,6 @@ namespace DataEntities.Contact.Client
             set { fn_ApplicantID.Value = value; }
         }
 
-        [Delayed("fn_CoopAgencyID")]
         public int n_CoopAgencyID
         {
             get
@@ -178,7 +169,6 @@ namespace DataEntities.Contact.Client
             set { fn_CoopAgencyID.Value = value; }
         }
 
-        [Delayed("fn_IntroID")]
         public int n_IntroID
         {
             get
@@ -192,7 +182,6 @@ namespace DataEntities.Contact.Client
             set { fn_IntroID.Value = value; }
         }
 
-        [Delayed("fs_Notes")]
         [Size(800)]
         public string s_Notes
         {
@@ -200,7 +189,6 @@ namespace DataEntities.Contact.Client
             set { fs_Notes.Value = value; }
         }
 
-        [Delayed("fn_Language")]
         public int n_Language
         {
             get
@@ -233,14 +221,12 @@ namespace DataEntities.Contact.Client
             }
         }
 
-        [Delayed("fs_IsActive")]
         public string s_IsActive
         {
             get { return (string)fs_IsActive.Value; }
             set { fs_IsActive.Value = value; }
         }
 
-        [Delayed("fdt_FirstCaseDate")]
         public DateTime dt_FirstCaseDate
         {
             get
@@ -254,7 +240,6 @@ namespace DataEntities.Contact.Client
             set { fdt_FirstCaseDate.Value = value; }
         }
 
-        [Delayed("fdt_LastCaseDate")]
         public DateTime dt_LastCaseDate
         {
             get
@@ -268,7 +253,6 @@ namespace DataEntities.Contact.Client
             set { fdt_LastCaseDate.Value = value; }
         }
 
-        [Delayed("fs_Phone")]
         [Size(150)]
         public string s_Phone
         {
@@ -277,14 +261,12 @@ namespace DataEntities.Contact.Client
         }
 
 
-        [Delayed("fs_PriceDesc")]
         [Size(8000)]
         public string s_PriceDesc
         {
             get { return (string)fs_PriceDesc.Value; }
             set { fs_PriceDesc.Value = value; }
         }
-        [Delayed("fs_Mobile")]
         [Size(150)]
         public string s_Mobile
         {
@@ -292,7 +274,6 @@ namespace DataEntities.Contact.Client
             set { fs_Mobile.Value = value; }
         }
 
-        [Delayed("fs_Fax")]
         [Size(150)]
         public string s_Fax
         {
@@ -300,7 +281,6 @@ namespace DataEntities.Contact.Client
             set { fs_Fax.Value = value; }
         }
 
-        [Delayed("fs_Email")]
         [Size(300)]
         public string s_Email
         {
@@ -308,7 +288,6 @@ namespace DataEntities.Contact.Client
             set { fs_Email.Value = value; }
         }
 
-        [Delayed("fs_Website")]
         [Size(300)]
         public string s_Website
         {
@@ -316,14 +295,12 @@ namespace DataEntities.Contact.Client
             set { fs_Website.Value = value; }
         }
 
-        [Delayed("fs_IMAddress")]
         public string s_IMAddress
         {
             get { return (string)fs_IMAddress.Value; }
             set { fs_IMAddress.Value = value; }
         }
 
-        [Delayed("fs_Facebook")]
         [Size(200)]
         public string s_Facebook
         {
@@ -331,7 +308,6 @@ namespace DataEntities.Contact.Client
             set { fs_Facebook.Value = value; }
         }
 
-        [Delayed("fs_Twitter")]
         [Size(200)]
         public string s_Twitter
         {
@@ -339,7 +315,6 @@ namespace DataEntities.Contact.Client
             set { fs_Twitter.Value = value; }
         }
 
-        [Delayed("fs_PayMode")]
         [Size(2)]
         public string s_PayMode
         {
@@ -385,7 +360,6 @@ namespace DataEntities.Contact.Client
             }
         }
 
-        [Delayed("fdt_CreateDate")]
         public DateTime dt_CreateDate
         {
             get
@@ -399,7 +373,6 @@ namespace DataEntities.Contact.Client
             set { fdt_CreateDate.Value = value; }
         }
 
-        [Delayed("fdt_EditDate")]
         public DateTime dt_EditDate
         {
             get
@@ -413,7 +386,6 @@ namespace DataEntities.Contact.Client
             set { fdt_EditDate.Value = value; }
         }
 
-        [Delayed("fs_IsAllUser")]
         [Size(1)]
         public string s_IsAllUser
         {
@@ -500,7 +472,6 @@ namespace DataEntities.Contact.Client
             set { SetPropertyValue("s_NotClaimMoney", ref fs_NotClaimMoney, value); }
         }
 
-        [Delayed("fdt_DepositEditDate")]
         public DateTime dt_DepositEditDate
         {
             get

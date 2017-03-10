@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DataSyncTool.Log;
 using DevExpress.Xpo;
@@ -27,12 +28,18 @@ namespace DataSyncTool.Sync.Base
             {
                 AddRange(GetListSyncData());
             }
-            SyncResultInfoSet?.AddInfo("开始同步数据...", typeof(TSource).Name, typeof(TTarget).Name);
             ForEach(d =>
             {
-                d.SaveDataPC();
+                try
+                {
+                    d.SaveDataPC();
+                }
+                catch (Exception e)
+                {
+                    SyncResultInfoSet.AddError(e.ToString());
+                }
+
             });
-            SyncResultInfoSet?.AddInfo("数据同步完成。", typeof(TSource).Name, typeof(TTarget).Name);
         }
     }
 }

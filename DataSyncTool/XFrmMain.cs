@@ -62,10 +62,13 @@ namespace DataSyncTool
             xbiCommonConfig.Enabled = false;
             Task.Run(() =>
                 {
-                    //new SyncClientList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    //new SyncApplicantList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    //new SyncAgencyList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncClientList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncApplicantList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncAgencyList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                     new SyncPatentList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncPatentAbroadList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncPatentHKList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    _syncResultInfoSet.AddInfo("同步完成！");
                 })
                 .ContinueWith(t =>
                 {
@@ -134,7 +137,7 @@ namespace DataSyncTool
             try
             {
                 XpoDefault.DataLayer = XpoDefault.GetDataLayer(PubConstant.ConnectionStringIPSP,
-                    AutoCreateOption.SchemaAlreadyExists);
+                    AutoCreateOption.None);
                 return true;
             }
             catch (Exception ex)

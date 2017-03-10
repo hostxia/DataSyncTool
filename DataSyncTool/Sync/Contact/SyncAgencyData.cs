@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using DataEntities.Contact.Agency;
+using DataSyncTool.Log;
 using DataSyncTool.PC.Model;
 using DataSyncTool.Sync.Base;
 
@@ -7,6 +8,10 @@ namespace DataSyncTool.Sync.Contact
 {
     public class SyncAgencyData : SyncData<Agency, CLIENTDB>
     {
+        public SyncAgencyData(object dataIPSPIndex) : base(dataIPSPIndex)
+        {
+        }
+
         public override CLIENTDB GetExistDataPC(Agency dataIPSP)
         {
             if (string.IsNullOrWhiteSpace(dataIPSP.s_Code))
@@ -15,9 +20,12 @@ namespace DataSyncTool.Sync.Contact
                 IsExistDataPC = null;
                 return null;
             }
-            var existClient = new PC.BLL.CLIENTDB().GetModel(dataIPSP.s_Code);
-            IsExistDataPC = existClient != null;
-            return existClient;
+            var existAgency = new PC.BLL.CLIENTDB().GetModel(dataIPSP.s_Code);
+            IsExistDataPC = existAgency != null;
+            SyncResultInfoSet.AddInfo(
+                InfoString.ToSyncInfo("代理机构", IsExistDataPC.Value, dataIPSP.n_AgencyID, dataIPSP.s_Code),
+                dataIPSP.ClassInfo.TableName, typeof(CLIENTDB).Name);
+            return existAgency;
         }
 
         public override void ConvertToDataPC(CLIENTDB dataPC, Agency dataIPSP)
@@ -25,28 +33,27 @@ namespace DataSyncTool.Sync.Contact
             dataPC.CLIENTID = dataIPSP.s_Code;
             dataPC.CLIENTNAME = dataIPSP.s_NativeName;
             dataPC.CLIENTCNAME = dataIPSP.s_Name;
-            dataPC.BILLALIAS = dataIPSP.s_BeneficiaryName;
+            //dataPC.BILLALIAS = dataIPSP.s_BeneficiaryName;
             dataPC.BILLING_CONTACT =
-                dataIPSP.AgencyAddresses.Cast<AgencyAddress>().FirstOrDefault(a => a.s_Type.Contains("B"))?.s_Street;
+                dataIPSP.AgencyAddress.Cast<AgencyAddress>().FirstOrDefault(a => a.s_Type.Contains("B"))?.s_Street;
             dataPC.MAILING_ADDR =
-                dataIPSP.AgencyAddresses.Cast<AgencyAddress>().FirstOrDefault(a => a.s_Type.Contains("M"))?.s_Street;
+                dataIPSP.AgencyAddress.Cast<AgencyAddress>().FirstOrDefault(a => a.s_Type.Contains("M"))?.s_Street;
             dataPC.MAILING_CONTACT =
-                dataIPSP.AgencyAddresses.Cast<AgencyAddress>()
+                dataIPSP.AgencyAddress.Cast<AgencyAddress>()
                     .FirstOrDefault(a => a.s_Type.Contains("M"))?.s_IsMailingAddress;
-            dataPC.PT_GENERAL_INSTR = dataIPSP.Demands.Aggregate(string.Empty,
-                (s, d) => s + "\r\n" + d.s_Title + "\r\n" + d.s_Description + "\r\n");
+            dataPC.PT_GENERAL_INSTR = dataIPSP.s_Notes;
             dataPC.PT_APPN_COPY = 0;
             dataPC.PT_BILL_COPY = 0;
-
-            //if (!IsExistDataPC.HasValue) return;
-            //if (IsExistDataPC.Value)
-            //{
-            //    new PC.BLL.CLIENTDB().Update(dataPC);
-            //}
-            //else
-            //{
-            //    new PC.BLL.CLIENTDB().Add(dataPC);
-            //}
+            FillDefaultValue();
+            if (!IsExistDataPC.HasValue) return;
+            if (IsExistDataPC.Value)
+            {
+                new PC.BLL.CLIENTDB().Update(dataPC);
+            }
+            else
+            {
+                new PC.BLL.CLIENTDB().Add(dataPC);
+            }
         }
     }
 }
