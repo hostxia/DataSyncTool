@@ -90,10 +90,10 @@
             this.layoutControl1.Controls.Add(this.xdeBeginDate);
             this.layoutControl1.Controls.Add(this.xsbSync);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 24);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 21);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(950, 609);
+            this.layoutControl1.Size = new System.Drawing.Size(950, 612);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -105,7 +105,7 @@
             this.xgridResult.Name = "xgridResult";
             this.xgridResult.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.riicbInfoType});
-            this.xgridResult.Size = new System.Drawing.Size(902, 516);
+            this.xgridResult.Size = new System.Drawing.Size(902, 519);
             this.xgridResult.TabIndex = 5;
             this.xgridResult.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.xgvResult});
@@ -289,7 +289,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(950, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(950, 21);
             // 
             // barDockControlBottom
             // 
@@ -303,17 +303,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 21);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 609);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 612);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(950, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(950, 21);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 609);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 612);
             // 
             // xdeFinishDate
             // 
@@ -373,7 +373,7 @@
             this.layoutControlItem2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(950, 609);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(950, 612);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -382,7 +382,7 @@
             this.layoutControlItem1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 26);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(930, 563);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(930, 566);
             this.layoutControlGroup2.Text = "同步信息";
             // 
             // layoutControlItem1
@@ -390,7 +390,7 @@
             this.layoutControlItem1.Control = this.xgridResult;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(906, 520);
+            this.layoutControlItem1.Size = new System.Drawing.Size(906, 523);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 

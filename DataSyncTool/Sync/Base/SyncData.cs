@@ -51,6 +51,7 @@ namespace DataSyncTool.Sync.Base
                 if (property.PropertyType != typeof(string)) continue;
                 if (property.GetValue(objData) != null) continue;
                 property.SetValue(objData, string.Empty);
+                property.SetValue(objData, property.GetValue(objData).ToString().Replace("'", "''"));
             }
 
         }

@@ -400,9 +400,11 @@
     <Compile Include="Sync\Case\SyncPatentList.cs" />
     <Compile Include="Sync\Contact\SyncApplicantData.cs" />
     <Compile Include="Sync\Contact\SyncAgencyData.cs" />
+    <Compile Include="Sync\Contact\SyncDemandData.cs" />
     <Compile Include="Sync\Contact\SyncClientData.cs" />
     <Compile Include="Sync\Contact\SyncApplicantList.cs" />
     <Compile Include="Sync\Contact\SyncAgencyList.cs" />
+    <Compile Include="Sync\Contact\SyncDemandList.cs" />
     <Compile Include="Sync\Contact\SyncClientList.cs" />
     <Compile Include="XFrmMain.cs">
       <SubType>Form</SubType>
