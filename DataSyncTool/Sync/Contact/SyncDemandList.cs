@@ -12,16 +12,16 @@ namespace DataSyncTool.Sync.Contact
     {
         public override List<SyncData<Demand, GENERAL_INSTRUCTION>> GetListSyncData()
         {
-            SyncResultInfoSet?.AddInfo("筛选需同步的客户要求数据...");
+            SyncResultInfoSet?.AddInfo("筛选需同步的要求数据...");
             return
                 new XPQuery<Demand>(new UnitOfWork()).Where(
                         c =>
                             (c.dt_CreateDate >= ConfigHelper.BeginDate && c.dt_CreateDate < ConfigHelper.NextDate ||
                              c.dt_EditDate >= ConfigHelper.BeginDate && c.dt_EditDate < ConfigHelper.NextDate) &&
-                            c.TheClient != null)
+                            (c.TheClient != null || c.TheApplicant != null || c.TheAgency != null))
                     .Select(c => c.n_ID)
                     .ToList()
-                    .Select(c => new SyncDemandData(c) {SyncResultInfoSet = SyncResultInfoSet})
+                    .Select(c => new SyncDemandData(c) { SyncResultInfoSet = SyncResultInfoSet })
                     .Cast<SyncData<Demand, GENERAL_INSTRUCTION>>()
                     .ToList();
         }

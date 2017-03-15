@@ -21,34 +21,37 @@ namespace DataSyncTool.Sync.Contact
 
         public override GENERAL_INSTRUCTION GetExistDataPC(Demand dataIPSP)
         {
-            var sCondition = $"CONTENT_CN =:p AND CLIENT_NO = '{dataIPSP.TheClient?.s_ClientCode}'";
+            var sCode = GetCode(dataIPSP);
+            var sCondition = $"CONTENT_CN =:p AND CLIENT_NO = '{sCode}'";
             var pid = new PC.BLL.GENERAL_INSTRUCTION().GetSingle(sCondition, dataIPSP.s_Description ?? string.Empty);
             if (pid == null) return null;
             IsExistDataPC = true;
             var instruction = new PC.BLL.GENERAL_INSTRUCTION().GetModel(pid.ToString());
-            SyncResultInfoSet.AddInfo(InfoString.ToSyncInfo("客户要求", IsExistDataPC.Value, dataIPSP.n_ID, dataIPSP.TheClient?.s_ClientCode + " " + dataIPSP.s_Description),
+            SyncResultInfoSet.AddInfo(InfoString.ToSyncInfo("要求", IsExistDataPC.Value, dataIPSP.n_ID, sCode + " " + dataIPSP.s_Description),
                 dataIPSP.ClassInfo.TableName, typeof(GENERAL_INSTRUCTION).Name);
             return instruction;
         }
 
+
         public override void ConvertToDataPC(GENERAL_INSTRUCTION dataPC, Demand dataIPSP)
         {
+            var sCode = GetCode(dataIPSP);
             dataPC.PID = DateTime.Now.ToString("yyyyMMdd_HHmmss_ffffff");
-            if (string.IsNullOrWhiteSpace(dataIPSP.TheClient.s_ClientCode))
+            if (string.IsNullOrWhiteSpace(sCode))
             {
-                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("客户代码", dataIPSP.n_ID, dataIPSP.TheClient?.s_ClientCode + " " + dataIPSP.s_Description));
+                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("代码", dataIPSP.n_ID, sCode + " " + dataIPSP.s_Description));
                 return;
             }
-            dataPC.CLIENT_NO = dataIPSP.TheClient.s_ClientCode;
+            dataPC.CLIENT_NO = sCode;
             if (dataIPSP.dt_ReceiptDate <= new DateTime(1900, 1, 1))
             {
-                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("收到日", dataIPSP.n_ID, dataIPSP.TheClient?.s_ClientCode + " " + dataIPSP.s_Description));
+                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("收到日", dataIPSP.n_ID, sCode + " " + dataIPSP.s_Description));
                 return;
             }
             dataPC.RECEIVED = dataIPSP.dt_ReceiptDate;
             if (string.IsNullOrWhiteSpace(dataIPSP.s_ReceiptMethod))
             {
-                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("收到方式", dataIPSP.n_ID, dataIPSP.TheClient?.s_ClientCode + " " + dataIPSP.s_Description));
+                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("收到方式", dataIPSP.n_ID, sCode + " " + dataIPSP.s_Description));
                 return;
             }
             if (dataIPSP.s_ReceiptMethod.ToLower().Contains("fax") || dataIPSP.s_ReceiptMethod.ToLower().Contains("传真"))
@@ -78,6 +81,18 @@ namespace DataSyncTool.Sync.Contact
             {
                 new PC.BLL.GENERAL_INSTRUCTION().Add(dataPC);
             }
+        }
+
+        private static string GetCode(Demand dataIPSP)
+        {
+            var sCode = string.Empty;
+            if (dataIPSP.TheClient != null)
+                sCode = dataIPSP.TheClient.s_ClientCode;
+            else if (dataIPSP.TheApplicant != null)
+                sCode = dataIPSP.TheApplicant.s_AppCode;
+            else if (dataIPSP.TheAgency != null)
+                sCode = dataIPSP.TheAgency.s_Code;
+            return sCode;
         }
 
         private void GetRelatesType()

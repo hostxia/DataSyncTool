@@ -63,15 +63,15 @@ namespace DataSyncTool
             xbiCommonConfig.Enabled = false;
             Task.Run(() =>
                 {
-                    //new SyncClientList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    //new SyncApplicantList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    //new SyncAgencyList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    //new SyncPatentList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    //new SyncPatentAbroadList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    //new SyncPatentHKList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    //new SyncDemandList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    //new SyncInFileList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    //new SyncAnnualFeeList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncClientList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncApplicantList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncAgencyList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncPatentList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncPatentAbroadList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncPatentHKList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncDemandList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncInFileList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncAnnualFeeList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                     new SyncCustomFieldList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                     _syncResultInfoSet.AddInfo("同步完成！");
                 })
