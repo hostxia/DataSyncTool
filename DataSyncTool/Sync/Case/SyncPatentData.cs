@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using DataEntities.Case;
 using DataEntities.Case.Patents;
 using DataEntities.Config;
@@ -216,8 +217,21 @@ namespace DataSyncTool.Sync.Case
                     dataIPSP.s_CaseSerial));
                 return;
             }
-            dataPC.COMMENTS = dataIPSP.Memos.Cast<CaseMemo>()
-                .Aggregate(string.Empty, (s, m) => s + "\r\n" + m.s_Memo + "\r\n");
+            var strComments = new StringBuilder();
+            strComments.AppendLine("是否使用宽限期：" + dataIPSP.CustomFields.Cast<CustomField>().FirstOrDefault(c => c.sFieldName == "是否使用宽限期")?.s_Value);
+            dataIPSP.Demands.Cast<Demand>().Where(d => d.s_SourceModuleType != "Case").ToList().ForEach(c => strComments.AppendLine(c.s_Title + "\r\n" + c.s_Description + "\r\n"));
+            dataIPSP.Memos.Cast<CaseMemo>().ToList().ForEach(m => strComments.AppendLine(m.s_Memo + "\r\n"));
+            dataPC.COMMENTS = strComments.ToString();
+
+            var strAnnualFeeComments = new StringBuilder();
+            if (dataIPSP.Demands.Cast<Demand>().Any(d => d.s_SysDemand == "CR17" || d.s_SysDemand == "CR18"))
+                strAnnualFeeComments.AppendLine("-*IGNORE ANNUAL FEE*-");
+            dataIPSP.Demands.Cast<Demand>()
+                .Where(d => d.s_Title.Contains("年费"))
+                .ToList()
+                .ForEach(d => strAnnualFeeComments.AppendLine(d.s_Title + "\r\n" + d.s_Description + "\r\n"));
+            dataPC.IGNOREANNUALFEE = strAnnualFeeComments.ToString();
+
             dataPC.CLIENT_NAME = dataIPSP.TheClient?.s_Name;
 
             if (dataIPSP.TheLawInfo != null)
@@ -329,10 +343,6 @@ namespace DataSyncTool.Sync.Case
                 .Any(f => f != null && f.s_OfficialFeeName.Contains("申请费") && f.s_Status[2] == 'F'))
                 dataPC.APPFEE = "Y";
 
-            dataPC.IGNOREANNUALFEE =
-                dataIPSP.Demands.Cast<Demand>()
-                    .Where(d => d.s_Title.Contains("年费"))
-                    .Aggregate(string.Empty, (s, d) => "\r\n" + d.s_Title + "\r\n" + d.s_Description + "\r\n");
             //年费备注——找对应的要求
 
             //翻译人——案件处理人

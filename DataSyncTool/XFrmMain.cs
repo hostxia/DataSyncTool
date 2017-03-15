@@ -9,6 +9,7 @@ using DataSyncTool.FormConfig;
 using DataSyncTool.Log;
 using DataSyncTool.Sync.Case;
 using DataSyncTool.Sync.Contact;
+using DataSyncTool.Sync.Element;
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
 using DevExpress.XtraBars;
@@ -68,7 +69,10 @@ namespace DataSyncTool
                     //new SyncPatentList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                     //new SyncPatentAbroadList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                     //new SyncPatentHKList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    new SyncDemandList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    //new SyncDemandList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    //new SyncInFileList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    //new SyncAnnualFeeList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncCustomFieldList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                     _syncResultInfoSet.AddInfo("同步完成！");
                 })
                 .ContinueWith(t =>
