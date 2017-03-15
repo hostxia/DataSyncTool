@@ -390,6 +390,7 @@
       <DependentUpon>XFrmConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Log\SyncResultInfo.cs" />
+    <Compile Include="Sync\Base\CommonFunction.cs" />
     <Compile Include="Sync\Base\SyncData.cs" />
     <Compile Include="Sync\Base\SyncList.cs" />
     <Compile Include="Sync\Case\SyncCustomFieldData.cs" />
@@ -409,8 +410,10 @@
     <Compile Include="Sync\Contact\SyncDemandList.cs" />
     <Compile Include="Sync\Contact\SyncClientList.cs" />
     <Compile Include="Sync\Element\SyncAnnualFeeData.cs" />
+    <Compile Include="Sync\Element\SyncOAData.cs" />
     <Compile Include="Sync\Element\SyncInFileData.cs" />
     <Compile Include="Sync\Element\SyncAnnualFeeList.cs" />
+    <Compile Include="Sync\Element\SyncOAList.cs" />
     <Compile Include="Sync\Element\SyncInFileList.cs" />
     <Compile Include="XFrmMain.cs">
       <SubType>Form</SubType>

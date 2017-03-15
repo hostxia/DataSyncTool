@@ -352,5 +352,10 @@ namespace DataEntities.TaskFlowData
         #endregion
 
         public TFTaskChain(Session session) : base(session) { }
+
+        public TFTaskChain() : base(Session.DefaultSession)
+        {
+        }
+
     }
 }

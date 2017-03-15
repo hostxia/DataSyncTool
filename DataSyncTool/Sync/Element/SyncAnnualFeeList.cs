@@ -19,7 +19,7 @@ namespace DataSyncTool.Sync.Element
                 new XPQuery<AnnualFee>(new UnitOfWork()).Where(
                         c =>
                             c.dt_CreateDate >= ConfigHelper.BeginDate && c.dt_CreateDate < ConfigHelper.NextDate ||
-                            c.dt_EditDate >= ConfigHelper.BeginDate && c.dt_EditDate < ConfigHelper.NextDate || c.dt_OfficialPayDate >= ConfigHelper.BeginDate && c.dt_EditDate < ConfigHelper.NextDate)
+                            c.dt_EditDate >= ConfigHelper.BeginDate && c.dt_EditDate < ConfigHelper.NextDate || c.dt_OfficialPayDate >= ConfigHelper.BeginDate && c.dt_OfficialPayDate < ConfigHelper.NextDate)
                     .Select(c => c.n_AnnualFeeID)
                     .ToList()
                     .Select(c => new SyncAnnualFeeData(c) { SyncResultInfoSet = SyncResultInfoSet })

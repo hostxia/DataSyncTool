@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DataEntities.Contact.Client;
 using DataEntities.Element.Files;
 using DataSyncTool.Common;
 using DataSyncTool.PC.Model;

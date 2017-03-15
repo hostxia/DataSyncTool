@@ -19,7 +19,7 @@ namespace DataSyncTool.Sync.Case
                         c =>
                             (c.dt_CreateDate >= ConfigHelper.BeginDate && c.dt_CreateDate < ConfigHelper.NextDate ||
                              c.dt_EditDate >= ConfigHelper.BeginDate && c.dt_EditDate < ConfigHelper.NextDate) &&
-                            GetAbroadPatentBusinessType().Contains(c.n_BusinessTypeID)).Select(c => c.n_CaseID).ToList()
+                            CommonFunction.GetAbroadPatentBusinessType().Contains(c.n_BusinessTypeID)).Select(c => c.n_CaseID).ToList()
                     .Select(i => new SyncPatentAbroadData(i) { SyncResultInfoSet = SyncResultInfoSet }).Cast<SyncData<ExtendedPatent, FCASE>>()
                     .ToList();
         }
@@ -29,9 +29,5 @@ namespace DataSyncTool.Sync.Case
             return new List<SyncData<ExtendedPatent, FCASE>>();
         }
 
-        private static List<int> GetAbroadPatentBusinessType()
-        {
-            return new XPQuery<CodeBusinessType>(new UnitOfWork()).Where(b => !new[] { "UM", "PU", "ID", "IN", "PI", "AF", "HS", "HD", "HT" }.Contains(b.s_Code)).Select(b => b.n_ID).ToList();
-        }
     }
 }

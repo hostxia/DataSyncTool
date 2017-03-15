@@ -14,7 +14,7 @@ namespace DataSyncTool.Sync.Case
 
         public override CASEOTHERINFO GetExistDataPC(CustomField dataIPSP)
         {
-            if (GetFieldType(dataIPSP.sFieldName) == string.Empty)
+            if (CommonFunction.GetIdTextFieldType(dataIPSP.sFieldName) == string.Empty)
             {
                 SyncResultInfoSet.AddInfo(
                     InfoString.ToSkipInfo("自定义属性", dataIPSP.BasicCase?.s_CaseSerial, dataIPSP.sFieldName),
@@ -22,7 +22,7 @@ namespace DataSyncTool.Sync.Case
                 return null;
             }
             var sCondition =
-                $"CASENO = '{dataIPSP.BasicCase?.s_CaseSerial}' AND INFOTYPE = '{GetFieldType(dataIPSP.sFieldName)}'";
+                $"CASENO = '{dataIPSP.BasicCase?.s_CaseSerial}' AND INFOTYPE = '{CommonFunction.GetIdTextFieldType(dataIPSP.sFieldName)}'";
             var existCaseOtherInfo = new PC.BLL.CASEOTHERINFO().GetModelList(sCondition);
             IsExistDataPC = existCaseOtherInfo.Count > 0;
             SyncResultInfoSet.AddInfo(
@@ -35,7 +35,7 @@ namespace DataSyncTool.Sync.Case
         public override void ConvertToDataPC(CASEOTHERINFO dataPC, CustomField dataIPSP)
         {
             dataPC.CASENO = dataIPSP.BasicCase?.s_CaseSerial;
-            dataPC.INFOTYPE = GetFieldType(dataIPSP.sFieldName);
+            dataPC.INFOTYPE = CommonFunction.GetIdTextFieldType(dataIPSP.sFieldName);
             dataPC.INFO = dataIPSP.s_Value;
 
             FillDefaultValue();
@@ -44,14 +44,6 @@ namespace DataSyncTool.Sync.Case
                 new PC.BLL.CASEOTHERINFO().Update(dataPC);
             else
                 new PC.BLL.CASEOTHERINFO().Add(dataPC);
-        }
-
-        private string GetFieldType(string sFieldName)
-        {
-            var idtext = new IDTEXT().GetModelList($"IDGROUP = 'otherinfotype' and TEXT like '{sFieldName}%'");
-            if (idtext.Count > 0)
-                return idtext[0].ID;
-            return string.Empty;
         }
     }
 }

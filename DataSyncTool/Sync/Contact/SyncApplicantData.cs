@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using DataEntities.Contact.Applicant;
-using DataEntities.Contact.Demand;
 using DataSyncTool.Log;
 using DataSyncTool.PC.Model;
 using DataSyncTool.Sync.Base;
@@ -23,7 +22,8 @@ namespace DataSyncTool.Sync.Contact
             }
             var existApplicant = new PC.BLL.CLIENTDB().GetModel(dataIPSP.s_AppCode);
             IsExistDataPC = existApplicant != null;
-            SyncResultInfoSet.AddInfo(InfoString.ToSyncInfo("申请人", IsExistDataPC.Value, dataIPSP.n_AppID, dataIPSP.s_AppCode),
+            SyncResultInfoSet.AddInfo(
+                InfoString.ToSyncInfo("申请人", IsExistDataPC.Value, dataIPSP.n_AppID, dataIPSP.s_AppCode),
                 dataIPSP.ClassInfo.TableName, typeof(CLIENTDB).Name);
             return existApplicant;
         }
@@ -49,13 +49,9 @@ namespace DataSyncTool.Sync.Contact
             FillDefaultValue();
             if (!IsExistDataPC.HasValue) return;
             if (IsExistDataPC.Value)
-            {
                 new PC.BLL.CLIENTDB().Update(dataPC);
-            }
             else
-            {
                 new PC.BLL.CLIENTDB().Add(dataPC);
-            }
         }
     }
 }

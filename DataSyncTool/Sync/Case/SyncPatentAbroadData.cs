@@ -46,7 +46,7 @@ namespace DataSyncTool.Sync.Case
             dataPC.APPNO = dataIPSP.TheLawInfo.s_AppNo;
             dataPC.APPDATE = dataIPSP.TheLawInfo.dt_AppDate;
             dataPC.COMMENTS = dataIPSP.Memos.Cast<CaseMemo>().Aggregate(string.Empty, (s, m) => s + "\r\n" + m.s_Memo + "\r\n");
-            dataPC.STATUS = new[] { "结案", "放弃", "转出", "届满", "失效" }.Contains(dataIPSP.s_CaseStatus) ? "abandon" : "normal";
+            dataPC.STATUS = CommonFunction.UnActiveCaseStatus.Contains(dataIPSP.s_CaseStatus) ? "abandon" : "normal";
 
             var listAppType = new List<string>();
             var patentType =

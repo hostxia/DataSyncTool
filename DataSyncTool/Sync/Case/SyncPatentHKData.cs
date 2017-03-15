@@ -63,7 +63,7 @@ namespace DataSyncTool.Sync.Case
             //dataPC.HK_GAZETTE//第二步公告日
             //dataPC.PARENT_COUNTRY//母案国家
             dataPC.RECEIVED = dataIPSP.dt_UndertakeDate;
-            if (new[] { "结案", "放弃", "转出", "届满", "失效" }.Contains(dataIPSP.s_CaseStatus))
+            if (CommonFunction.UnActiveCaseStatus.Contains(dataIPSP.s_CaseStatus))
                 dataPC.ABANDON = "Y";
             dataPC.PRIORITY = dataIPSP.dt_EarlistPriorityDate;
             dataPC.SENDADDRESS = dataIPSP.TheClient?.ClientAddress.Cast<ClientAddress>()
