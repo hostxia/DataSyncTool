@@ -63,7 +63,7 @@ namespace DataSyncTool
             xbiCommonConfig.Enabled = false;
             Task.Run(() =>
                 {
-                    //new SyncClientList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    new SyncClientList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                     //new SyncApplicantList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                     //new SyncAgencyList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                     //new SyncPatentList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
@@ -73,7 +73,7 @@ namespace DataSyncTool
                     //new SyncInFileList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                     //new SyncAnnualFeeList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                     //new SyncCustomFieldList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
-                    new SyncOAList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
+                    //new SyncOAList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();
                     _syncResultInfoSet.AddInfo("同步完成！");
                 })
                 .ContinueWith(t =>

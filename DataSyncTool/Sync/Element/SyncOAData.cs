@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Linq;
-using DataEntities.Config;
-using DataEntities.Contact.Agency;
-using DataEntities.Contact.Client;
-using DataEntities.Element.Files;
 using DataEntities.TaskFlowData;
 using DataSyncTool.Log;
 using DataSyncTool.PC.Model;
 using DataSyncTool.Sync.Base;
-using DevExpress.Xpo;
 
 namespace DataSyncTool.Sync.Element
 {
@@ -23,14 +18,17 @@ namespace DataSyncTool.Sync.Element
             var sOAType = GetOATypeByTaskChainCode(dataIPSP.GetTheCodeTaskChain().s_Code);
             if (string.IsNullOrWhiteSpace(sOAType) || !dataIPSP.dt_CreateTime.HasValue)
             {
-                SyncResultInfoSet.AddInfo(InfoString.ToSkipInfo("OA", dataIPSP.g_ID, dataIPSP.n_Num + " " + dataIPSP.s_Name),
-    dataIPSP.ClassInfo.TableName, typeof(GENERALALERT).Name);
+                SyncResultInfoSet.AddInfo(
+                    InfoString.ToSkipInfo("OA", dataIPSP.g_ID, dataIPSP.n_Num + " " + dataIPSP.s_Name),
+                    dataIPSP.ClassInfo.TableName, typeof(GENERALALERT).Name);
                 return null;
             }
-            var sCondition = $"OATYPE = '{GetOATypeByTaskChainCode(dataIPSP.GetTheCodeTaskChain().s_Code)}' and OURNO = '{dataIPSP.GetRelatedCase()?.s_CaseSerial}' and TRIGERDATE1 = '{dataIPSP.dt_CreateTime.Value:yyyy/MM/dd}'";
+            var sCondition =
+                $"OATYPE = '{GetOATypeByTaskChainCode(dataIPSP.GetTheCodeTaskChain().s_Code)}' and OURNO = '{dataIPSP.GetRelatedCase()?.s_CaseSerial}' and TRIGERDATE1 = '{dataIPSP.dt_CreateTime.Value:yyyy/MM/dd}'";
             var existOA = new PC.BLL.GENERALALERT().GetModelList(sCondition);
             IsExistDataPC = existOA.Count > 0;
-            SyncResultInfoSet.AddInfo(InfoString.ToSyncInfo("OA", IsExistDataPC.Value, dataIPSP.g_ID, dataIPSP.n_Num + " " + dataIPSP.s_Name),
+            SyncResultInfoSet.AddInfo(
+                InfoString.ToSyncInfo("OA", IsExistDataPC.Value, dataIPSP.g_ID, dataIPSP.n_Num + " " + dataIPSP.s_Name),
                 dataIPSP.ClassInfo.TableName, typeof(GENERALALERT).Name);
             return existOA.Count > 0 ? existOA[0] : null;
         }
@@ -62,33 +60,31 @@ namespace DataSyncTool.Sync.Element
                     .FirstOrDefault(t => t != null && t.s_Name.Contains("发送账单"))?.dt_FinishTime ?? DateTime.MinValue;
 
 
-            var bDelay1 = dataIPSP.GetListClusterTaskChains().Any(t => t.s_Name.Contains("延期") && t.s_Name.Contains("+1"));
-            var bDelay2 = dataIPSP.GetListClusterTaskChains().Any(t => t.s_Name.Contains("延期") && t.s_Name.Contains("+2"));
+            var bDelay1 =
+                dataIPSP.GetListClusterTaskChains().Any(t => t.s_Name.Contains("延期") && t.s_Name.Contains("+1"));
+            var bDelay2 =
+                dataIPSP.GetListClusterTaskChains().Any(t => t.s_Name.Contains("延期") && t.s_Name.Contains("+2"));
             DateTime? dtReply;
             if (bDelay2)
-            {
-                dtReply = dataIPSP.GetListDeadlines().FirstOrDefault(d => d.GetTheCodeDeadline().s_Name.Contains("2个月延期"))?.dt_Deadline;
-            }
+                dtReply =
+                    dataIPSP.GetListDeadlines()
+                        .FirstOrDefault(d => d.GetTheCodeDeadline().s_Name.Contains("2个月延期"))?.dt_Deadline;
             else if (bDelay1)
-            {
-                dtReply = dataIPSP.GetListDeadlines().FirstOrDefault(d => d.GetTheCodeDeadline().s_Name.Contains("1个月延期"))?.dt_Deadline;
-            }
+                dtReply =
+                    dataIPSP.GetListDeadlines()
+                        .FirstOrDefault(d => d.GetTheCodeDeadline().s_Name.Contains("1个月延期"))?.dt_Deadline;
             else
-            {
-                dtReply = dataIPSP.GetListDeadlines().FirstOrDefault(d => d.GetTheCodeDeadline().s_Name.Contains("答复OA"))?.dt_Deadline;
-            }
+                dtReply =
+                    dataIPSP.GetListDeadlines()
+                        .FirstOrDefault(d => d.GetTheCodeDeadline().s_Name.Contains("答复OA"))?.dt_Deadline;
             dataPC.DUEDATE = dtReply ?? DateTime.MinValue;
 
             FillDefaultValue();
             if (!IsExistDataPC.HasValue) return;
             if (IsExistDataPC.Value)
-            {
                 new PC.BLL.GENERALALERT().Update(dataPC);
-            }
             else
-            {
                 new PC.BLL.GENERALALERT().Add(dataPC);
-            }
         }
 
         private string GetOATypeByTaskChainCode(string sTaskChainCode)
