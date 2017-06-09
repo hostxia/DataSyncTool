@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using DataEntities.Case;
 using DataEntities.Case.Patents;
 using DataEntities.Config;
@@ -46,7 +47,7 @@ namespace DataSyncTool.Sync.Case
             dataPC.APPNO = dataIPSP.TheLawInfo.s_AppNo;
             dataPC.APPDATE = dataIPSP.TheLawInfo.dt_AppDate;
             dataPC.COMMENTS = dataIPSP.Memos.Cast<CaseMemo>().Aggregate(string.Empty, (s, m) => s + "\r\n" + m.s_Memo + "\r\n");
-            dataPC.STATUS = CommonFunction.UnActiveCaseStatus.Contains(dataIPSP.s_CaseStatus) ? "abandon" : "normal";
+            dataPC.STATUS = CommonFunction.UnActiveCaseStatus.Contains(dataIPSP.s_CaseStatus) ? "Y" : "N";
 
             var listAppType = new List<string>();
             var patentType =
@@ -110,7 +111,8 @@ namespace DataSyncTool.Sync.Case
                     ENT_ORDER = caseApplicant.n_Sequence
                 };
                 FillDefaultValue(fcaseent);
-                bllFCASE_ENT_REL.Add(fcaseent);
+                new FCASE_ENT_REL().Add(fcaseent);
+                Thread.Sleep(1);
             }
 
             var bllFCASE_INVENTORS = new FCASE_INVENTORS();
@@ -132,7 +134,8 @@ namespace DataSyncTool.Sync.Case
                     TRAN_NAME = inventor.s_Name
                 };
                 FillDefaultValue(fcaseinventor);
-                bllFCASE_INVENTORS.Add(fcaseinventor);
+                new FCASE_INVENTORS().Add(fcaseinventor);
+                Thread.Sleep(1);
             }
 
             var bllFCASE_PRIORITY = new FCASE_PRIORITY();
@@ -152,7 +155,8 @@ namespace DataSyncTool.Sync.Case
                             .s_CountryCode
                 };
                 FillDefaultValue(fcasepriority);
-                bllFCASE_PRIORITY.Add(fcasepriority);
+                new FCASE_PRIORITY().Add(fcasepriority);
+                Thread.Sleep(1);
             }
 
             var bllFCASE_LOG = new PC.BLL.FCASE_LOG();
@@ -204,9 +208,10 @@ namespace DataSyncTool.Sync.Case
                     CONTENT = sContent,
                     LOGDATE = DateTime.Now,
                     ITEM = sItem,
-                    OURNO = sCaseNo
+                    OURNO = sCaseNo,
                 };
                 new PC.BLL.FCASE_LOG().Add(caselog);
+                Thread.Sleep(500);
             }
         }
     }

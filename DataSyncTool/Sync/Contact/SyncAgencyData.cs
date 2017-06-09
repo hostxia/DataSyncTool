@@ -38,9 +38,9 @@ namespace DataSyncTool.Sync.Contact
                 dataIPSP.AgencyAddress.Cast<AgencyAddress>().FirstOrDefault(a => a.s_Type.Contains("B"))?.s_Street;
             dataPC.MAILING_ADDR =
                 dataIPSP.AgencyAddress.Cast<AgencyAddress>().FirstOrDefault(a => a.s_Type.Contains("M"))?.s_Street;
-            dataPC.MAILING_CONTACT =
-                dataIPSP.AgencyAddress.Cast<AgencyAddress>()
-                    .FirstOrDefault(a => a.s_Type.Contains("M"))?.s_IsMailingAddress;
+            //dataPC.MAILING_CONTACT =
+            //    dataIPSP.AgencyAddress.Cast<AgencyAddress>()
+            //        .FirstOrDefault(a => a.s_Type.Contains("M"))?.s_IsMailingAddress;
             dataPC.PT_GENERAL_INSTR = dataIPSP.s_Notes;
             dataPC.PT_APPN_COPY = 0;
             dataPC.PT_BILL_COPY = 0;

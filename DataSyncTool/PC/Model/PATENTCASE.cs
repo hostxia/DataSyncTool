@@ -1514,14 +1514,6 @@ namespace DataSyncTool.PC.Model
             set { _status = value; }
             get { return _status; }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string CASENO
-        {
-            set { _caseno = value; }
-            get { return _caseno; }
-        }
         #endregion Model
 
     }

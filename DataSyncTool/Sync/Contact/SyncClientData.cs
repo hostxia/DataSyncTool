@@ -35,7 +35,7 @@ namespace DataSyncTool.Sync.Contact
             //dataPC.BILLALIAS = dataIPSP.s_AccountName;王蕊说不更新，苏文静也说不用更新
             dataPC.BILLING_CONTACT =
                 dataIPSP.ClientAddress.Cast<ClientAddress>()
-                    .FirstOrDefault(a => a.s_Type != null && a.s_Type.Contains("B"))?.s_Street;
+                    .FirstOrDefault(a => a.s_Type != null && a.s_Type.Contains("B"))?.s_TitleAddress;
             dataPC.MAILING_ADDR =
                 dataIPSP.ClientAddress.Cast<ClientAddress>()
                     .FirstOrDefault(a => a.s_Type != null && a.s_Type.Contains("M"))?.s_Street;

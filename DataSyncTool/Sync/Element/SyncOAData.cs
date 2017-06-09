@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using DataEntities.TaskFlowData;
 using DataSyncTool.Log;
 using DataSyncTool.PC.Model;
@@ -24,7 +25,7 @@ namespace DataSyncTool.Sync.Element
                 return null;
             }
             var sCondition =
-                $"OATYPE = '{GetOATypeByTaskChainCode(dataIPSP.GetTheCodeTaskChain().s_Code)}' and OURNO = '{dataIPSP.GetRelatedCase()?.s_CaseSerial}' and TRIGERDATE1 = '{dataIPSP.dt_CreateTime.Value:yyyy/MM/dd}'";
+                $"OATYPE = '{GetOATypeByTaskChainCode(dataIPSP.GetTheCodeTaskChain().s_Code)}' and OURNO = '{dataIPSP.GetRelatedCase()?.s_CaseSerial}' and TRIGERDATE1 =TO_DATE('{dataIPSP.dt_CreateTime.Value:yyyy/MM/dd}','yyyy/mm/dd')";
             var existOA = new PC.BLL.GENERALALERT().GetModelList(sCondition);
             IsExistDataPC = existOA.Count > 0;
             SyncResultInfoSet.AddInfo(
@@ -85,6 +86,7 @@ namespace DataSyncTool.Sync.Element
                 new PC.BLL.GENERALALERT().Update(dataPC);
             else
                 new PC.BLL.GENERALALERT().Add(dataPC);
+            Thread.Sleep(500);
         }
 
         private string GetOATypeByTaskChainCode(string sTaskChainCode)

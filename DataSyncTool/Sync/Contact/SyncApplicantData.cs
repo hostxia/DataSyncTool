@@ -36,7 +36,7 @@ namespace DataSyncTool.Sync.Contact
             //dataPC.BILLALIAS = dataIPSP.s_AccountName;
             dataPC.BILLING_CONTACT =
                 dataIPSP.AppAddress.Cast<ApplicantAddress>()
-                    .FirstOrDefault(a => a.s_Type != null && a.s_Type.Contains("B"))?.s_Street;
+                    .FirstOrDefault(a => a.s_Type != null && a.s_Type.Contains("B"))?.s_TitleAddress;
             dataPC.MAILING_ADDR =
                 dataIPSP.AppAddress.Cast<ApplicantAddress>()
                     .FirstOrDefault(a => a.s_Type != null && a.s_Type.Contains("M"))?.s_Street;

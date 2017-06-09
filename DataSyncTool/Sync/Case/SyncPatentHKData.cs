@@ -60,7 +60,7 @@ namespace DataSyncTool.Sync.Case
             dataPC.CLIENT_REF = dataIPSP.s_ClientSerial;
             dataPC.CLIENT = dataIPSP.TheClient?.s_ClientCode;
             dataPC.HK_ANNO_NO = dataIPSP.TheLawInfo.s_IssuedPubNo;
-            //dataPC.HK_GAZETTE//第二步公告日
+            dataPC.HK_GAZETTE = dataIPSP.dt_2ndGrantReport ?? DateTime.MinValue;//第二步公告日
             //dataPC.PARENT_COUNTRY//母案国家
             dataPC.RECEIVED = dataIPSP.dt_UndertakeDate;
             if (CommonFunction.UnActiveCaseStatus.Contains(dataIPSP.s_CaseStatus))

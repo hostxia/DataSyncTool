@@ -1,9 +1,12 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using DataEntities.Config;
 using DataEntities.Contact.Agency;
 using DataEntities.Contact.Client;
 using DataEntities.Element.Files;
+using DataSyncTool.Common;
 using DataSyncTool.Log;
 using DataSyncTool.PC.Model;
 using DataSyncTool.Sync.Base;
@@ -19,7 +22,23 @@ namespace DataSyncTool.Sync.Element
 
         public override RECEIVINGLOG GetExistDataPC(InFile dataIPSP)
         {
-            var sCondition = $"RECEIVED = '{dataIPSP.dt_ReceiveDate:yyyy/M/d}' and OURNO = '{dataIPSP.sMainCaseSerial}'";
+            if (dataIPSP.dt_ReceiveDate < new DateTime(1900, 1, 1))
+            {
+                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("收文日", dataIPSP.n_FileID,
+                    dataIPSP.sMainCaseSerial + "----" + dataIPSP.s_Name));
+                return null;
+            }
+            if (string.IsNullOrWhiteSpace(dataIPSP.s_Name))
+            {
+                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("文件名", dataIPSP.n_FileID, dataIPSP.sMainCaseSerial));
+                return null;
+            }
+            if (string.IsNullOrWhiteSpace(dataIPSP.sCaseName))
+            {
+                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("案件", dataIPSP.n_FileID, dataIPSP.s_Name));
+                return null;
+            }
+            var sCondition = $"RECEIVED = to_date('{dataIPSP.dt_ReceiveDate:yyyy/MM/dd}','yyyy/MM/dd') and OURNO = '{dataIPSP.sMainCaseSerial}' and COMMENTS like '%{dataIPSP.s_Name}%'";
             var existInFile = new PC.BLL.RECEIVINGLOG().GetModelList(sCondition);
             IsExistDataPC = existInFile.Count > 0;
             SyncResultInfoSet.AddInfo(InfoString.ToSyncInfo("来文", IsExistDataPC.Value, dataIPSP.n_FileID, dataIPSP.sMainCaseSerial + " " + dataIPSP.s_Name),
@@ -55,7 +74,7 @@ namespace DataSyncTool.Sync.Element
             dataPC.OURNO = dataIPSP.TheMainCase?.s_CaseSerial;
             dataPC.APPNO = dataIPSP.TheMainCase?.s_AppNo;
             dataPC.CLIENTNO = dataIPSP.TheFileClient?.s_ClientCode;
-            dataPC.CONTENT = dataIPSP.s_Name;
+            dataPC.CONTENT = "other";
             dataPC.COPIES = 1M;
             dataPC.PAGES = 0;
             switch (dataIPSP.s_SendMethod)
@@ -80,7 +99,7 @@ namespace DataSyncTool.Sync.Element
                     break;
             }
 
-            dataPC.COMMENTS = dataIPSP.s_Note;
+            dataPC.COMMENTS = dataIPSP.s_Name + "\r\n" + dataIPSP.s_Note;
             dataPC.STATUS = "P";
 
             FillDefaultValue();
@@ -92,6 +111,39 @@ namespace DataSyncTool.Sync.Element
             else
             {
                 new PC.BLL.RECEIVINGLOG().Add(dataPC);
+                if (string.IsNullOrWhiteSpace(dataIPSP.s_FilePathName)) return;
+                var sSourceFilePath = Path.Combine(ConfigHelper.GetConfigString("SourceFilePath"), dataIPSP.s_FilePathName);
+                if (!File.Exists(sSourceFilePath))
+                    return;
+                var sFileName = Regex.Match(dataIPSP.s_Abstact, @"(?<=\[\[\[).*(?=\]\]\])").Value;
+                if (string.IsNullOrWhiteSpace(sFileName))
+                    return;
+                var sBusiness = dataIPSP.TheMainCase?.GetBusinessTypeName();
+                var sCaseType = "";
+                if (sBusiness.Contains("PCT国际"))
+                {
+                    sCaseType = "Drop-International";
+                }
+                else if (sBusiness.Contains("香港"))
+                {
+                    sCaseType = "Drop-HK";
+                }
+                else if (sBusiness.Contains("国内"))
+                {
+                    sCaseType = "Drop-CN";
+                }
+                else if (sBusiness.Contains("国外"))
+                {
+                    sCaseType = "Drop-International";
+                }
+                else
+                {
+                    sCaseType = "Drop-Others";
+                }
+                var sTargetFile = $@"{ConfigHelper.GetConfigString("TargetFilePath")}\{sCaseType}\{(dataIPSP.s_ClientGov == "O" ? "From_Client" : "From_Office")}\{sFileName}{Path.GetExtension(dataIPSP.s_FilePathName)}";
+                if (!Directory.Exists(Path.GetDirectoryName(sTargetFile)))
+                    Directory.CreateDirectory(Path.GetDirectoryName(sTargetFile));
+                File.Copy(sSourceFilePath, sTargetFile, true);
             }
         }
     }

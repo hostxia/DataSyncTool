@@ -41,19 +41,20 @@ namespace DataSyncTool.Sync.Case
         {
             dataPC.OURNO = dataIPSP.s_CaseSerial;
             dataPC.CLIENT = dataIPSP.TheClient?.s_ClientCode;
-            if (string.IsNullOrWhiteSpace(dataPC.CLIENT))
-            {
-                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("客户->委托人", dataIPSP.n_CaseID, dataIPSP.s_CaseSerial));
-                return;
-            }
+            //if (string.IsNullOrWhiteSpace(dataPC.CLIENT))
+            //{
+            //    SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("客户->委托人", dataIPSP.n_CaseID, dataIPSP.s_CaseSerial));
+            //    return;
+            //}
             dataPC.RECEIVED = dataIPSP.dt_UndertakeDate;
-            if (dataPC.RECEIVED <= new DateTime(1900, 1, 1))
-            {
-                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("承办日->接案日", dataIPSP.n_CaseID, dataIPSP.s_CaseSerial));
-                return;
-            }
+            //if (dataPC.RECEIVED <= new DateTime(1900, 1, 1))
+            //{
+            //    SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("承办日->接案日", dataIPSP.n_CaseID, dataIPSP.s_CaseSerial));
+            //    return;
+            //}
             var caseRoleAgent =
                 new XPQuery<CodeCaseRole>(dataIPSP.Session).FirstOrDefault(r => r.s_Name.Contains("新申请阶段-办案人"))?.n_ID;
+
             dataPC.AGENT =
                 dataIPSP.CaseAttorneys.Cast<CaseAttorney>()
                     .FirstOrDefault(a => a.n_CaseRoleID == caseRoleAgent)?.TheAttorney?.s_InternalCode;
@@ -136,7 +137,7 @@ namespace DataSyncTool.Sync.Case
                     dataPC.WITHDREW = "Y";
                     break;
                 case "失效":
-                    dataPC.WITHDREW = "Y";
+                    dataPC.WITHDREW = "L";
                     break;
                 default:
                     dataPC.WITHDREW = "";
@@ -213,13 +214,13 @@ namespace DataSyncTool.Sync.Case
             dataPC.FILING_DUE = dataIPSP.dt_ShldSbmtDate; //计划日
             if (dataPC.FILING_DUE <= new DateTime(1900, 1, 1))
             {
-                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("计划日->要求提交日", dataIPSP.n_CaseID,
+                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("要求提交日->计划日", dataIPSP.n_CaseID,
                     dataIPSP.s_CaseSerial));
                 return;
             }
             var strComments = new StringBuilder();
             strComments.AppendLine("是否使用宽限期：" + dataIPSP.CustomFields.Cast<CustomField>().FirstOrDefault(c => c.sFieldName == "是否使用宽限期")?.s_Value);
-            dataIPSP.Demands.Cast<Demand>().Where(d => d.s_SourceModuleType != "Case").ToList().ForEach(c => strComments.AppendLine(c.s_Title + "\r\n" + c.s_Description + "\r\n"));
+            dataIPSP.Demands.Cast<Demand>().Where(d => d.s_SourceModuleType == "Case").ToList().ForEach(c => strComments.AppendLine(c.s_Description + "\r\n"));
             dataIPSP.Memos.Cast<CaseMemo>().ToList().ForEach(m => strComments.AppendLine(m.s_Memo + "\r\n"));
             dataPC.COMMENTS = strComments.ToString();
 
@@ -227,7 +228,7 @@ namespace DataSyncTool.Sync.Case
             if (dataIPSP.Demands.Cast<Demand>().Any(d => d.s_SysDemand == "CR17" || d.s_SysDemand == "CR18"))
                 strAnnualFeeComments.AppendLine("-*IGNORE ANNUAL FEE*-");
             dataIPSP.Demands.Cast<Demand>()
-                .Where(d => d.s_Title.Contains("年费"))
+                .Where(d => string.IsNullOrWhiteSpace(d.s_SourceModuleType) || d.s_SourceModuleType == "Case" && d.s_Title.Contains("年费"))
                 .ToList()
                 .ForEach(d => strAnnualFeeComments.AppendLine(d.s_Title + "\r\n" + d.s_Description + "\r\n"));
             dataPC.IGNOREANNUALFEE = strAnnualFeeComments.ToString();
@@ -258,22 +259,6 @@ namespace DataSyncTool.Sync.Case
             dataPC.MAILING_CONTACT =
                 dataIPSP.TheClient?.ClientAddress.Cast<ClientAddress>()
                     .FirstOrDefault(a => a.s_Type != null && a.s_Type.Contains("M"))?.s_TitleAddress;
-
-            var charCount = dataIPSP.Memos.Cast<CaseMemo>().FirstOrDefault(m => m.s_Type == "字数");
-            //新申请任务链、翻译费类型的所有工作项字数的总和
-            if (charCount != null)
-            {
-                var nCount = default(int);
-                int.TryParse(charCount.s_Memo, out nCount);
-                dataPC.CHARCOUNT = nCount; //字数
-            }
-            var claimNum = dataIPSP.Memos.Cast<CaseMemo>().FirstOrDefault(m => m.s_Type == "权项数"); //权项数工作项
-            if (claimNum != null)
-            {
-                int nClaimNum;
-                int.TryParse(claimNum.s_Memo, out nClaimNum);
-                dataPC.CLAIM_NUM = nClaimNum; //权项数
-            }
             var nCodeFieldId =
                 new XPQuery<CodeCaseCustomField>(dataIPSP.Session).FirstOrDefault(f => f.s_CustomFieldName == "文种")?
                     .n_ID;
@@ -284,6 +269,26 @@ namespace DataSyncTool.Sync.Case
                 if (memoLanguage != null)
                     dataPC.LANGUAGE = memoLanguage.s_Value; //文种->自定义属性
             }
+            var nCodeclaimNumId = new XPQuery<CodeCaseCustomField>(dataIPSP.Session).FirstOrDefault(f => f.s_CustomFieldName == "权利要求总个数")?.n_ID;
+            if (nCodeclaimNumId > 0)
+            {
+                var claimNum =
+                    dataIPSP.CustomFields.Cast<CustomField>().FirstOrDefault(m => m.n_FieldCodeID == nCodeclaimNumId);
+                decimal nclaim;
+                if (claimNum != null && decimal.TryParse(claimNum.s_Value, out nclaim))
+                    dataPC.CLAIM_NUM = nclaim;  //权项数
+            }
+            var nCodecharCountId = new XPQuery<CodeCaseCustomField>(dataIPSP.Session).FirstOrDefault(f => f.s_CustomFieldName == "总字数")?.n_ID;
+            if (nCodecharCountId > 0)
+            {
+                var charCount =
+                    dataIPSP.CustomFields.Cast<CustomField>().FirstOrDefault(m => m.n_FieldCodeID == nCodecharCountId);
+                decimal nCharCount = 0M;
+                if (charCount != null && decimal.TryParse(charCount.s_Value, out nCharCount))
+                    dataPC.CHARCOUNT = nCharCount;  //总字数
+            }
+
+
             if (dataIPSP.TheLawInfo != null)
                 dataPC.PRE_EXAM_PASSED = dataIPSP.TheLawInfo.dt_FirstCheckDate; //初审合格日
             if (dataIPSP.TheLawInfo != null)
@@ -317,7 +322,7 @@ namespace DataSyncTool.Sync.Case
                 dataIPSP.FileInCases.Cast<FileInCase>()
                     .Select(f => f.TheFile)
                     .FirstOrDefault(
-                        c => c != null && c.s_Name.Contains("提实审") && c.s_ClientGov == "C" && c.s_IOType == "O");
+                        c => c != null && c.s_Name.Contains("提实审") && c.s_ClientGov == "C" && c.s_IOType == "I");
             if (outFileReexam != null)
                 dataPC.CLIENT_STATUS = "Y"; //客户提示提实审——判断是否存在“提实审”名称的客户来文
             //dataPC.YFEE_DATE//
