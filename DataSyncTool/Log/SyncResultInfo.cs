@@ -167,7 +167,7 @@ namespace DataSyncTool.Log
             }
             if (!listSendUserId.Any()) return;
             bool bSendSuccess = SendWeixinMessage(sToken, listSendUserId,
-                $"{DateTime.Now.ToLongDateString()}：数据回写已完成，请通过邮件查看回写结果。"); //发送消息
+                $"{DateTime.Now.ToLongDateString()}消息：{this[0].Content}的数据已完成同步，请通过邮件查看结果。"); //发送消息
             //TODO 处理发送失败后的逻辑
         }
 

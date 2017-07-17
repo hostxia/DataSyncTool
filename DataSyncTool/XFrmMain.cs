@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.OracleClient;
 using System.Data.SqlClient;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataSyncTool.Common;
@@ -20,6 +21,7 @@ namespace DataSyncTool
     public partial class XFrmMain : Form
     {
         private SyncResultInfoSet _syncResultInfoSet;
+        private DateTime _dtNext;
 
         public XFrmMain()
         {
@@ -36,11 +38,22 @@ namespace DataSyncTool
             _syncResultInfoSet = new SyncResultInfoSet(xgridResult);
             GetSyncDate();
 
-            Task.Run(() =>
+            new Thread(() =>
             {
-                while (DateTime.Now >= ConfigHelper.NextDate)
-                    Invoke(new Action(() => { xsbSync.PerformClick(); }));
-            });
+                while (true)
+                {
+                    if (DateTime.Now >= _dtNext)
+                    {
+                        Invoke(new Action(() =>
+                        {
+                            xsbSync.PerformClick();
+                        }));
+                        Thread.Sleep(1000);
+                    }
+
+                }
+
+            }).Start();
         }
 
         private void xbbiConnectionConfig_ItemClick(object sender, ItemClickEventArgs e)
@@ -64,46 +77,45 @@ namespace DataSyncTool
             xsbSync.Enabled = false;
             xbbiConnectionConfig.Enabled = false;
             xbiCommonConfig.Enabled = false;
-            Task.Run(() =>
+            new Thread(() =>
+            {
+                new SyncClientList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步客户信息
+                new SyncApplicantList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步申请人
+                new SyncAgencyList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步外所
+                new SyncPatentList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步国内专利
+                new SyncPatentAbroadList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步国外专利
+                new SyncPatentHKList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步香港专利
+                new SyncDemandList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步要求
+                new SyncInFileList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步来文（官方、客户）
+                new SyncAnnualFeeList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步年费
+                new SyncCustomFieldList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步自定义属性
+                new SyncOAList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步OA
+                _syncResultInfoSet.AddInfo("同步完成！");
+                Invoke(new Action(() =>
                 {
-                    new SyncClientList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步客户信息
-                    new SyncApplicantList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步申请人
-                    new SyncAgencyList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步外所
-                    new SyncPatentList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步国内专利
-                    new SyncPatentAbroadList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步国外专利
-                    new SyncPatentHKList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步香港专利
-                    new SyncDemandList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步要求
-                    new SyncInFileList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步来文（官方、客户）
-                    new SyncAnnualFeeList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步年费
-                    new SyncCustomFieldList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步自定义属性
-                    new SyncOAList { SyncResultInfoSet = _syncResultInfoSet }.DataSync();//同步OA
-                    _syncResultInfoSet.AddInfo("同步完成！");
-                })
-                .ContinueWith(t =>
-                {
-                    Invoke(new Action(() =>
-                    {
-                        CalcNewSyncDate(dtBegin);
-                        GetSyncDate();
-                        _syncResultInfoSet.SendEmailByCondition();
-                        xsbSync.Enabled = true;
-                        xbbiConnectionConfig.Enabled = true;
-                        xbiCommonConfig.Enabled = true;
-                    }));
-                });
+                    CalcNewSyncDate(dtBegin);
+                    GetSyncDate();
+                    _syncResultInfoSet.SendEmailByCondition();
+                    xsbSync.Enabled = true;
+                    xbbiConnectionConfig.Enabled = true;
+                    xbiCommonConfig.Enabled = true;
+                }));
+            }).Start();
         }
 
         private void GetSyncDate()
         {
             xdeBeginDate.DateTime = ConfigHelper.BeginDate;
             xdeFinishDate.DateTime = ConfigHelper.FinishDate;
-            xdeNextBeginDate.DateTime = ConfigHelper.NextDate;
+            _dtNext = xdeNextBeginDate.DateTime = ConfigHelper.NextDate;
+
         }
 
         private void CalcNewSyncDate(DateTime dtBegin)
         {
             ConfigHelper.FinishDate = DateTime.Now;
             ConfigHelper.BeginDate = dtBegin < ConfigHelper.NextDate ? dtBegin : ConfigHelper.NextDate;
+            _dtNext = ConfigHelper.NextDate;
         }
 
         private bool TestPCConnection()

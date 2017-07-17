@@ -53,14 +53,14 @@ namespace DataSyncTool.Sync.Case
             //    return;
             //}
             var caseRoleAgent =
-                new XPQuery<CodeCaseRole>(dataIPSP.Session).FirstOrDefault(r => r.s_Name.Contains("新申请阶段-办案人"))?.n_ID;
+                new XPQuery<CodeCaseRole>(dataIPSP.Session).FirstOrDefault(r => r.s_Name.Contains("对外代理人"))?.n_ID;
 
             dataPC.AGENT =
                 dataIPSP.CaseAttorneys.Cast<CaseAttorney>()
                     .FirstOrDefault(a => a.n_CaseRoleID == caseRoleAgent)?.TheAttorney?.s_InternalCode;
             if (string.IsNullOrWhiteSpace(dataPC.AGENT))
             {
-                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("新申请阶段办案人->对外代理人", dataIPSP.n_CaseID,
+                SyncResultInfoSet.AddWarning(InfoString.ToSkipInfo("对外代理人->对外代理人", dataIPSP.n_CaseID,
                     dataIPSP.s_CaseSerial));
                 return;
             }
